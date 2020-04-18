@@ -2171,10 +2171,11 @@ paths:
     get:
       summary: Get Candlesticks
       description: Fetch candlestick data for an instrument.
-      operationId: getInstrumentCandles
+      operationId: getAccountInstrumentCandles
       parameters:
       - $ref: '#/parameters/authorizationHeaderParam'
       - $ref: '#/parameters/acceptDatetimeFormatHeaderParam'
+      - $ref: '#/parameters/accountIDPathParam'
       - $ref: '#/parameters/instrumentNamePathParam'
       - name: price
         description: >-
@@ -15389,7 +15390,7 @@ parameters:
     name: mt4ServerID
     description: MT4 Server ID
     in: path
-    type: int
+    type: integer
     required: true
   orderSpecifierPathParam:
     name: orderSpecifier
