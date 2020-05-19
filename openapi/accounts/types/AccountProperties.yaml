@@ -1,0 +1,13 @@
+type: object
+description: Properties related to an Account.
+properties:
+  id:
+    $ref: ./AccountID.yaml
+  mt4AccountID:
+    type: integer
+    description: The Account's associated MT4 Account ID. This field will not be present if the Account is not an MT4 account.
+  tags:
+    type: array
+    description: The Account's tags
+    items:
+      type: string

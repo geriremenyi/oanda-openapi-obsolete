@@ -1,0 +1,14 @@
+type: object
+description: The dynamic (calculated) state of an open Trade
+properties:
+  id:
+    type: integer
+    description: The Trade's ID.
+  unrealizedPL:
+    type: number
+    format: float
+    description: The Trade's unrealized profit/loss.
+  marginUsed:
+    type: number
+    format: float
+    description: Margin currently used by the Trade.
