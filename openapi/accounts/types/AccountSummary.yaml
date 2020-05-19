@@ -1,0 +1,95 @@
+type: object
+description: A summary representation of a client's Account. The AccountSummary does not provide to full specification of pending Orders, open Trades and Positions.
+allOf:
+  - properties:
+      id:
+        $ref: ./AccountID.yaml
+      alias:
+        type: string
+        description: Client-assigned alias for the Account. Only provided if the Account has an alias set
+        nullable: true
+      currency:
+        type: string
+        enum:
+          - AUD
+          - CAD
+          - CHF
+          - EUR
+          - GBP
+          - HKD
+          - JPY
+          - SGD
+          - USD
+        description: The home currency of the Account
+      balance:
+        type: number
+        format: float
+        description: The current balance of the Account.
+      createdByUserID:
+        type: integer
+        description: ID of the user that created the Account.
+      createdTime:
+        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        description: The date/time when the Account was created.
+      guaranteedStopLossOrderMode:
+        type: string
+        description: The current guaranteed Stop Loss Order mode of the Account.
+        enum:
+        - DISABLED
+        - ALLOWED
+        - REQUIRED
+      pl:
+        type: number
+        format: float
+        description: The total profit/loss realized over the lifetime of the Account.
+      resettablePL:
+        type: number
+        format: float
+        description: The total realized profit/loss for the Account since it was last reset by the client.
+      resettablePLTime:
+        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        description: The date/time that the Account's resettablePL was last reset.
+      financing:
+        type: number
+        format: float
+        description: The total amount of financing paid/collected over the lifetime of the Account.
+      commission:
+        type: number
+        format: float
+        description: The total amount of commission paid over the lifetime of the Account.
+      guaranteedExecutionFees:
+        type: number
+        format: float
+        description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders.
+      marginRate:
+        type: number
+        format: float
+        description: Client-provided margin rate override for the Account. The effective margin rate of the Account is the lesser of this value and the OANDA margin rate for the Account's division. This value is only provided if a margin rate override exists for the Account.
+      marginCallEnterTime:
+        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        description: The date/time when the Account entered a margin call state. Only provided if the Account is in a margin call.
+      marginCallExtensionCount:
+        type: integer
+        description: The number of times that the Account's current margin call was extended.
+      lastMarginCallExtensionTime:
+        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        description: The date/time of the Account's last margin call extension.
+      openTradeCount:
+        type: integer
+        description: The number of Trades currently open in the Account.
+      openPositionCount:
+        type: integer
+        description: The number of Positions currently open in the Account.
+      pendingOrderCount:
+        type: integer
+        description: The number of Orders currently pending in the Account.
+      hedgingEnabled:
+        type: boolean
+        description: Flag indicating that the Account has hedging enabled.
+      lastOrderFillTimestamp:
+        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        description: The date/time of the last order that was filled for this account.
+  - $ref: ./AccountState.yaml
+  - properties:
+      type: integer
+      description: The ID of the last Transaction created for the Account.

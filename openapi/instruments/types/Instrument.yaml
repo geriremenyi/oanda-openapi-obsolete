@@ -1,0 +1,48 @@
+type: object
+description: Full specification of an Instrument.
+properties:
+  name:
+    type: string
+    description: The name of the Instrument
+    enum:
+      $ref: ./InstrumentName.yaml#/enum
+  type:
+    $ref: ./InstrumentType.yaml
+  displayName:
+    type: string
+    description: The display name of the Instrument
+  pipLocation:
+    type: integer
+    description: The location of the "pip" for this instrument. The decimal position of the pip in this Instrument's price can be found at 10 ^ pipLocation (e.g. -4 pipLocation results in a decimal pip position of 10 ^ -4 = 0.0001).
+  displayPrecision:
+    type: integer
+    description: The number of decimal places that should be used to display prices for this instrument. (e.g. a displayPrecision of 5 would result in a price of "1" being displayed as "1.00000")
+  tradeUnitsPrecision:
+    type: integer
+    description: The amount of decimal places that may be provided when specifying the number of units traded for this instrument.
+  minimumTradeSize:
+    type: number
+    format: float
+    description: The smallest number of units allowed to be traded for this instrument.
+  maximumTrailingStopDistance:
+    type: number
+    format: float
+    description: The maximum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+  minimumTrailingStopDistance:
+    type: number
+    format: float
+    description: The minimum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+  maximumPositionSize:
+    type: number
+    format: float
+    description: The maximum position size allowed for this instrument. Specified in units.
+  maximumOrderUnits:
+    type: number
+    format: float
+    description: The maximum units allowed for an Order placed for this instrument. Specified in units.
+  marginRate:
+    type: number
+    format: float
+    description: The margin rate for this instrument.
+  commission:
+    $ref: ./InstrumentComission.yaml
