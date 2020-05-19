@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: OANDA v20 API
+  description: The full OANDA v20 API Specification. This specification defines how to interact with v20 Accounts, Trades, Orders, Pricing and more.
+  contact:
+    name: OANDA API Support
+    url: http://developer.oanda.com/rest-live-v20/introduction/
+    email: api@oanda.com
+  license:
+    name: MIT
+    url: https://github.com/oanda/v20-openapi/blob/master/LICENSE.txt
+  version: 3.0.25
+servers:
+  - url: https://api-{environment}.oanda.com/v3
+    description: Oanda REST-V20 API
+    variables:
+      environment:
+        enum:
+          - fxpractice
+          - fxtrade
+        default: fxpractice
+security:
+  - PersonalAccessToken: []
+paths:
+  /accounts:
+    $ref: ./accounts/paths/accounts.yaml
+  /accounts/{accountID}:
+    $ref: ./accounts/paths/account-by-id.yaml
+  /accounts/{accountID}/summary:
+    $ref: ./accounts/paths/account-summary.yaml
+  /accounts/{accountID}/instruments:
+    $ref: ./accounts/paths/account-instruments.yaml
+  /accounts/{accountID}/configuration:
+    $ref: ./accounts/paths/account-configuration.yaml
+  /accounts/{accountID}/changes:
+    $ref: ./accounts/paths/account-changes.yaml
+components:
+  securitySchemes:
+    PersonalAccessToken:
+      type: http
+      scheme: bearer

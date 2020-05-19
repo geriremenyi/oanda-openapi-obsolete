@@ -1,0 +1,18 @@
+AccountID:
+  name: accountID
+  in: path
+  required: true
+  schema: 
+    $ref: ../accounts/types/AccountID.yaml
+  description: Account Identifier
+
+AcceptDatetimeFormat:
+  name: Accept-Datetime-Format
+  in: header
+  required: false
+  schema:
+    type: string
+    enum:
+      - UNIX
+      - RFC3339
+  description: Format of DateTime fields in the request and response.
