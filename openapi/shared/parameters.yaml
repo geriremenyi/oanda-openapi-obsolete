@@ -4,7 +4,7 @@ AccountID:
   required: true
   schema: 
     $ref: ../accounts/types/AccountID.yaml
-  description: Account Identifier
+  description: Account identifier
 
 AcceptDatetimeFormat:
   name: Accept-Datetime-Format
@@ -16,3 +16,11 @@ AcceptDatetimeFormat:
       - UNIX
       - RFC3339
   description: Format of DateTime fields in the request and response.
+
+InstrumentName:
+  name: instrument
+  in: path
+  required: true
+  schema:
+    $ref: ../instruments/types/InstrumentName.yaml
+  description: Instrument name

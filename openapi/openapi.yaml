@@ -34,6 +34,8 @@ paths:
     $ref: ./accounts/paths/account-configuration.yaml
   /accounts/{accountID}/changes:
     $ref: ./accounts/paths/account-changes.yaml
+  /instruments/{instrument}/candles:
+    $ref: ./instruments/paths/candles.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
