@@ -4,8 +4,8 @@ get:
   tags:
     - Instrument
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
     - $ref: ../../shared/parameters.yaml#/InstrumentName
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
     - name: price
       description: The Price component(s) to get candlestick data for. Can contain any combination of the characters "M" (midpoint candles) "B" (bid candles) and "A" (ask candles).
       in: query
@@ -47,7 +47,7 @@ get:
       in: query
       type: string
   responses:
-    '200':
+    200:
       description: Pricing information has been successfully provided.
       headers:
         $ref: ../../shared/headers.yaml
