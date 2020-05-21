@@ -1,0 +1,25 @@
+type: object
+description: The representation of an instrument's position book at a point in time
+properties:
+  instrument:
+    type:
+      $ref: ../../instruments/types/InstrumentName.yaml#/type
+    description: The position book's instrument
+    enum:
+      $ref: ../../instruments/types/InstrumentName.yaml#/enum
+  time:
+    type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    description: The time when the position book snapshot was created
+  price:
+    type: number
+    format: double
+    description: The price (midpoint) for the position book's instrument at the time of the position book snapshot
+  bucketWidth:
+    type: number
+    format: double
+    description: The price width for each bucket. Each bucket covers the price range from the bucket's price to the bucket's price + bucketWidth.
+  buckets:
+    type: array
+    description: The partitioned position book, divided into buckets using a default bucket width. These buckets are only provided for price ranges which actually contain order or position data.
+    items:
+      $ref: './PositionBookBucket.yaml'
