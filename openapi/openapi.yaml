@@ -38,6 +38,8 @@ paths:
     $ref: ./instruments/paths/candles.yaml
   /instruments/{instrument}/orderBook:
     $ref: ./instruments/paths/order-book.yaml
+  /instruments/{instrument}/positionBook:
+    $ref: ./instruments/paths/position-book.yaml
 components:
   securitySchemes:
     PersonalAccessToken:

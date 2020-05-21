@@ -8,8 +8,8 @@ properties:
     enum:
       $ref: ../../instruments/types/InstrumentName.yaml#/enum
   time:
-    type: string
-    description: # TODO: check for UNIX and RFC3339 datetime pattern
+    type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    description: The time when the order book snapshot was created.
   price:
     type: number
     format: double

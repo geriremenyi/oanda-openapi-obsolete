@@ -24,11 +24,13 @@ get:
               description: A link to the next/previous order book snapshot.
               type: string
           - $ref: ../../shared/headers.yaml
-      schema:
-        type: object
-        properties:
-          orderBook:
-            $ref: '../../orders/types/OrderBook.yaml'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              orderBook:
+                $ref: '../../orders/types/OrderBook.yaml'
     400:
       $ref: ../../shared/errors.yaml#/400
     401:
