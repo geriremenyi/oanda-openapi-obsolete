@@ -36,6 +36,8 @@ paths:
     $ref: ./accounts/paths/account-changes.yaml
   /instruments/{instrument}/candles:
     $ref: ./instruments/paths/candles.yaml
+  /instruments/{instrument}/orderBook:
+    $ref: ./instruments/paths/order-book.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
