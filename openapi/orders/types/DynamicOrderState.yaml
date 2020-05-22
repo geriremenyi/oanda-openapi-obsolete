@@ -6,11 +6,11 @@ properties:
     description: The Order's ID.
   trailingStopValue:
     type: number
-    format: float
+    format: double
     description: The Order's calculated trailing stop value.
   triggerDistance:
     type: number
-    format: float
+    format: double
     description: The distance between the Trailing Stop Loss Order's trailingStopValue and the current Market Price. This represents the distance (in price units) of the Order from a triggering price. If the distance could not be determined, this value will not be set.
   isTriggerDistanceExact:
     type: boolean
