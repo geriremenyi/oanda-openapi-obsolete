@@ -6,9 +6,9 @@ properties:
     description: The Trade's ID.
   unrealizedPL:
     type: number
-    format: float
+    format: double
     description: The Trade's unrealized profit/loss.
   marginUsed:
     type: number
-    format: float
+    format: double
     description: Margin currently used by the Trade.

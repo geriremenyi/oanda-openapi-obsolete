@@ -9,17 +9,17 @@ properties:
       $ref: ../../instruments/types/InstrumentName.yaml#/enum
   netUnrealizedPL:
     type: number
-    format: float
+    format: double
     description: The Position's net unrealized profit/loss
   longUnrealizedPL:
     type: number
-    format: float
+    format: double
     description: The unrealized profit/loss of the Position's long open Trades
   shortUnrealizedPL:
     type: number
-    format: float
+    format: double
     description: The unrealized profit/loss of the Position's short open Trades
   marginUsed:
     type: number
-    format: float
+    format: double
     description: Margin currently used by the Position.

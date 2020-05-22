@@ -23,27 +23,27 @@ properties:
     description: The amount of decimal places that may be provided when specifying the number of units traded for this instrument.
   minimumTradeSize:
     type: number
-    format: float
+    format: double
     description: The smallest number of units allowed to be traded for this instrument.
   maximumTrailingStopDistance:
     type: number
-    format: float
+    format: double
     description: The maximum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
   minimumTrailingStopDistance:
     type: number
-    format: float
+    format: double
     description: The minimum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
   maximumPositionSize:
     type: number
-    format: float
+    format: double
     description: The maximum position size allowed for this instrument. Specified in units.
   maximumOrderUnits:
     type: number
-    format: float
+    format: double
     description: The maximum units allowed for an Order placed for this instrument. Specified in units.
   marginRate:
     type: number
-    format: float
+    format: double
     description: The margin rate for this instrument.
   commission:
     $ref: ./InstrumentComission.yaml

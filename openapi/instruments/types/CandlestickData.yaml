@@ -3,17 +3,17 @@ description: The price data (open, high, low, close) for the Candlestick represe
 properties:
   o:
     type: number
-    format: float
+    format: double
     description: The first (open) price in the time-range represented by the candlestick.
   h:
     type: number
-    format: float
+    format: double
     description: The highest price in the time-range represented by the candlestick.
   l:
     type: number
-    format: float
+    format: double
     description: The lowest price in the time-range represented by the candlestick.
   c:
     type: number
-    format: float
+    format: double
     description: The last (closing) price in the time-range represented by the candlestick.
