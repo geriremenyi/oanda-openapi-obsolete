@@ -23,7 +23,7 @@ allOf:
         description: The home currency of the Account
       balance:
         type: number
-        format: float
+        format: double
         description: The current balance of the Account.
       createdByUserID:
         type: integer
@@ -40,30 +40,30 @@ allOf:
         - REQUIRED
       pl:
         type: number
-        format: float
+        format: double
         description: The total profit/loss realized over the lifetime of the Account.
       resettablePL:
         type: number
-        format: float
+        format: double
         description: The total realized profit/loss for the Account since it was last reset by the client.
       resettablePLTime:
         type: string # TODO: check for UNIX and RFC3339 datetime pattern
         description: The date/time that the Account's resettablePL was last reset.
       financing:
         type: number
-        format: float
+        format: double
         description: The total amount of financing paid/collected over the lifetime of the Account.
       commission:
         type: number
-        format: float
+        format: double
         description: The total amount of commission paid over the lifetime of the Account.
       guaranteedExecutionFees:
         type: number
-        format: float
+        format: double
         description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders.
       marginRate:
         type: number
-        format: float
+        format: double
         description: Client-provided margin rate override for the Account. The effective margin rate of the Account is the lesser of this value and the OANDA margin rate for the Account's division. This value is only provided if a margin rate override exists for the Account.
       marginCallEnterTime:
         type: string # TODO: check for UNIX and RFC3339 datetime pattern

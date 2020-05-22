@@ -6,5 +6,5 @@ properties:
     description: The client-provided alias for the Account.
   marginRate:
     type: number
-    format: float
+    format: double
     description: The margin rate override for the Account.

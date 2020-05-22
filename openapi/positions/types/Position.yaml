@@ -8,31 +8,31 @@ properties:
       $ref: ../../instruments/types/InstrumentName.yaml#/enum
   pl:
     type: number
-    format: float
+    format: double
     description: Profit/loss realized by the Position over the lifetime of the Account.
   unrealizedPL:
     type: number
-    format: float
+    format: double
     description: The unrealized profit/loss of all open Trades that contribute to this Position.
   marginUsed:
     type: number
-    format: float
+    format: double
     description: Margin currently used by the Position.
   resettablePL:
     type: number
-    format: float
+    format: double
     description: Profit/loss realized by the Position since the Account's resettablePL was last reset by the client.
   financing:
     type: number
-    format: float
+    format: double
     description: The total amount of financing paid/collected for this instrument over the lifetime of the Account.
   commission:
     type: number
-    format: float
+    format: double
     description: The total amount of commission paid for this instrument over the lifetime of the Account.
   guaranteedExecutionFees:
     type: number
-    format: float
+    format: double
     description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders for this instrument.
   long:
     $ref: './PositionSide.yaml'

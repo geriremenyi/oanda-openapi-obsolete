@@ -17,7 +17,7 @@ patch:
             description: Client-defined alias (name) for the Account
           marginRate:
             type: number
-            format: float
+            format: double
             description: Margin rate.
   responses:
     200:
