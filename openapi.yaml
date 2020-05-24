@@ -40,6 +40,8 @@ paths:
     $ref: ./instruments/paths/order-book.yaml
   /instruments/{instrument}/positionBook:
     $ref: ./instruments/paths/position-book.yaml
+  /accounts/{accountID}/orders:
+    $ref: ./orders/paths/orders.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
