@@ -1,26 +1,19 @@
-post:
-  summary: Create Order
-  description: Create an Order for an Account
+get:
+  summary: Get Order
+  description: Get details for a single Order in an Account
   tags:
     - Order
   parameters:
     - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
     - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - name: createOrderBody
-      in: body
-      schema:
-        type: object
-        properties:
-          order:
-            $ref: '../types/OrderRequest.yaml'
-      required: true
   responses:
-    201:
-      description: The Order was created as specified
+    200:
+      description: The details of the Order requested
       headers:
         allOf:
-          - Location:
-              description: A link to the Order that was just created
+          - Link:
+              description: A link to the next page of results if the results were paginated
               type: string
           - $ref: ../../shared/headers.yaml
       content:
@@ -28,16 +21,62 @@ post:
           schema:
             type: object
             properties:
+              order:
+                $ref: ../types/Order.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    401:
+       $ref: ../../shared/errors.yaml#/401
+    404:
+       $ref: ../../shared/errors.yaml#/404
+    405:
+       $ref: ../../shared/errors.yaml#/405
+put:
+  summary: Replace Order
+  description: Replace an Order in an Account by simultaneously cancelling it and creating a replacement Order
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters.yaml#/ClientRequestID
+    - name: replaceOrderBody
+      description:  Specification of the replacing Order. The replacing order must have the same type as the replaced Order.
+      in: body
+      schema:
+        type: object
+        properties:
+          order:
+            $ref: ../types/OrderRequest.yaml
+      required: true
+  responses:
+    201:
+      description: The Order was successfully cancelled and replaced
+      headers:
+        allOf:
+          - Location:
+              description: A link to the replacing Order
+              type: string
+          - $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              orderCancelTransaction:
+                $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
               orderCreateTransaction:
                 $ref: ../../transactions/types/Transaction.yaml
               orderFillTransaction:
                 $ref: ../../transactions/types/order/OrderFillTransaction.yaml
-              orderCancelTransaction:
-                $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
               orderReissueTransaction:
                 $ref: ../../transactions/types/Transaction.yaml
               orderReissueRejectTransaction:
                 $ref: ../../transactions/types/Transaction.yaml
+              replacingOrderCancelTransaction:
+                $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
               relatedTransactionIDs:
                 type: array
                 description: The IDs of all Transactions that were created while satisfying the request.
@@ -62,7 +101,7 @@ post:
               description: The unique Transaction identifier within each Account.
           lastTransactionID:
             type: integer
-            description: The ID of the most recent Transaction created for the Account
+            description: The ID of the most recent Transaction created for the Account.
           errorCode:
             type: string
             description: The code of the error that has occurred. This field may not be returned for some errors.
@@ -71,14 +110,12 @@ post:
             description: The human-readable description of the error that has occurred.
     401:
       $ref: ../../shared/errors.yaml#/401
-    403:
-      $ref: ../../shared/errors.yaml#/403
     404:
-      description: The Order or Account specified does not exist.
+      description: The Account or Order specified does not exist.
       schema:
         type: object
         properties:
-          orderRejectTransaction:
+          orderCancelRejectTransaction:
             $ref: ../../transactions/types/Transaction.yaml
           relatedTransactionIDs:
             type: array
@@ -95,67 +132,5 @@ post:
           errorMessage:
             type: string
             description: The human-readable description of the error that has occurred.
-    405:
-      $ref: ../../shared/errors.yaml#/405
-get:
-  summary: List Orders
-  description: Get a list of Orders for an Account
-  tags:
-    - Order
-  parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - name: ids
-      description: List of Order IDs to retrieve
-      in: query
-      type: array
-      items:
-        type: integer
-      collectionFormat: csv
-    - name: state
-      description: The state to filter the requested Orders by
-      in: query
-      type: string
-    - name: instrument
-      description: The instrument to filter the requested orders by
-      in: query
-      type:
-        $ref: ../../instruments/types/InstrumentName.yaml#/type
-      enum:
-        $ref: ../../instruments/types/InstrumentName.yaml#/enum
-    - name: count
-      description: The maximum number of Orders to return
-      in: query
-      type: integer
-    - name: beforeID
-      description: The maximum Order ID to return. If not provided the most recent Orders in the Account are returned
-      in: query
-      type: integer
-  responses:
-    200:
-      description: The list of Orders requested
-      headers:
-        allOf:
-          - Link:
-              description: A link to the next page of results if the results were paginated
-              type: string
-          - $ref: ../../shared/headers.yaml
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              orders:
-                type: array
-                description: The list of Order detail objects
-                items:
-                  $ref: '../types/Order.yaml'
-              lastTransactionID:
-                type: integer
-                description: The ID of the most recent Transaction created for the Account
-    400:
-      $ref: ../../shared/errors.yaml#/400
-    404:
-      $ref: ../../shared/errors.yaml#/404
     405:
       $ref: ../../shared/errors.yaml#/405

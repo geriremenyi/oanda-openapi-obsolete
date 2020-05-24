@@ -42,6 +42,14 @@ paths:
     $ref: ./instruments/paths/position-book.yaml
   /accounts/{accountID}/orders:
     $ref: ./orders/paths/orders.yaml
+  /accounts/{accountID}/pendingOrders:
+    $ref: ./orders/paths/pending-orders.yaml
+  /accounts/{accountID}/orders/{orderSpecifier}:
+    $ref: ./orders/paths/order-by-id.yaml
+  /accounts/{accountID}/orders/{orderSpecifier}/cancel:
+    $ref: ./orders/paths/cancel-order.yaml
+  /accounts/{accountID}/orders/{orderSpecifier}/clientExtensions:
+    $ref: ./orders/paths/client-extend-order.yaml
 components:
   securitySchemes:
     PersonalAccessToken:

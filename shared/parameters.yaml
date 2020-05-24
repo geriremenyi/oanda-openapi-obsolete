@@ -24,3 +24,16 @@ InstrumentName:
   schema:
     $ref: ../instruments/types/InstrumentName.yaml
   description: Instrument name
+
+OrderSpecifier:
+  name: orderSpecifier
+  description: The Order Specifier
+  in: path
+  type: string # TODO regex on integer or string starting with @
+  required: true
+
+ClientRequestID:
+  name: ClientRequestID
+  description: Client specified RequestID to be sent with request.
+  in: header
+  type: string
