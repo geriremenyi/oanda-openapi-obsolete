@@ -1,0 +1,89 @@
+put:
+  summary: Set Order Extensions
+  description: Update the Client Extensions for an Order in an Account. Do notset, modify, or delete clientExtensions if your account is associated with MT4.
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: setOrderClientExtensionsBody
+      description: Representation of the replacing Order
+      in: body
+      schema:
+        type: object
+        properties:
+          clientExtensions:
+            $ref: ../../transactions/types/ClientExtensions.yaml
+          tradeClientExtensions:
+            $ref: ../../transactions/types/ClientExtensions.yaml
+      required: true
+  responses:
+    200:
+      description: The Order's Client Extensions were successfully modified
+      headers:
+        - $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              orderClientExtensionsModifyTransaction:
+                $ref: ../../transactions/types/order/OrderClientExtensionsModifyTransaction.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+              relatedTransactionIDs:
+                type: array
+                description: The IDs of all Transactions that were created while satisfying the request.
+                items:
+                  type: integer
+                  description: The unique Transaction identifier within each Account.
+    400:
+      description: The Order Client Extensions specification was invalid
+      schema:
+        type: object
+        properties:
+          orderClientExtensionsModifyRejectTransaction:
+            $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+          lastTransactionID:
+            type: integer
+            description: The ID of the most recent Transaction created for the Account
+          relatedTransactionIDs:
+            type: array
+            description: The IDs of all Transactions that were created while satisfying the request.
+            items:
+              type: integer
+              description: The unique Transaction identifier within each Account.
+          errorCode:
+            type: string
+            description: The code of the error that has occurred. This field may not be returned for some errors.
+          errorMessage:
+            type: string
+            description: The human-readable description of the error that has occurred.
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      description: The Account or Order specified does not exist.
+      schema:
+        type: object
+        properties:
+          orderClientExtensionsModifyRejectTransaction:
+            $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+          lastTransactionID:
+            type: integer
+            description: The ID of the most recent Transaction created for the Account. Only present if the Account exists.
+          relatedTransactionIDs:
+            type: array
+            description: The IDs of all Transactions that were created while satisfying the request. Only present if the Account exists.
+            items:
+              type: integer
+              description: The unique Transaction identifier within each Account.
+          errorCode:
+            type: string
+            description: The code of the error that has occurred. This field may not be returned for some errors.
+          errorMessage:
+            type: string
+            description: The human-readable description of the error that has occurred.
+    405:
+      $ref: ../../shared/errors.yaml#/405
