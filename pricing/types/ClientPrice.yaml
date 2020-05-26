@@ -39,7 +39,7 @@ properties:
     description: The closeout bid Price. This Price is used when a bid is required to closeout a Position (margin closeout or manual) yet there is no bid liquidity. The closeout bid is never used to open a new position.
   closeoutAsk:
     type: number
-    format: boolean
+    format: double
     description: The closeout ask Price. This Price is used when a ask is required to closeout a Position (margin closeout or manual) yet there is no ask liquidity. The closeout ask is never used to open a new position.
   quoteHomeConversionFactors:
     $ref: './QuoteHomeConversionFactors.yaml'
