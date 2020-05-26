@@ -58,7 +58,7 @@ properties:
   financing:
     type: number
     format: double
-    description: The financing paid or collected when the Order was
+    description: The financing paid or collected when the Order was filled
   commission:
     type: number
     format: double
