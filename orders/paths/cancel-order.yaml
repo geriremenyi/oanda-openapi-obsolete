@@ -37,7 +37,7 @@ put:
         type: object
         properties:
           orderCancelRejectTransaction:
-            $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+            $ref: ../../transactions/types/order/OrderCancelRejectTransaction.yaml
           relatedTransactionIDs:
             type: array
             description: The IDs of all Transactions that were created while satisfying the request. Only present if the Account exists.
