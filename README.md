@@ -4,7 +4,7 @@ This repository is a more organized version of the [generated OANDA v20 REST API
 
 ## Demo
 
-The definition is available in SwaggerUI under this repo's github page. Go ahead and try Oanda's API out:
+The definition is available in SwaggerUI under this repo's github page. Go ahead and try OANDA's API out:
 
 [https://geriremenyi.github.io/oanda-openapi/](https://geriremenyi.github.io/oanda-openapi/)
 
