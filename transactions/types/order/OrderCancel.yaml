@@ -1,5 +1,5 @@
 type: object
-description: An Order represents an Order in the client's Account.
+description: An OrderCancel represents an Order cancellation in the client's Account.
 properties:
   orderID:
     type: integer
