@@ -26,19 +26,12 @@ put:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              orderClientExtensionsModifyTransaction:
-                $ref: ../../transactions/types/order/OrderClientExtensionsModifyTransaction.yaml
-              lastTransactionID:
-                type: integer
-                description: The ID of the most recent Transaction created for the Account
-              relatedTransactionIDs:
-                type: array
-                description: The IDs of all Transactions that were created while satisfying the request.
-                items:
-                  type: integer
-                  description: The unique Transaction identifier within each Account.
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyTransaction:
+                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyTransaction.yaml
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Order Client Extensions specification was invalid
       schema:
