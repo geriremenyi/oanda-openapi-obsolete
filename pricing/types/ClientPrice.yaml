@@ -5,11 +5,7 @@ properties:
     type: string
     description: The string "PRICE". Used to identify the a Price object when found in a stream.
   instrument:
-    type:
-      $ref: ../../instruments/types/InstrumentName.yaml#/type
-    description: The Price's Instrument.
-    enum:
-      $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    $ref: ./PriceStatus.yaml
   time:
     type: string # TODO: check for UNIX and RFC3339 datetime pattern
     description: The date/time when the Price was created

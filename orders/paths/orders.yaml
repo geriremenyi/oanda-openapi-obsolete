@@ -26,49 +26,29 @@ post:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              orderCreateTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-              orderFillTransaction:
-                $ref: ../../transactions/types/order/OrderFillTransaction.yaml
-              orderCancelTransaction:
-                $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
-              orderReissueTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-              orderReissueRejectTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-              relatedTransactionIDs:
-                type: array
-                description: The IDs of all Transactions that were created while satisfying the request.
-                items:
-                  type: integer
-                  description: The unique Transaction identifier within each Account.
-              lastTransactionID:
-                type: integer
-                description: The ID of the most recent Transaction created for the Account
+            allOf:
+              - type: object
+                properties:
+                  orderCreateTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderFillTransaction:
+                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                  orderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                  orderReissueTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderReissueRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     400:
       description: The Order specification was invalid
       schema:
-        type: object
-        properties:
-          orderRejectTransaction:
-            $ref: ../../transactions/types/Transaction.yaml
-          relatedTransactionIDs:
-            type: array
-            description: The IDs of all Transactions that were created while satisfying the request.
-            items:
-              type: integer
-              description: The unique Transaction identifier within each Account.
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account
-          errorCode:
-            type: string
-            description: The code of the error that has occurred. This field may not be returned for some errors.
-          errorMessage:
-            type: string
-            description: The human-readable description of the error that has occurred.
+        allOf:
+          - type: object
+            properties:
+              orderRejectTransaction:
+                $ref: ../../transactions/types/Transaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
     401:
       $ref: ../../shared/errors.yaml#/401
     403:
@@ -76,25 +56,12 @@ post:
     404:
       description: The Order or Account specified does not exist.
       schema:
-        type: object
-        properties:
-          orderRejectTransaction:
-            $ref: ../../transactions/types/Transaction.yaml
-          relatedTransactionIDs:
-            type: array
-            description: The IDs of all Transactions that were created while satisfying the request. Only present if the Account exists.
-            items:
-              type: integer
-              description: The unique Transaction identifier within each Account.
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account. Only present if the Account exists.
-          errorCode:
-            type: string
-            description: The code of the error that has occurred. This field may not be returned for some errors.
-          errorMessage:
-            type: string
-            description: The human-readable description of the error that has occurred.
+        allOf:
+          - type: object
+            properties:
+              orderRejectTransaction:
+                $ref: ../../transactions/types/Transaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405
 get:

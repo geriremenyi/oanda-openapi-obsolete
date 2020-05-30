@@ -1,3 +1,16 @@
+4xxContent:
+  type: object
+  properties:
+    errorCode:
+      type: string
+      description: The code of the error that has occurred. This field may not be returned for some errors.
+    errorMessage:
+      type: string
+      description: The human-readable description of the error that has occurred.
+4xx:
+  application/json:
+    schema:
+      $ref: '#/4xxContent'
 400:
   description: Bad Request. The client has provided invalid data to be processed by the server.
   headers:
@@ -34,14 +47,7 @@
     $ref: ./headers.yaml
   content:
     $ref: '#/4xx'
-4xx:
-  application/json:
-    schema:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          description: The code of the error that has occurred. This field may not be returned for some errors.
-        errorMessage:
-          type: string
-          description: The human-readable description of the error that has occurred.
+4xxTransactionError:
+  allOf:
+    - $ref: '#/4xxContent'
+    - $ref: ../transactions/types/shared/RelatedTransactions.yaml

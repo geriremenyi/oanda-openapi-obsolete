@@ -42,48 +42,22 @@ put:
     400:
       description: The Order Client Extensions specification was invalid
       schema:
-        type: object
-        properties:
-          orderClientExtensionsModifyRejectTransaction:
-            $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account
-          relatedTransactionIDs:
-            type: array
-            description: The IDs of all Transactions that were created while satisfying the request.
-            items:
-              type: integer
-              description: The unique Transaction identifier within each Account.
-          errorCode:
-            type: string
-            description: The code of the error that has occurred. This field may not be returned for some errors.
-          errorMessage:
-            type: string
-            description: The human-readable description of the error that has occurred.
+        allOf:
+          - type: object
+            properties:
+              orderClientExtensionsModifyRejectTransaction:
+              $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
     401:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Order specified does not exist.
       schema:
-        type: object
-        properties:
-          orderClientExtensionsModifyRejectTransaction:
-            $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account. Only present if the Account exists.
-          relatedTransactionIDs:
-            type: array
-            description: The IDs of all Transactions that were created while satisfying the request. Only present if the Account exists.
-            items:
-              type: integer
-              description: The unique Transaction identifier within each Account.
-          errorCode:
-            type: string
-            description: The code of the error that has occurred. This field may not be returned for some errors.
-          errorMessage:
-            type: string
-            description: The human-readable description of the error that has occurred.
+        allOf:
+          - type: object
+            properties:
+              orderClientExtensionsModifyRejectTransaction:
+              $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405
