@@ -1,0 +1,58 @@
+get:
+  summary: List Trades
+  description: Get a list of Trades for an Account
+  tags:
+    - Trades
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: ids
+      description: List of Trade IDs to retrieve.
+      in: query
+      type: array
+      items:
+        type: integer
+      collectionFormat: csv
+    - name: state
+      description: The state to filter the requested Trades by.
+      in: query
+      type: string
+    - name: instrument
+      description: The instrument to filter the requested Trades by.
+      in: query
+      type: string
+      enum:
+        $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    - name: count
+      description: The maximum number of Trades to return.
+      in: query
+      type: integer
+    - name: beforeID
+      description: The maximum Trade ID to return. If not provided the most recent Trades in the Account are returned.
+      in: query
+      type: integer
+  responses:
+    200:
+      description: The list of Trades requested
+      headers:
+        Link:
+          description: A link to the next page of Trades if the results were paginated
+          type: string
+        $ref: ../../shared/headers.yaml
+      schema:
+        type: object
+        properties:
+          trades:
+            type: array
+            description: The list of Trade detail objects
+            items:
+              $ref: ../types/Trade.yaml
+          lastTransactionID:
+            type: integer
+            description: The ID of the most recent Transaction created for the Account
+    401:
+       $ref: ../../shared/errors.yaml#/401
+    404:
+       $ref: ../../shared/errors.yaml#/404
+    405:
+       $ref: ../../shared/errors.yaml#/405
