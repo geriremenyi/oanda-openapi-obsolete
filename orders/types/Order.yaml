@@ -8,12 +8,6 @@ properties:
     type: string # TODO: check for UNIX and RFC3339 datetime pattern
     description: The time when the Order was created.
   state:
-    type: string
-    description: The current state of the Order.
-    enum:
-      - PENDING
-      - FILLED
-      - TRIGGERED
-      - CANCELLED
+    $ref: ./OrderState.yaml
   clientExtensions:
     $ref: ../../transactions/types/ClientExtensions.yaml
