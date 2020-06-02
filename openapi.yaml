@@ -54,6 +54,8 @@ paths:
     $ref: ./trades/paths/trades.yaml
   /accounts/{accountID}/openTrades:
     $ref: ./trades/paths/open-trades.yaml
+  /accounts/{accountID}/trades/{tradeSpecifier}:
+    $ref: ./trades/paths/trade-by-id.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
