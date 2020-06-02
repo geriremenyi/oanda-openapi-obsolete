@@ -21,9 +21,7 @@ put:
     200:
       description: The Trade has been closed as requested
       headers:
-        RequestID:
-          description: The unique identifier generated for the request
-          type: string
+        $ref: ../../shared/headers.yaml
       schema:
         type: object
         properties:
@@ -52,7 +50,7 @@ put:
                 $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
           - $ref: ../../shared/errors.yaml#/4xxContent
     401:
-       $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Trade specified does not exist.
       schema:
@@ -61,6 +59,6 @@ put:
             properties:
               orderRejectTransaction:
                 $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError    
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError  
     405:
-       $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors.yaml#/405
