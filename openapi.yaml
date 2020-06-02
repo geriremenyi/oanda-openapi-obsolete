@@ -58,6 +58,10 @@ paths:
     $ref: ./trades/paths/trade-by-id.yaml
   /accounts/{accountID}/trades/{tradeSpecifier}/close:
     $ref: ./trades/paths/close-trade.yaml
+  /accounts/{accountID}/trades/{tradeSpecifier}/clientExtensions:
+    $ref: ./trades/paths/client-extend-trade.yaml
+  /accounts/{accountID}/trades/{tradeSpecifier}/orders:
+    $ref: ./trades/paths/trade-orders.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
