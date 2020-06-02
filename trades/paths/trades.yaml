@@ -2,7 +2,7 @@ get:
   summary: List Trades
   description: Get a list of Trades for an Account
   tags:
-    - Trades
+    - Trade
   parameters:
     - $ref: ../../shared/parameters.yaml#/AccountID
     - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
