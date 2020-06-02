@@ -8,6 +8,6 @@ properties:
     type: string
     description: The original Client ID of the Order who's client extensions are to be modified.
   clientExtensionsModify:
-    $ref: ../ClientExtensions.yaml
+    $ref: ../../../shared/types/ClientExtensions.yaml
   tradeClientExtensionsModify:
-    $ref: ../ClientExtensions.yaml
+    $ref: ../../../shared/types/ClientExtensions.yaml
