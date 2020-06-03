@@ -1,5 +1,5 @@
 type: object
-description: A StopLossOrderTransaction represents the creation of a StopLoss Order in the user's Account.
+description: A StopLossOrderRejectTransaction represents the rejection of the creation of a StopLoss Order.
 allOf:
   - $ref: ../../RejectTransaction.yaml
   - $ref: ./StopLossOrder.yaml
