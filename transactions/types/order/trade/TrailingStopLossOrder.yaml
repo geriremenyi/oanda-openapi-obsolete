@@ -1,5 +1,5 @@
 type: object
-description: A TrailingStopLossOrderTransaction represents the creation of a TrailingStopLoss Order in the user's Account.
+description: A TrailingStopLossOrder represents the creation of a TrailingStopLoss Order in the user's Account.
 properties:
   tradeID:
     type: integer
