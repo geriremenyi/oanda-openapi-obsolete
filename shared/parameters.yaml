@@ -37,10 +37,3 @@ ClientRequestID:
   description: Client specified RequestID to be sent with request.
   in: header
   type: string
-
-TradeSpecifier:
-  name: tradeSpecifier
-  description: Specifier for the Trade
-  in: path
-  type: string # TODO regex on integer or string starting with @
-  required: true
