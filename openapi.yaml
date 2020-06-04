@@ -52,8 +52,6 @@ paths:
     $ref: ./orders/paths/client-extend-order.yaml
   /accounts/{accountID}/trades:
     $ref: ./trades/paths/trades.yaml
-  /accounts/{accountID}/openTrades:
-    $ref: ./trades/paths/open-trades.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
