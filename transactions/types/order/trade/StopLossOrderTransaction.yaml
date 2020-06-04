@@ -1,5 +1,0 @@
-type: object
-description: A StopLossOrderTransaction represents the creation of a StopLoss Order in the user's Account.
-allOf:
-  - $ref: ../../Transaction.yaml
-  - $ref: ./StopLossOrder.yaml
