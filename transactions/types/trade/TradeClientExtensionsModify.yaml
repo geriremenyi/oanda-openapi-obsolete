@@ -1,5 +1,5 @@
 type: object
-description: A TradeClientExtensionsModifyTransaction represents the modification of a Trade's Client Extensions.
+description: An OrderClientExtensionsModify represents the the modification of an Order's Client Extensions.
 properties:
   tradeID:
     type: integer

@@ -1,5 +1,5 @@
 type: object
-description: A TakeProfitOrderTransaction represents the creation of a TakeProfit Order in the user's Account.
+description: A StopLossOrderTransaction represents the creation of a StopLoss Order in the user's Account.
 allOf:
   - $ref: ../../Transaction.yaml
   - $ref: ./TakeProfitOrder.yaml

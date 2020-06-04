@@ -1,5 +1,5 @@
 type: object
-description: A TakeProfitOrder represents the creation of a TakeProfit Order.
+description: A MarketIfTouchedOrderRejectTransaction represents the rejection of the creation of a MarketIfTouched Order.
 properties:
   tradeID:
     type: integer

@@ -1,5 +1,5 @@
 type: object
-description: A TakeProfitOrderRejectTransaction represents the rejection of the creation of a TakeProfit Order.
+description: A StopLossOrderTransaction represents the creation of a StopLoss Order in the user's Account.
 allOf:
   - $ref: ../../RejectTransaction.yaml
   - $ref: ./TakeProfitOrder.yaml
