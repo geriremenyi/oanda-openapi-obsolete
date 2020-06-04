@@ -56,8 +56,6 @@ paths:
     $ref: ./trades/paths/open-trades.yaml
   /accounts/{accountID}/trades/{tradeSpecifier}:
     $ref: ./trades/paths/trade-by-id.yaml
-  /accounts/{accountID}/trades/{tradeSpecifier}/close:
-    $ref: ./trades/paths/close-trade.yaml
 components:
   securitySchemes:
     PersonalAccessToken:

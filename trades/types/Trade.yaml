@@ -57,7 +57,7 @@ properties:
     type: string # TODO: check for UNIX and RFC3339 datetime pattern
     description: The date/time when the Trade was fully closed. Only provided for Trades whose state is CLOSED.
   clientExtensions:
-    $ref: ../../shared/types/ClientExtensions.yaml
+    $ref: ../../transactions/types/ClientExtensions.yaml
   takeProfitOrder:
     $ref: ../../Orders/types/TakeProfitOrder.yaml
   stopLossOrder:

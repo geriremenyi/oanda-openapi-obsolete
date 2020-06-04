@@ -10,4 +10,4 @@ properties:
   state:
     $ref: ./OrderState.yaml
   clientExtensions:
-    $ref: ../../shared/types/ClientExtensions.yaml
+    $ref: ../../transactions/types/ClientExtensions.yaml

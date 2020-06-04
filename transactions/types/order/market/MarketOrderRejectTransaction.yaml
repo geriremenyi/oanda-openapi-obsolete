@@ -1,5 +1,0 @@
-type: object
-description: A MarketOrderRejectTransaction represents the rejection of the creation of a Market Order.
-allOf:
-  - $ref: ../../RejectTransaction.yaml
-  - $ref: ./MarketOrder.yaml

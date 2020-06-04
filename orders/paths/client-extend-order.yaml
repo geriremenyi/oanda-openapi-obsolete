@@ -14,9 +14,9 @@ put:
         type: object
         properties:
           clientExtensions:
-            $ref: ../../shared/types/ClientExtensions.yaml
+            $ref: ../../transactions/types/ClientExtensions.yaml
           tradeClientExtensions:
-            $ref: ../../shared/types/ClientExtensions.yaml
+            $ref: ../../transactions/types/ClientExtensions.yaml
       required: true
   responses:
     200:

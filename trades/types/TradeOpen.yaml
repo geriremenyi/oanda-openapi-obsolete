@@ -17,7 +17,7 @@ properties:
     format: double
     description: This is the fee charged for opening the trade if it has a guaranteed Stop Loss Order attached to it.
   clientExtensions:
-    $ref: '../../shared/types/ClientExtensions.yaml'
+    $ref: '../../transactions/types/ClientExtensions.yaml'
   halfSpreadCost:
     type: number
     format: double
