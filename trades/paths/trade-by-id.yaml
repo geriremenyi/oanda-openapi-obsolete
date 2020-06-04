@@ -12,14 +12,16 @@ get:
       description: The details for the requested Trade is provided
       headers:
         $ref: ../../shared/headers.yaml
-      schema:
-        type: object
-        properties:
-          trade:
-            $ref: ../types/Trade.yaml
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trade:
+                $ref: ../types/Trade.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
     401:
        $ref: ../../shared/errors.yaml#/401
     404:
