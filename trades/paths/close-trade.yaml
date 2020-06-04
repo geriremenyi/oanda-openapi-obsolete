@@ -22,43 +22,42 @@ put:
       description: The Trade has been closed as requested
       headers:
         $ref: ../../shared/headers.yaml
-      schema:
-        type: object
-        properties:
-          orderCreateTransaction:
-            $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
-          orderFillTransaction:
-            $ref: ../../transactions/types/order/OrderFillTransaction.yaml
-          orderCancelTransaction:
-            $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
-          relatedTransactionIDs:
-            type: array
-            description: The IDs of all Transactions that were created while satisfying the request.
-            items:
-              type: integer
-              description: The unique Transaction identifier within each Account.
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderCreateTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
+                  orderFillTransaction:
+                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                  orderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Trade cannot be closed as requested.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderRejectTransaction:
-                $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxContent
+      content:
+        applcation/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxContent
     401:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Trade specified does not exist.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderRejectTransaction:
-                $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError  
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError  
     405:
       $ref: ../../shared/errors.yaml#/405
