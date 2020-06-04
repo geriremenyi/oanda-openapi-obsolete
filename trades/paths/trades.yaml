@@ -39,17 +39,19 @@ get:
           description: A link to the next page of Trades if the results were paginated
           type: string
         $ref: ../../shared/headers.yaml
-      schema:
-        type: object
-        properties:
-          trades:
-            type: array
-            description: The list of Trade detail objects
-            items:
-              $ref: ../types/Trade.yaml
-          lastTransactionID:
-            type: integer
-            description: The ID of the most recent Transaction created for the Account
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trades:
+                type: array
+                description: The list of Trade detail objects
+                items:
+                  $ref: ../types/Trade.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
     401:
        $ref: ../../shared/errors.yaml#/401
     404:
