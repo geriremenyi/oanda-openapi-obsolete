@@ -1,6 +1,0 @@
-type: string
-description: The current state of the Trade.
-enum:
-  - OPEN
-  - CLOSED
-  - CLOSE_WHEN_TRADEABLE
