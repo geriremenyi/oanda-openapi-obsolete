@@ -1,0 +1,13 @@
+type: object
+description: A OrderClientExtensionsModify represents the modification of an Order's Client Extensions.
+properties:
+  orderID:
+    type: integer
+    description: The ID of the Order who's client extensions are to be modified.
+  clientOrderID:
+    type: string
+    description: The original Client ID of the Order who's client extensions are to be modified.
+  clientExtensionsModify:
+    $ref: ../../../shared/types/ClientExtensions.yaml
+  tradeClientExtensionsModify:
+    $ref: ../../../shared/types/ClientExtensions.yaml

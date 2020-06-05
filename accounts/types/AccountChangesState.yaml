@@ -1,0 +1,20 @@
+type: object
+description: An AccountChangesState Object is used to represent an Account's current price-dependent state. Price-dependent Account state is dependent on OANDA's current Prices, and includes things like unrealized PL, NAV and Trailing Stop Loss Order state.
+allOf:
+  - $ref: ./AccountState.yaml
+  - properties:
+      orders:
+        type: array
+        description: The price-dependent state of each pending Order in the Account.
+        items:
+          $ref: ../../orders/types/DynamicOrderState.yaml
+      trades:
+        type: array
+        description: The price-dependent state for each open Trade in the Account.
+        items:
+          $ref: ../../trades/types/CalculatedTradeState.yaml
+      positions:
+        type: array
+        description: The price-dependent state for each open Position in the Account.
+        items:
+          $ref: ../../positions/types/CalculatedPositionState.yaml

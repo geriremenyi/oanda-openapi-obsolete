@@ -1,0 +1,5 @@
+type: object
+description: A ClientConfigureTransaction represents the configuration of an Account by a client.
+allOf:
+  - $ref: ../Transaction.yaml
+  - $ref: ./ClientConfigure.yaml

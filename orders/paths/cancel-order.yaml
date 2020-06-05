@@ -1,0 +1,37 @@
+put:
+  summary: Cancel Order
+  description: Cancel a pending Order in an Account
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters.yaml#/ClientRequestID
+  responses:
+    200:
+      description: The Order was cancelled as specified
+      headers:
+        - $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            allof:
+              - type: object
+                properties:
+                  orderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      description: The Account or Order specified does not exist.
+      schema:
+        allOf:
+          - type: object
+            properties:
+              orderCancelRejectTransaction:
+                $ref: ../../transactions/types/order/OrderCancelRejectTransaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    405:
+      $ref: ../../shared/errors.yaml#/405

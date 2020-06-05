@@ -1,0 +1,128 @@
+post:
+  summary: Create Order
+  description: Create an Order for an Account
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: createOrderBody
+      in: body
+      schema:
+        type: object
+        properties:
+          order:
+            $ref: '../types/OrderRequest.yaml'
+      required: true
+  responses:
+    201:
+      description: The Order was created as specified
+      headers:
+        allOf:
+          - Location:
+              description: A link to the Order that was just created
+              type: string
+          - $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderCreateTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderFillTransaction:
+                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                  orderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                  orderReissueTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderReissueRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    400:
+      description: The Order specification was invalid
+      schema:
+        allOf:
+          - type: object
+            properties:
+              orderRejectTransaction:
+                $ref: ../../transactions/types/Transaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    403:
+      $ref: ../../shared/errors.yaml#/403
+    404:
+      description: The Order or Account specified does not exist.
+      schema:
+        allOf:
+          - type: object
+            properties:
+              orderRejectTransaction:
+                $ref: ../../transactions/types/Transaction.yaml
+          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    405:
+      $ref: ../../shared/errors.yaml#/405
+get:
+  summary: List Orders
+  description: Get a list of Orders for an Account
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: ids
+      description: List of Order IDs to retrieve
+      in: query
+      type: array
+      items:
+        type: integer
+      collectionFormat: csv
+    - name: state
+      description: The state to filter the requested Orders by
+      in: query
+      type: string
+    - name: instrument
+      description: The instrument to filter the requested orders by
+      in: query
+      type:
+        $ref: ../../instruments/types/InstrumentName.yaml#/type
+      enum:
+        $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    - name: count
+      description: The maximum number of Orders to return
+      in: query
+      type: integer
+    - name: beforeID
+      description: The maximum Order ID to return. If not provided the most recent Orders in the Account are returned
+      in: query
+      type: integer
+  responses:
+    200:
+      description: The list of Orders requested
+      headers:
+        allOf:
+          - Link:
+              description: A link to the next page of results if the results were paginated
+              type: string
+          - $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              orders:
+                type: array
+                description: The list of Order detail objects
+                items:
+                  $ref: '../types/Order.yaml'
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    400:
+      $ref: ../../shared/errors.yaml#/400
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405

@@ -1,0 +1,8 @@
+type: object
+description: A MarketOrderPositionCloseout specifies the extensions to a Market Order when it has been created to closeout a specific Position.
+properties:
+  instrument:
+    $ref: ../../../../instruments/types/InstrumentName.yaml
+  units:
+    type: string # TODO regex on integer or string starting with @
+    description: Indication of how much of the Position to close. Either "ALL", or a DecimalNumber reflection a partial close of the Trade. The DecimalNumber must always be positive, and represent a number that doesn't exceed the absolute size of the Position.

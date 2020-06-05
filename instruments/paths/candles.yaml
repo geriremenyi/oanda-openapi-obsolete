@@ -1,0 +1,79 @@
+get:
+  summary: Get Candlesticks
+  description: Fetch candlestick data for an instrument.
+  tags:
+    - Instrument
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/InstrumentName
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: price
+      description: The Price component(s) to get candlestick data for. Can contain any combination of the characters "M" (midpoint candles) "B" (bid candles) and "A" (ask candles).
+      in: query
+      type: string
+    - name: granularity
+      description: The granularity of the candlesticks to fetch
+      in: query
+      type: string
+    - name: count
+      description: The number of candlesticks to return in the reponse. Count should not be specified if both the start and end parameters are provided, as the time range combined with the graularity will determine the number of candlesticks to return.
+      in: query
+      type: integer
+    - name: from
+      description: The start of the time range to fetch candlesticks for.
+      in: query
+      type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    - name: to
+      description: The end of the time range to fetch candlesticks for.
+      in: query
+      type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    - name: smooth
+      description: A flag that controls whether the candlestick is "smoothed" or not.  A smoothed candlestick uses the previous candle's close price as its open price, while an unsmoothed candlestick uses the first price from its time range as its open price.
+      in: query
+      type: boolean
+    - name: includeFirst
+      description: A flag that controls whether the candlestick that is covered by the from time should be included in the results. This flag enables clients to use the timestamp of the last completed candlestick received to poll for future candlesticks but avoid receiving the previous candlestick repeatedly.
+      in: query
+      type: boolean
+    - name: dailyAlignment
+      description: The hour of the day (in the specified timezone) to use for granularities that have daily alignments.
+      in: query
+      type: integer
+    - name: alignmentTimezone
+      description: The timezone to use for the dailyAlignment parameter. Candlesticks with daily alignment will be aligned to the dailyAlignment hour within the alignmentTimezone.  Note that the returned times will still be represented in UTC.
+      in: query
+      type: string
+    - name: weeklyAlignment
+      description: The day of the week used for granularities that have weekly alignment.
+      in: query
+      type: string
+  responses:
+    200:
+      description: Pricing information has been successfully provided.
+      headers:
+        $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              instrument:
+                type: 
+                  $ref: ../types/InstrumentName.yaml#/type
+                description: The instrument whose Prices are represented by the candlesticks.
+                enum:
+                  $ref: ../types/InstrumentName.yaml#/enum
+              granularity:
+                $ref: ../types/CandlestickGranularity.yaml
+              candles:
+                type: array
+                description: The list of candlesticks that satisfy the request.
+                items:
+                  $ref: '../types/Candlestick.yaml'
+    400:
+      $ref: ../../shared/errors.yaml#/400
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405

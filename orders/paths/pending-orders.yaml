@@ -1,0 +1,32 @@
+get:
+  summary: Pending Orders
+  description: List all pending Orders in an Account
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+  responses:
+    200:
+      description: List of pending Orders for the Account
+      headers:
+        - $ref: ../../shared/headers.yaml
+      content:
+        application/json:  
+          schema:
+            type: object
+            properties:
+              orders:
+                type: array
+                description: The list of pending Order details
+                items:
+                  $ref: ../types/Order.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405
