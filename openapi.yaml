@@ -62,6 +62,14 @@ paths:
     $ref: ./trades/paths/client-extend-trade.yaml
   /accounts/{accountID}/trades/{tradeSpecifier}/orders:
     $ref: ./trades/paths/trade-orders.yaml
+  /accounts/{accountID}/positions:
+    $ref: ./positions/paths/positions.yaml
+  /accounts/{accountID}/openPositions:
+    $ref: ./positions/paths/open-positions.yaml
+  /accounts/{accountID}/positions/{instrument}:
+    $ref: ./positions/paths/instrument-positions.yaml
+  /accounts/{accountID}/positions/{instrument}/close:
+    $ref: ./positions/paths/close-position.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
