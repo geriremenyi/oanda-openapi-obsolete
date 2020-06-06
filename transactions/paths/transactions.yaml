@@ -1,0 +1,74 @@
+get:
+  summary: List Transactions
+  description: Get a list of Transactions pages that satisfy a time-based Transaction query.
+  tags:
+    - Transaction
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: from
+      description: The starting time (inclusive) of the time range for the Transactions being queried.
+      in: query
+      type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    - name: to
+      description: The ending time (inclusive) of the time range for the Transactions being queried.
+      in: query
+      type: string # TODO: check for UNIX and RFC3339 datetime pattern
+    - name: pageSize
+      description: The number of Transactions to include in each page of the results.
+      in: query
+      type: integer
+    - name: type
+      description: A filter for restricting the types of Transactions to retreive.
+      in: query
+      type: array
+      items:
+        $ref: ../types/TransactionType.yaml
+      collectionFormat: csv
+  responses:
+    200:
+      description: The requested time range of Transaction pages are provided.
+      headers:
+        $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              from:
+                type: string # TODO: check for UNIX and RFC3339 datetime pattern
+                description: The starting time provided in the request.
+              to:
+                type: string # TODO: check for UNIX and RFC3339 datetime pattern
+                description: The ending time provided in the request.
+              pageSize:
+                type: integer
+                description: The pageSize provided in the request
+              type:
+                type: array
+                description: The Transaction-type filter provided in the request
+                items:
+                  $ref: ../types/TransactionType.yaml
+              count:
+                type: integer
+                description: The number of Transactions that are contained in the pages returned
+              pages:
+                type: array
+                description: The list of URLs that represent idrange queries providing the data for each page in the query results
+                items:
+                  type: string
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    400:
+      $ref: ../../shared/errors.yaml#/400
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    403:
+      $ref: ../../shared/errors.yaml#/403
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405
+    416:
+      $ref: ../../shared/errors.yaml#/416

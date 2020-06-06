@@ -1,0 +1,8 @@
+- url: https://stream-{environment}.oanda.com/v3
+  description: Oanda REST-V20 Streaming
+  variables:
+    environment:
+      enum:
+        - fxpractice
+        - fxtrade
+      default: fxpractice

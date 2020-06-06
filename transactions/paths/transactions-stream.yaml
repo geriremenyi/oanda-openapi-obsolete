@@ -1,0 +1,32 @@
+get:
+  summary: Transaction Stream
+  description: Get a stream of Transactions for an Account starting from when the request is made.
+  tags:
+    - Transaction
+  servers:
+    $ref: ../../shared/stream-servers.yaml
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+  responses:
+    200:
+      description: Connecting to the Transaction Stream was successful.
+      headers:
+        $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            description: The response body for the Transaction Stream uses chunked transfer encoding.  Each chunk contains Transaction and/or TransactionHeartbeat objects encoded as JSON.  Each JSON object is serialized into a single line of text, and multiple objects found in the same chunk are separated by newlines. TransactionHeartbeats are sent every 5 seconds.
+            properties:
+              transaction:
+                $ref: ../types/Transaction.yaml
+              heartbeat:
+                $ref: ../types/TransactionHeartbeat.yaml
+    400:
+      $ref: ../../shared/errors.yaml#/400
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405
