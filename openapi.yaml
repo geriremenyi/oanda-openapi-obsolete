@@ -70,6 +70,16 @@ paths:
     $ref: ./positions/paths/instrument-positions.yaml
   /accounts/{accountID}/positions/{instrument}/close:
     $ref: ./positions/paths/close-position.yaml
+  /accounts/{accountID}/transactions:
+    $ref: ./transactions/paths/transactions.yaml
+  /accounts/{accountID}/transactions/{transactionID}:
+    $ref: ./transactions/paths/transaction-by-id.yaml
+  /accounts/{accountID}/transactions/idrange:
+    $ref: ./transactions/paths/transactions-idrange.yaml
+  /accounts/{accountID}/transactions/sinceid:
+    $ref: ./transactions/paths/transactions-sinceid.yaml
+  /accounts/{accountID}/transactions/stream:
+    $ref: ./transactions/paths/transactions-stream.yaml
 components:
   securitySchemes:
     PersonalAccessToken:

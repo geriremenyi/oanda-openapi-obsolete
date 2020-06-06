@@ -1,0 +1,53 @@
+get:
+  summary: Transaction ID Range
+  description: Get a range of Transactions for an Account based on the Transaction IDs.
+  tags:
+    - Transaction
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - name: from
+      description: The starting Transacion ID (inclusive) to fetch.
+      in: query
+      type: integer
+      required: true
+    - name: to
+      description: The ending Transaction ID (inclusive) to fetch.
+      in: query
+      type: integer
+      required: true
+    - name: type
+      description: The filter that restricts the types of Transactions to retreive.
+      in: query
+      type: array
+      items:
+        $ref: ../types/TransactionType.yaml
+      collectionFormat: csv
+  responses:
+    200:
+      description: The requested time range of Transactions are provided.
+      headers:
+        $ref: ../../shared/headers.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              transactions:
+                type: array
+                description: The list of Transactions that satisfy the request.
+                items:
+                  $ref: ../types/Transaction.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    400:
+      $ref: ../../shared/errors.yaml#/400
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      $ref: ../../shared/errors.yaml#/404
+    405:
+      $ref: ../../shared/errors.yaml#/405
+    416:
+      $ref: ../../shared/errors.yaml#/416
