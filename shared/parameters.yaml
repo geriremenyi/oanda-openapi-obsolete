@@ -44,3 +44,10 @@ TradeSpecifier:
   in: path
   type: string # TODO regex on integer or string starting with @
   required: true
+
+TransactionID:
+  name: transactionID
+  description: A Transaction ID
+  in: path
+  type: integer
+  required: true
