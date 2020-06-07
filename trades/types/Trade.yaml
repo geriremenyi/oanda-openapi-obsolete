@@ -59,8 +59,8 @@ properties:
   clientExtensions:
     $ref: ../../shared/types/ClientExtensions.yaml
   takeProfitOrder:
-    $ref: ../../Orders/types/TakeProfitOrder.yaml
+    $ref: ../../orders/types/TakeProfitOrder.yaml
   stopLossOrder:
-    $ref: ../../Orders/types/StopLossOrder.yaml
+    $ref: ../../orders/types/StopLossOrder.yaml
   trailingStopLossOrder:
-    $ref: ../../Orders/types/TrailingStopLossOrder.yaml
+    $ref: ../../orders/types/TrailingStopLossOrder.yaml
