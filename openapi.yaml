@@ -78,8 +78,8 @@ paths:
     $ref: ./transactions/paths/transactions-idrange.yaml
   /accounts/{accountID}/transactions/sinceid:
     $ref: ./transactions/paths/transactions-sinceid.yaml
-  /accounts/{accountID}/transactions/stream:
-    $ref: ./transactions/paths/transactions-stream.yaml
+  /accounts/{accountID}/pricing:
+    $ref: ./pricing/paths/pricing.yaml
 components:
   securitySchemes:
     PersonalAccessToken:
