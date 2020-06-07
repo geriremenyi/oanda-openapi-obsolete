@@ -28,11 +28,10 @@ put:
     200:
       description: The Position closeout request has been successfully processed.
       headers:
-        allOf:
-          Location:
-            description: A link to the Position that was just closed out
-            type: string
-          $ref: ../../shared/headers.yaml
+        Location:
+          description: A link to the Position that was just closed out
+          type: string
+        $ref: ../../shared/headers.yaml
       content:
         application/json:
           schema:
