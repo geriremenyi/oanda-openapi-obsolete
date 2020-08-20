@@ -22,7 +22,8 @@ put:
     200:
       description: The Order's Client Extensions were successfully modified
       headers:
-        - $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:
@@ -34,23 +35,33 @@ put:
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Order Client Extensions specification was invalid
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderClientExtensionsModifyRejectTransaction:
-              $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                  $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     401:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Order specified does not exist.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderClientExtensionsModifyRejectTransaction:
-              $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                  $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405

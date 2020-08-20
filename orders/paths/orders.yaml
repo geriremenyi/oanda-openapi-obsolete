@@ -18,11 +18,11 @@ post:
     201:
       description: The Order was created as specified
       headers:
-        allOf:
-          - Location:
-              description: A link to the Order that was just created
-              type: string
-          - $ref: ../../shared/headers.yaml
+        Location:
+          description: A link to the Order that was just created
+          type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:
@@ -42,26 +42,36 @@ post:
               - $ref: ../../shared/errors.yaml#/4xxTransactionError
     400:
       description: The Order specification was invalid
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderRejectTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     401:
       $ref: ../../shared/errors.yaml#/401
     403:
       $ref: ../../shared/errors.yaml#/403
     404:
       description: The Order or Account specified does not exist.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderRejectTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405
 get:
@@ -102,11 +112,11 @@ get:
     200:
       description: The list of Orders requested
       headers:
-        allOf:
-          - Link:
-              description: A link to the next page of results if the results were paginated
-              type: string
-          - $ref: ../../shared/headers.yaml
+        Link:
+          description: A link to the next page of results if the results were paginated
+          type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:

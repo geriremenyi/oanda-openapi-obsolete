@@ -9,7 +9,8 @@ get:
     200:
       description: The Account's Positions are provided.
       headers:
-        $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:

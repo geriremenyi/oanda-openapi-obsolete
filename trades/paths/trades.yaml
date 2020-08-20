@@ -38,7 +38,8 @@ get:
         Link:
           description: A link to the next page of Trades if the results were paginated
           type: string
-        $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:

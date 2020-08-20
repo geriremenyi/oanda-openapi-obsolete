@@ -20,7 +20,8 @@ put:
     200:
       description: The Trade's Client Extensions have been updated as requested.
       headers:
-        $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:
@@ -32,6 +33,9 @@ put:
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Trade's Client Extensions cannot be modified as requested.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:
@@ -45,6 +49,9 @@ put:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Trade specified does not exist.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:

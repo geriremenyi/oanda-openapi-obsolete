@@ -14,37 +14,43 @@
 400:
   description: Bad Request. The client has provided invalid data to be processed by the server.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 401:
   description: Unauthorized. The endpoint being access required the client to authenticated, however the the authentication token is invalid or has not been provided.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 403:
   description: Forbidden. The client has provided a token that does not authorize them to perform the action implemented by the API endpoint.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 404:
   description: Not Found. The client has attempted to access an entity that does not exist.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 405:
   description: Method Not Allowed. The client has attempted to access an endpoint using an HTTP method that is not supported.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 416:
   description: Range Not Satisfiable. The client has specified a range that is invalid or cannot be processed.
   headers:
-    $ref: ./headers.yaml
+    RequestID:
+      $ref: ../../shared/headers.yaml#RequestID
   content:
     $ref: '#/4xx'
 4xxTransactionError:

@@ -23,7 +23,8 @@ patch:
     200:
       description: The Account was configured successfully.
       headers:
-        $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#RequestID
       content:
         application/json:
           schema:
