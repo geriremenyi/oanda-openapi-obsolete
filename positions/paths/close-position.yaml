@@ -32,7 +32,7 @@ put:
           description: A link to the Position that was just closed out
           type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -59,7 +59,7 @@ put:
       description: The Parameters provided that describe the Position closeout are invalid.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -78,7 +78,7 @@ put:
       description: The Account or one or more of the Positions specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

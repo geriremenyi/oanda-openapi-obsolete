@@ -21,7 +21,7 @@ get:
           description: A link to the next/previous position book snapshot.
           type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

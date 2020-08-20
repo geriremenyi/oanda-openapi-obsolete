@@ -19,7 +19,7 @@ get:
       description: The list of tradeable instruments for the Account has been provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

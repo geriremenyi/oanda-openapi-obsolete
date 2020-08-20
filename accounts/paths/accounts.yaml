@@ -8,7 +8,7 @@ get:
       description: The list of authorized Accounts has been provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

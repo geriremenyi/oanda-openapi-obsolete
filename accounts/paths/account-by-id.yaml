@@ -11,7 +11,7 @@ get:
       description: The full Account details are provided
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

@@ -12,7 +12,7 @@ get:
       description: The details of the requested Transaction are provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

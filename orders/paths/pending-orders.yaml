@@ -11,7 +11,7 @@ get:
       description: List of pending Orders for the Account
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:  
           schema:

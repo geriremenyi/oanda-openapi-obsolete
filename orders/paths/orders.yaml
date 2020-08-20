@@ -22,7 +22,7 @@ post:
           description: A link to the Order that was just created
           type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -44,7 +44,7 @@ post:
       description: The Order specification was invalid
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -62,7 +62,7 @@ post:
       description: The Order or Account specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -116,7 +116,7 @@ get:
           description: A link to the next page of results if the results were paginated
           type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

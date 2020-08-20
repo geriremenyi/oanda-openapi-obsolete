@@ -51,7 +51,7 @@ get:
       description: Pricing information has been successfully provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

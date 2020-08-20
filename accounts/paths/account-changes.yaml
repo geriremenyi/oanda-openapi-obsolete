@@ -15,7 +15,7 @@ get:
       description: The Account state and changes are provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#RequestID
+          $ref: ../../shared/headers.yaml#/RequestID
       schema:
         type: object
         properties:
