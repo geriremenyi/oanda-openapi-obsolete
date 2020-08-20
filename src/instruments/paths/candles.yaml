@@ -68,11 +68,7 @@ get:
             type: object
             properties:
               instrument:
-                type: 
-                  $ref: ../types/InstrumentName.yaml#/type
-                description: The instrument whose Prices are represented by the candlesticks.
-                enum:
-                  $ref: ../types/InstrumentName.yaml#/enum
+                $ref: ../types/InstrumentName.yaml
               granularity:
                 $ref: ../types/CandlestickGranularity.yaml
               candles:

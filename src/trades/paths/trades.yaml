@@ -24,9 +24,7 @@ get:
       description: The instrument to filter the requested Trades by.
       in: query
       schema:
-        type: string
-        enum:
-          $ref: ../../instruments/types/InstrumentName.yaml#/enum
+        $ref: ../../instruments/types/InstrumentName.yaml
     - name: count
       description: The maximum number of Trades to return.
       in: query

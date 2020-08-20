@@ -11,9 +11,7 @@ get:
       schema:
         type: array
         items:
-          type: string
-          enum: 
-            $ref: ../../instruments/types/InstrumentName.yaml#/enum
+          $ref: ../../instruments/types/InstrumentName.yaml
       style: form
       explode: false
   responses:

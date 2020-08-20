@@ -2,11 +2,7 @@ type: object
 description: The representation of an instrument's position book at a point in time
 properties:
   instrument:
-    type:
-      $ref: ../../instruments/types/InstrumentName.yaml#/type
-    description: The position book's instrument
-    enum:
-      $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    $ref: ../../instruments/types/InstrumentName.yaml
   time:
     type: string # TODO: check for UNIX and RFC3339 datetime pattern
     description: The time when the position book snapshot was created

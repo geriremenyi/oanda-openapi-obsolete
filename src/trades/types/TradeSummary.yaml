@@ -5,10 +5,7 @@ properties:
     type: integer
     description: The Trade's identifier, unique within the Trade's Account.
   instrument:
-    type: string
-    description: The Trade's Instrument.
-    enum:
-      $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    $ref: ../../instruments/types/InstrumentName.yaml
   price:
     type: number
     format: double

@@ -2,10 +2,7 @@ type: object
 description: The specification of a Position within an Account.
 properties:
   instrument:
-    type: string
-    description: The Position's Instrument.
-    enum: 
-      $ref: ../../instruments/types/InstrumentName.yaml#/enum
+    $ref: ../../instruments/types/InstrumentName.yaml
   pl:
     type: number
     format: double
