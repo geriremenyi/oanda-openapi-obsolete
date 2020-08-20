@@ -1,0 +1,116 @@
+get:
+  summary: Get Order
+  description: Get details for a single Order in an Account
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+  responses:
+    200:
+      description: The details of the Order requested
+      headers:
+        Link:
+          description: A link to the next page of results if the results were paginated
+          schema:
+            type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              order:
+                $ref: ../types/Order.yaml
+              lastTransactionID:
+                type: integer
+                description: The ID of the most recent Transaction created for the Account
+    401:
+       $ref: ../../shared/errors.yaml#/401
+    404:
+       $ref: ../../shared/errors.yaml#/404
+    405:
+       $ref: ../../shared/errors.yaml#/405
+put:
+  summary: Replace Order
+  description: Replace an Order in an Account by simultaneously cancelling it and creating a replacement Order
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters.yaml#/ClientRequestID      
+  requestBody:
+    description:  Specification of the replacing Order. The replacing order must have the same type as the replaced Order.
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            order:
+              $ref: ../types/OrderRequest.yaml
+  responses:
+    201:
+      description: The Order was successfully cancelled and replaced
+      headers:
+        Location:
+          description: A link to the replacing Order
+          schema:
+            type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                  orderCreateTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderFillTransaction:
+                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                  orderReissueTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  orderReissueRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+                  replacingOrderCancelTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    400:
+      description: The Order specification was invalid
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      description: The Account or Order specified does not exist.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    405:
+      $ref: ../../shared/errors.yaml#/405

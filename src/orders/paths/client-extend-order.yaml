@@ -1,0 +1,68 @@
+put:
+  summary: Set Order Extensions
+  description: Update the Client Extensions for an Order in an Account. Do notset, modify, or delete clientExtensions if your account is associated with MT4.
+  tags:
+    - Order
+  parameters:
+    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
+    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+  requestBody:
+    description: Representation of the replacing Order
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            clientExtensions:
+              $ref: ../../shared/types/ClientExtensions.yaml
+            tradeClientExtensions:
+              $ref: ../../shared/types/ClientExtensions.yaml
+  responses:
+    200:
+      description: The Order's Client Extensions were successfully modified
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyTransaction:
+                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyTransaction.yaml
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
+    400:
+      description: The Order Client Extensions specification was invalid
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    401:
+      $ref: ../../shared/errors.yaml#/401
+    404:
+      description: The Account or Order specified does not exist.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+    405:
+      $ref: ../../shared/errors.yaml#/405
