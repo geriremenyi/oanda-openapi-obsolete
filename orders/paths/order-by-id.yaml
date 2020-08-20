@@ -11,11 +11,11 @@ get:
     200:
       description: The details of the Order requested
       headers:
-        allOf:
-          - Link:
-              description: A link to the next page of results if the results were paginated
-              type: string
-          - $ref: ../../shared/headers.yaml
+        Link:
+          description: A link to the next page of results if the results were paginated
+          type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -55,11 +55,11 @@ put:
     201:
       description: The Order was successfully cancelled and replaced
       headers:
-        allOf:
-          - Location:
-              description: A link to the replacing Order
-              type: string
-          - $ref: ../../shared/headers.yaml
+        Location:
+          description: A link to the replacing Order
+          type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -81,23 +81,33 @@ put:
               - $ref: ../../shared/errors.yaml#/4xxTransactionError
     400:
       description: The Order specification was invalid
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderClientExtensionsModifyRejectTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     401:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Order specified does not exist.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderClientExtensionsModifyRejectTransaction:
-                $ref: ../../transactions/types/Transaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderClientExtensionsModifyRejectTransaction:
+                    $ref: ../../transactions/types/Transaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405

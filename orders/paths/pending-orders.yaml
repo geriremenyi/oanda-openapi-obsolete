@@ -10,7 +10,8 @@ get:
     200:
       description: List of pending Orders for the Account
       headers:
-        - $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:  
           schema:

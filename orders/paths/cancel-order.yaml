@@ -12,7 +12,8 @@ put:
     200:
       description: The Order was cancelled as specified
       headers:
-        - $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -26,12 +27,17 @@ put:
       $ref: ../../shared/errors.yaml#/401
     404:
       description: The Account or Order specified does not exist.
-      schema:
-        allOf:
-          - type: object
-            properties:
-              orderCancelRejectTransaction:
-                $ref: ../../transactions/types/order/OrderCancelRejectTransaction.yaml
-          - $ref: ../../shared/errors.yaml#/4xxTransactionError
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  orderCancelRejectTransaction:
+                    $ref: ../../transactions/types/order/OrderCancelRejectTransaction.yaml
+              - $ref: ../../shared/errors.yaml#/4xxTransactionError
     405:
       $ref: ../../shared/errors.yaml#/405

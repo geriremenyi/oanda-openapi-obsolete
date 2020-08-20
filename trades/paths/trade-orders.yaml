@@ -24,7 +24,8 @@ put:
     200:
       description: The Trade's dependent Orders have been modified as requested.
       headers:
-        $ref: ../../shared/headers.yaml
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
@@ -54,6 +55,9 @@ put:
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Trade's dependent Orders cannot be modified as requested.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:

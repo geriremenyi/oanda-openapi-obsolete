@@ -14,14 +14,14 @@ get:
     '200':
       description: The position book has been successfully provided.
       headers:
-        allOf:
-          - Content-Encoding:
-              description: Value will be "gzip" regardless of provided Accept-Encoding header
-              type: string
-          - Link:
-              description: A link to the next/previous position book snapshot.
-              type: string
-          - $ref: ../../shared/headers.yaml
+        Content-Encoding:
+          description: Value will be "gzip" regardless of provided Accept-Encoding header
+          type: string
+        Link:
+          description: A link to the next/previous position book snapshot.
+          type: string
+        RequestID:
+          $ref: ../../shared/headers.yaml#/RequestID
       content:
         application/json:
           schema:
