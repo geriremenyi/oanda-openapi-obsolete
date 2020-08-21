@@ -1,0 +1,6 @@
+name: orderSpecifier
+description: The Order Specifier
+in: path
+required: true
+schema:
+  $ref: ../helpers/IDSpecifier.yaml

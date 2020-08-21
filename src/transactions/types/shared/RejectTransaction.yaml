@@ -1,0 +1,8 @@
+description: A RejectTransaction represents the abstract reject of any transaction kind.
+type: object
+allOf:
+  - $ref: ./Transaction.yaml
+  - type: object
+    properties:
+      rejectReason:
+        $ref: ./TransactionRejectReason.yaml

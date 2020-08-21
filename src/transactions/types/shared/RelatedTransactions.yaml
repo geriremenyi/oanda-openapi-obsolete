@@ -1,12 +1,13 @@
-type: object
 description: The definition of related transactions and the last transaction encapsulated in an object.
+type: object
 properties:
   lastTransactionID:
-    type: integer
     description: The ID of the most recent Transaction created for the Account
+    type: integer
   relatedTransactionIDs:
-    type: array
     description: The IDs of all Transactions that were created while satisfying the request.
+    type: array
     items:
       type: integer
       description: The unique Transaction identifier within each Account.
+    nullable: true

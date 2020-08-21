@@ -4,8 +4,8 @@ get:
   tags:
     - Instrument
   parameters:
-    - $ref: ../../shared/parameters.yaml#/InstrumentName
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/InstrumentName.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: time
       description: The time of the snapshot to fetch. If not specified, then the most recent snapshot is fetched.
       in: query
@@ -24,7 +24,7 @@ get:
           schema:
             type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -33,10 +33,10 @@ get:
               orderBook:
                 $ref: '../../orders/types/OrderBook.yaml'
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

@@ -4,9 +4,9 @@ put:
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/OrderSpecifier.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
   requestBody:
     description: Representation of the replacing Order
     required: true
@@ -16,15 +16,15 @@ put:
           type: object
           properties:
             clientExtensions:
-              $ref: ../../shared/types/ClientExtensions.yaml
+              $ref: ../../shared/helpers/ClientExtensions.yaml
             tradeClientExtensions:
-              $ref: ../../shared/types/ClientExtensions.yaml
+              $ref: ../../shared/helpers/ClientExtensions.yaml
   responses:
     200:
       description: The Order's Client Extensions were successfully modified
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -32,13 +32,13 @@ put:
               - type: object
                 properties:
                   orderClientExtensionsModifyTransaction:
-                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyTransaction.yaml
+                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyTransaction.yaml
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Order Client Extensions specification was invalid
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -46,15 +46,15 @@ put:
               - type: object
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
       description: The Account or Order specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -62,7 +62,7 @@ put:
               - type: object
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/order/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

@@ -4,9 +4,9 @@ put:
   tags:
     - Trade
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - $ref: ../../shared/parameters.yaml#/TradeSpecifier
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/TradeSpecifier.yaml
   requestBody:
     description: Details of how much of the open Trade to close.
     required: true
@@ -23,7 +23,7 @@ put:
       description: The Trade has been closed as requested
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -33,15 +33,15 @@ put:
                   orderCreateTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
                   orderFillTransaction:
-                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   orderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     400:
       description: The Trade cannot be closed as requested.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -50,14 +50,14 @@ put:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxContent
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
       description: The Account or Trade specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -66,6 +66,6 @@ put:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError  
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml  
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

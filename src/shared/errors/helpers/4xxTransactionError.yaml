@@ -1,0 +1,3 @@
+allOf:
+  - $ref: './4xxBody.yaml'
+  - $ref: ../../../transactions/types/shared/RelatedTransactions.yaml

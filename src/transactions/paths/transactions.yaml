@@ -4,8 +4,8 @@ get:
   tags:
     - Transaction
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: from
       description: The starting time (inclusive) of the time range for the Transactions being queried.
       in: query
@@ -27,7 +27,7 @@ get:
       schema:
         type: array
         items:
-          $ref: ../types/TransactionType.yaml
+          $ref: ../types/shared/TransactionType.yaml
       style: form
       explode: false
   responses:
@@ -35,7 +35,7 @@ get:
       description: The requested time range of Transaction pages are provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -54,7 +54,7 @@ get:
                 type: array
                 description: The Transaction-type filter provided in the request
                 items:
-                  $ref: ../types/TransactionType.yaml
+                  $ref: ../types/shared/TransactionType.yaml
               count:
                 type: integer
                 description: The number of Transactions that are contained in the pages returned
@@ -67,14 +67,14 @@ get:
                 type: integer
                 description: The ID of the most recent Transaction created for the Account
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     403:
-      $ref: ../../shared/errors.yaml#/403
+      $ref: ../../shared/errors/403.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml
     416:
-      $ref: ../../shared/errors.yaml#/416
+      $ref: ../../shared/errors/416.yaml

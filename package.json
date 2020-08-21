@@ -8,8 +8,8 @@
   "private": false,
   "scripts": {
     "validate": "swagger-cli validate src/openapi.yaml",
-    "merge": "swagger-cli bundle src/openapi.yaml -o out/definition/openapi.yaml -t yaml -r",
-    "generate:csharp-netcore": "npm run validate && npm run merge && openapi-generator generate -i out/definition/openapi.yaml -g csharp-netcore -o out/code/csharp-netcore -c config/csharp-netcore.json"
+    "bundle": "swagger-cli bundle src/openapi.yaml -o out/definition/openapi.yaml -t yaml",
+    "generate:csharp-netcore": "npm run validate && npm run bundle && openapi-generator generate -i out/definition/openapi.yaml -g csharp-netcore -o out/code/csharp-netcore -c config/csharp-netcore.json"
   },
   "dependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",

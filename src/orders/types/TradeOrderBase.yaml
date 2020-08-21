@@ -1,68 +1,48 @@
-type: object
 description: The base Order object for TakeProfit, StopLoss and TrailingStopLoss type of orders which are connected to a trade.
+type: object
 allOf:
   - $ref: ./Order.yaml
   - type: object
     properties:
       type:
-        type: string
-        description: The type of the Order. Always set to "TAKE_PROFIT" for Take Profit Orders.
-        enum:
-          - TAKE_PROFIT
-          - STOP_LOSS
-          - TRAILING_STOP_LOSS
+        $ref: ./TradeOrderType.yaml
       tradeID:
-        type: integer
         description: The ID of the Trade to close when the price threshold is breached.
+        type: integer
       clientTradeID:
-        type: string
         description: The client ID of the Trade to be closed when the price threshold is breached.
+        type: string
       timeInForce:
-        type: string
-        description: The time-in-force requested for the TakeProfit/StopLoss/TrailingStopLoss Order. Restricted to "GTC", "GFD" and "GTD" for TakeProfit/StopLoss/TrailingStopLoss Orders.
-        enum:
-          - GTC
-          - GTD
-          - GFD
+        $ref: ./TradeOrderTimeInForce.yaml
       gtdTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time when the TakeProfit/StopLoss/TrailingStopLoss Order will be cancelled if its timeInForce is "GTD".
+        $ref: ../../shared/helpers/DateTime.yaml
       triggerCondition:
-        type: string
-        description: Specification of which price component should be used when determining if an Order should be triggered and filled. This allows Orders to be triggered based on the bid, ask, mid, default (ask for buy, bid for sell) or inverse (ask for sell, bid for buy) price depending on the desired behaviour. Orders are always filled using their default price component. A special restriction applies when creating a guaranteed Stop Loss Order. In this case the TriggerCondition value must either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in. So for a Stop Loss Order for a long trade valid values are "DEFAULT" and "BID", and for short trades "DEFAULT" and "ASK" are valid.
-        enum:
-          - DEFAULT
-          - INVERSE
-          - BID
-          - ASK
-          - MID
+        $ref: ./TradeOrderTriggerCondition.yaml
       fillingTransactionID:
-        type: integer
         description: ID of the Transaction that filled this Order (only provided when the Order's state is FILLED)
+        type: integer
       filledTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: Date/time when the Order was filled (only provided when the Order's state is FILLED)
+        $ref: ../../shared/helpers/DateTime.yaml
       tradeOpenedID:
-        type: integer
         description: Trade ID of Trade opened when the Order was filled (only provided when the Order's state is FILLED and a Trade was opened as a result of the fill)
-      tradeReducedID:
         type: integer
+      tradeReducedID:
         description: Trade ID of Trade reduced when the Order was filled (only provided when the Order's state is FILLED and a Trade was reduced as a result of the fill)
+        type: integer
       tradeClosedIDs:
-        type: array
         description: Trade IDs of Trades closed when the Order was filled (only provided when the Order's state is FILLED and one or more Trades were closed as a result of the fill)
+        type: array
         items:
           type: integer
           description: The Trade's identifier, unique within the Trade's Account.
       cancellingTransactionID:
-        type: integer
         description: ID of the Transaction that cancelled the Order (only provided when the Order's state is CANCELLED)
+        type: integer
       cancelledTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: Date/time when the Order was cancelled (only provided when the state of the Order is CANCELLED)
+        $ref: ../../shared/helpers/DateTime.yaml
       replacesOrderID:
-        type: integer
         description: The ID of the Order that was replaced by this Order (only provided if this Order was created as part of a cancel/replace).
-      replacedByOrderID:
         type: integer
+      replacedByOrderID:
         description: The ID of the Order that replaced this Order (only provided if this Order was cancelled as part of a cancel/replace).
+        type: integer

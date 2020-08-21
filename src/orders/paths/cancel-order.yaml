@@ -4,16 +4,16 @@ put:
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - $ref: ../../shared/parameters.yaml#/ClientRequestID
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/OrderSpecifier.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/ClientRequestID.yaml
   responses:
     200:
       description: The Order was cancelled as specified
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -21,15 +21,15 @@ put:
               - type: object
                 properties:
                   orderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
               - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
       description: The Account or Order specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -37,7 +37,7 @@ put:
               - type: object
                 properties:
                   orderCancelRejectTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

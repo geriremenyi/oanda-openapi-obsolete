@@ -2,8 +2,7 @@ type: object
 description: The Candlestick representation
 properties:
   time:
-    type: string # TODO: check for UNIX and RFC3339 datetime pattern
-    description: The start time of the candlestick
+    $ref: ../../shared/helpers/DateTime.yaml
   bid:
     $ref: './CandlestickData.yaml'
   ask:
@@ -11,8 +10,8 @@ properties:
   mid:
     $ref: './CandlestickData.yaml'
   volume:
-    type: integer
     description: The number of prices created during the time-range represented by the candlestick.
+    type: integer
   complete:
-    type: boolean
     description: A flag indicating if the candlestick is complete. A complete candlestick is one whose ending time is not in the future.
+    type: boolean

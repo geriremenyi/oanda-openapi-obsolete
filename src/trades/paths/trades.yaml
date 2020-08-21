@@ -4,8 +4,8 @@ get:
   tags:
     - Trade
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: ids
       description: List of Trade IDs to retrieve.
       in: query
@@ -44,7 +44,7 @@ get:
           schema:
             type: string
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -59,8 +59,8 @@ get:
                 type: integer
                 description: The ID of the most recent Transaction created for the Account
     401:
-       $ref: ../../shared/errors.yaml#/401
+       $ref: ../../shared/errors/401.yaml
     404:
-       $ref: ../../shared/errors.yaml#/404
+       $ref: ../../shared/errors/404.yaml
     405:
-       $ref: ../../shared/errors.yaml#/405
+       $ref: ../../shared/errors/405.yaml

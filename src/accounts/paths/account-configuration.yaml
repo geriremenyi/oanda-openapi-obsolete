@@ -4,8 +4,8 @@ patch:
   tags:
     - Account
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
   requestBody:
     description: Representation of the Account configuration to set
     content:
@@ -25,7 +25,7 @@ patch:
       description: The Account was configured successfully.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -40,7 +40,7 @@ patch:
       description: The configuration specification was invalid.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -49,12 +49,12 @@ patch:
                 properties:
                   clientConfigureRejectTransaction:
                     $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     403:
       description: The configuration operation was forbidden on the Account.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -63,10 +63,10 @@ patch:
                 properties:
                   clientConfigureRejectTransaction:
                     $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

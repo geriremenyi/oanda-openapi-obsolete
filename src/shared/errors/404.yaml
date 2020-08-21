@@ -1,0 +1,8 @@
+description: Not Found. The client has attempted to access an entity that does not exist.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml

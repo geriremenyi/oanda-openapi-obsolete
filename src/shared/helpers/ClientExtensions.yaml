@@ -1,0 +1,12 @@
+description: A ClientExtensions object allows a client to attach a clientID, tag and comment to Orders and Trades in their Account.  Do not set, modify, or delete this field if your account is associated with MT4.
+type: object
+properties:
+  id:
+    description: The Client ID of the Order/Trade
+    type: string
+  tag:
+    description: A tag associated with the Order/Trade
+    type: string
+  comment:
+    description: A comment associated with the Order/Trade
+    type: string

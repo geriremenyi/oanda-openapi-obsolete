@@ -1,5 +1,5 @@
-type: string
 description: Instrument name identifier. Used by clients to refer to an Instrument.
+type: string
 enum:
   - AUD_CAD
   - AUD_CHF

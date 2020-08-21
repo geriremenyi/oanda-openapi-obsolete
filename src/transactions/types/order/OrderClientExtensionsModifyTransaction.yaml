@@ -1,5 +1,0 @@
-type: object
-description: A OrderClientExtensionsModifyTransaction represents the modification of an Order's Client Extensions.
-allOf:
-  - $ref: ../Transaction.yaml
-  - $ref: ./OrderClientExtensionsModify.yaml

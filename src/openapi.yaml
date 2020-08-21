@@ -23,7 +23,7 @@ security:
   - PersonalAccessToken: []
 paths:
   /accounts:
-    $ref: ./accounts/paths/accounts.yaml
+    $ref: ./accounts/paths/accounts.yaml #
   /accounts/{accountID}:
     $ref: ./accounts/paths/account-by-id.yaml
   /accounts/{accountID}/summary:
@@ -85,3 +85,214 @@ components:
     PersonalAccessToken:
       type: http
       scheme: bearer
+  schemas:
+    # Accounts
+    Account:
+      $ref: ./accounts/types/Account.yaml
+    AccountChanges:
+      $ref: ./accounts/types/AccountChanges.yaml
+    AccountChangesState:
+      $ref: ./accounts/types/AccountChangesState.yaml
+    AccountCurrency:
+      $ref: ./accounts/types/AccountCurrency.yaml
+    AccountGuaranteedStopLossOrderMode:
+      $ref: ./accounts/types/AccountGuaranteedStopLossOrderMode.yaml
+    AccountID:
+      $ref: ./accounts/types/AccountID.yaml
+    AccountProperties:
+      $ref: ./accounts/types/AccountProperties.yaml
+    AccountState:
+      $ref: ./accounts/types/AccountState.yaml
+    AccountSummary:
+      $ref: ./accounts/types/AccountSummary.yaml
+    # Instruments
+    Candlestick:
+      $ref: ./instruments/types/Candlestick.yaml
+    CandlestickData:
+      $ref: ./instruments/types/CandlestickData.yaml
+    CandlestickGranularity:
+      $ref: ./instruments/types/CandlestickGranularity.yaml
+    Instrument:
+      $ref: ./instruments/types/Instrument.yaml
+    InstrumentComission:
+      $ref: ./instruments/types/InstrumentComission.yaml
+    InstrumentName:
+      $ref: ./instruments/types/InstrumentName.yaml
+    InstrumentType:
+      $ref: ./instruments/types/InstrumentType.yaml
+    # Orders
+    DynamicOrderState:
+      $ref: ./orders/types/DynamicOrderState.yaml
+    Order:
+      $ref: ./orders/types/Order.yaml
+    OrderBook:
+      $ref: ./orders/types/OrderBook.yaml
+    OrderBookBucket:
+      $ref: ./orders/types/OrderBookBucket.yaml
+    OrderRequest:
+      $ref: ./orders/types/OrderRequest.yaml
+    OrderState:
+      $ref: ./orders/types/OrderState.yaml
+    StopLossDetails:
+      $ref: ./orders/types/StopLossDetails.yaml
+    StopLossOrder:
+      $ref: ./orders/types/StopLossOrder.yaml
+    TakeProfitDetails:
+      $ref: ./orders/types/TakeProfitDetails.yaml
+    TakeProfitOrder:
+      $ref: ./orders/types/TakeProfitOrder.yaml
+    TradeOrderBase:
+      $ref: ./orders/types/TradeOrderBase.yaml
+    TradeOrderTimeInForce:
+      $ref: ./orders/types/TradeOrderTimeInForce.yaml
+    TradeOrderTriggerCondition:
+      $ref: ./orders/types/TradeOrderTriggerCondition.yaml
+    TrailingStopLossDetails:
+      $ref: ./orders/types/TrailingStopLossDetails.yaml
+    TrailingStopLossOrder:
+      $ref: ./orders/types/TrailingStopLossOrder.yaml
+    # Positions
+    CalculatedPositionState:
+      $ref: ./positions/types/CalculatedPositionState.yaml
+    Position:
+      $ref: ./positions/types/Position.yaml
+    PositionBook:
+      $ref: ./positions/types/PositionBook.yaml
+    PositionBookBucket:
+      $ref: ./positions/types/PositionBookBucket.yaml
+    PositionSide:
+      $ref: ./positions/types/PositionSide.yaml
+    # Pricing
+    ClientPrice:
+      $ref: ./pricing/types/ClientPrice.yaml
+    HomeConversions:
+      $ref: ./pricing/types/HomeConversions.yaml
+    PriceBucket:
+      $ref: ./pricing/types/PriceBucket.yaml
+    PriceStatus:
+      $ref: ./pricing/types/PriceStatus.yaml
+    QuoteHomeConversionFactors:
+      $ref: ./pricing/types/QuoteHomeConversionFactors.yaml
+    UnitsAvailable:
+      $ref: ./pricing/types/UnitsAvailable.yaml
+    UnitsAvailableDetails:
+      $ref: ./pricing/types/UnitsAvailableDetails.yaml
+    # Trades
+    CalculatedTradeState:
+      $ref: ./trades/types/CalculatedTradeState.yaml
+    Trade:
+      $ref: ./trades/types/Trade.yaml
+    TradeOpen:
+      $ref: ./trades/types/TradeOpen.yaml
+    TradeReduce:
+      $ref: ./trades/types/TradeReduce.yaml
+    TradeState:
+      $ref: ./trades/types/TradeState.yaml
+    TradeSummary:
+      $ref: ./trades/types/TradeSummary.yaml
+    # Transactions
+    ClientConfigure:
+      $ref: ./transactions/types/client-configure/ClientConfigure.yaml
+    ClientConfigureRejectTransaction:
+      $ref: ./transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
+    ClientConfigureTransaction:
+      $ref: ./transactions/types/client-configure/ClientConfigureTransaction.yaml
+    OrderCancel:
+      $ref: ./transactions/types/order/cancel/OrderCancel.yaml
+    OrderCancelReason:
+      $ref: ./transactions/types/order/cancel/OrderCancelReason.yaml
+    OrderCancelRejectTransaction:
+      $ref: ./transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
+    OrderCancelTransaction:
+      $ref: ./transactions/types/order/cancel/OrderCancelTransaction.yaml
+    OrderClientExtensionsModify:
+      $ref: ./transactions/types/order/client-extensions/OrderClientExtensionsModify.yaml
+    OrderClientExtensionsModifyRejectTransaction:
+      $ref: ./transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
+    OrderClientExtensionsModifyTransaction:
+      $ref: ./transactions/types/order/client-extensions/OrderClientExtensionsModifyTransaction.yaml
+    OrderFillReason:
+      $ref: ./transactions/types/order/fill/OrderFillReason.yaml
+    OrderFillTransaction:
+      $ref: ./transactions/types/order/fill/OrderFillTransaction.yaml
+    MarketOrder:
+      $ref: ./transactions/types/order/market/MarketOrder.yaml
+    MarketOrderDelayedTradeClose:
+      $ref: ./transactions/types/order/market/MarketOrderDelayedTradeClose.yaml
+    MarketOrderMarginCloseout:
+      $ref: ./transactions/types/order/market/MarketOrderMarginCloseout.yaml
+    MarketOrderMarginCloseoutReason:
+      $ref: ./transactions/types/order/market/MarketOrderMarginCloseoutReason.yaml
+    MarketOrderPositionCloseout:
+      $ref: ./transactions/types/order/market/MarketOrderPositionCloseout.yaml
+    MarketOrderPositionFill:
+      $ref: ./transactions/types/order/market/MarketOrderPositionFill.yaml
+    MarketOrderReason:
+      $ref: ./transactions/types/order/market/MarketOrderReason.yaml
+    MarketOrderRejectTransaction:
+      $ref: ./transactions/types/order/market/MarketOrderRejectTransaction.yaml
+    MarketOrderTimeInForce:
+      $ref: ./transactions/types/order/market/MarketOrderTimeInForce.yaml
+    MarketOrderTradeClose:
+      $ref: ./transactions/types/order/market/MarketOrderTimeInForce.yaml
+    MarketOrderTransaction:
+      $ref: ./transactions/types/order/market/MarketOrderTransaction.yaml
+    RejectTransaction:
+      $ref: ./transactions/types/shared/RejectTransaction.yaml
+    RelatedTransaction:
+      $ref: ./transactions/types/shared/RelatedTransactions.yaml
+    Transaction:
+      $ref: ./transactions/types/shared/Transaction.yaml
+    TransactionHeartbeat:
+      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
+    TransactionRejectReason:
+      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
+    TransactionType:
+      $ref: ./transactions/types/shared/TransactionType.yaml
+    StopLossOrderRejectTransaction:
+      $ref: ./transactions/types/order/trade/StopLossOrderRejectTransaction.yaml
+    StopLossOrderTransaction:
+      $ref: ./transactions/types/order/trade/StopLossOrderTransaction.yaml
+    StopLossOrderTransactionBase:
+      $ref: ./transactions/types/order/trade/StopLossOrderTransactionBase.yaml
+    TakeProfitOrderRejectTransaction:
+      $ref: ./transactions/types/order/trade/TakeProfitOrderRejectTransaction.yaml
+    TakeProfitOrderTransaction:
+      $ref: ./transactions/types/order/trade/TakeProfitOrderTransaction.yaml
+    TakeProfitOrderTransactionBase:
+      $ref: ./transactions/types/order/trade/TakeProfitOrderTransactionBase.yaml
+    TradeOrderTransactionReason:
+      $ref: ./transactions/types/order/trade/TradeOrderTransactionReason.yaml
+    TrailingStopLossOrderRejectTransaction:
+      $ref: ./transactions/types/order/trade/TrailingStopLossOrderRejectTransaction.yaml
+    TrailingStopLossOrderTransaction:
+      $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
+    TrailingStopLossOrderTransactionBase:
+      $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransactionBase.yaml
+    # Shared Helpers
+    DateTimeFormat:
+      $ref: ./shared/helpers/DateTimeFormat.yaml
+    # Error
+    4xxBody:
+      $ref: ./shared/errors/helpers/4xxBody.yaml
+  parameters:
+    AccountID:
+      $ref: ./shared/parameters/AccountID.yaml
+    AcceptDatetimeFormat:
+      $ref: ./shared/parameters/AcceptDatetimeFormat.yaml
+  responses:
+    400:
+      $ref: ./shared/errors/400.yaml
+    401:
+      $ref: ./shared/errors/401.yaml
+    403:
+      $ref: ./shared/errors/403.yaml
+    404:
+      $ref: ./shared/errors/404.yaml
+    405:
+      $ref: ./shared/errors/405.yaml
+    416:
+      $ref: ./shared/errors/416.yaml
+  headers:
+    RequestID:
+      $ref: ./shared/headers/RequestID.yaml

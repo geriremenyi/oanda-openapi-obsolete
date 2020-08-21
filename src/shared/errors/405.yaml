@@ -1,0 +1,8 @@
+description: Method Not Allowed. The client has attempted to access an endpoint using an HTTP method that is not supported.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml
