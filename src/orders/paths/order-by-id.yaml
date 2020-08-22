@@ -12,7 +12,7 @@ get:
       description: The details of the Order requested
       headers:
         Link:
-          $ref: ../../shared/helpers/DateTime.yaml
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
