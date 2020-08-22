@@ -4,19 +4,17 @@ get:
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/OrderSpecifier.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
   responses:
     200:
       description: The details of the Order requested
       headers:
         Link:
-          description: A link to the next page of results if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -25,24 +23,24 @@ get:
               order:
                 $ref: ../types/Order.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
-       $ref: ../../shared/errors.yaml#/401
+       $ref: ../../shared/errors/401.yaml
     404:
-       $ref: ../../shared/errors.yaml#/404
+       $ref: ../../shared/errors/404.yaml
     405:
-       $ref: ../../shared/errors.yaml#/405
+       $ref: ../../shared/errors/405.yaml
 put:
   summary: Replace Order
   description: Replace an Order in an Account by simultaneously cancelling it and creating a replacement Order
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/OrderSpecifier
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - $ref: ../../shared/parameters.yaml#/ClientRequestID      
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/OrderSpecifier.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/ClientRequestID.yaml      
   requestBody:
     description:  Specification of the replacing Order. The replacing order must have the same type as the replaced Order.
     required: true
@@ -58,11 +56,9 @@ put:
       description: The Order was successfully cancelled and replaced
       headers:
         Location:
-          description: A link to the replacing Order
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -70,23 +66,23 @@ put:
               - type: object
                 properties:
                   orderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
                   orderCreateTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
+                    $ref: ../../transactions/types/shared/Transaction.yaml
                   orderFillTransaction:
-                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   orderReissueTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
+                    $ref: ../../transactions/types/shared/Transaction.yaml
                   orderReissueRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
+                    $ref: ../../transactions/types/shared/Transaction.yaml
                   replacingOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     400:
       description: The Order specification was invalid
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -94,15 +90,15 @@ put:
               - type: object
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/shared/Transaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
       description: The Account or Order specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -110,7 +106,7 @@ put:
               - type: object
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/shared/Transaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

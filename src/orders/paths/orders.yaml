@@ -4,8 +4,8 @@ post:
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
   requestBody:
     required: true
     content:
@@ -20,11 +20,9 @@ post:
       description: The Order was created as specified
       headers:
         Location:
-          description: A link to the Order that was just created
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -32,21 +30,21 @@ post:
               - type: object
                 properties:
                   orderCreateTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
+                    $ref: ../../transactions/types/shared/Transaction.yaml
                   orderFillTransaction:
-                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   orderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
                   orderReissueTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
+                    $ref: ../../transactions/types/shared/Transaction.yaml
                   orderReissueRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/shared/Transaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     400:
       description: The Order specification was invalid
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -54,17 +52,17 @@ post:
               - type: object
                 properties:
                   orderRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/shared/Transaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     403:
-      $ref: ../../shared/errors.yaml#/403
+      $ref: ../../shared/errors/403.yaml
     404:
       description: The Order or Account specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -72,18 +70,18 @@ post:
               - type: object
                 properties:
                   orderRejectTransaction:
-                    $ref: ../../transactions/types/Transaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+                    $ref: ../../transactions/types/shared/Transaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml
 get:
   summary: List Orders
   description: Get a list of Orders for an Account
   tags:
     - Order
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: ids
       description: List of Order IDs to retrieve
       in: query
@@ -118,27 +116,25 @@ get:
       description: The list of Orders requested
       headers:
         Link:
-          description: A link to the next page of results if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
             type: object
             properties:
               orders:
-                type: array
                 description: The list of Order detail objects
+                type: array
                 items:
                   $ref: '../types/Order.yaml'
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

@@ -1,0 +1,8 @@
+description: Unauthorized. The endpoint being access required the client to authenticated, however the the authentication token is invalid or has not been provided.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml

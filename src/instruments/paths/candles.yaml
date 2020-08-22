@@ -4,8 +4,8 @@ get:
   tags:
     - Instrument
   parameters:
-    - $ref: ../../shared/parameters.yaml#/InstrumentName
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/InstrumentName.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: price
       description: The Price component(s) to get candlestick data for. Can contain any combination of the characters "M" (midpoint candles) "B" (bid candles) and "A" (ask candles).
       in: query
@@ -25,12 +25,12 @@ get:
       description: The start of the time range to fetch candlesticks for.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: to
       description: The end of the time range to fetch candlesticks for.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: smooth
       description: A flag that controls whether the candlestick is "smoothed" or not.  A smoothed candlestick uses the previous candle's close price as its open price, while an unsmoothed candlestick uses the first price from its time range as its open price.
       in: query
@@ -61,7 +61,7 @@ get:
       description: Pricing information has been successfully provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -72,15 +72,15 @@ get:
               granularity:
                 $ref: ../types/CandlestickGranularity.yaml
               candles:
-                type: array
                 description: The list of candlesticks that satisfy the request.
+                type: array
                 items:
                   $ref: '../types/Candlestick.yaml'
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

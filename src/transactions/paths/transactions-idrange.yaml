@@ -4,8 +4,8 @@ get:
   tags:
     - Transaction
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: from
       description: The starting Transacion ID (inclusive) to fetch.
       in: query
@@ -24,7 +24,7 @@ get:
       schema:
         type: array
         items:
-          $ref: ../types/TransactionType.yaml
+          $ref: ../types/shared/TransactionType.yaml
       style: form
       explode: false
   responses:
@@ -32,27 +32,27 @@ get:
       description: The requested time range of Transactions are provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
             type: object
             properties:
               transactions:
-                type: array
                 description: The list of Transactions that satisfy the request.
+                type: array
                 items:
-                  $ref: ../types/Transaction.yaml
+                  $ref: ../types/shared/Transaction.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml
     416:
-      $ref: ../../shared/errors.yaml#/416
+      $ref: ../../shared/errors/416.yaml

@@ -1,0 +1,5 @@
+description: Types of accepted and handled datetime formats
+type: string
+enum:
+  - UNIX
+  - RFC3339

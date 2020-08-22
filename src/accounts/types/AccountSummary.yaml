@@ -1,96 +1,75 @@
-type: object
 description: A summary representation of a client's Account. The AccountSummary does not provide to full specification of pending Orders, open Trades and Positions.
+type: object
 allOf:
   - type: object
     properties:
       id:
         $ref: ./AccountID.yaml
       alias:
-        type: string
         description: Client-assigned alias for the Account. Only provided if the Account has an alias set
+        type: string
         nullable: true
       currency:
-        type: string
-        enum:
-          - AUD
-          - CAD
-          - CHF
-          - EUR
-          - GBP
-          - HKD
-          - JPY
-          - SGD
-          - USD
-        description: The home currency of the Account
+        $ref: ./AccountCurrency.yaml
       balance:
-        type: number
-        format: double
         description: The current balance of the Account.
+        type: number
+        format: double
       createdByUserID:
-        type: integer
         description: ID of the user that created the Account.
+        type: integer
       createdTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time when the Account was created.
+        $ref: ../../shared/helpers/DateTime.yaml
       guaranteedStopLossOrderMode:
-        type: string
-        description: The current guaranteed Stop Loss Order mode of the Account.
-        enum:
-        - DISABLED
-        - ALLOWED
-        - REQUIRED
+        $ref: ./AccountGuaranteedStopLossOrderMode.yaml
       pl:
-        type: number
-        format: double
         description: The total profit/loss realized over the lifetime of the Account.
+        type: number
+        format: double
       resettablePL:
-        type: number
-        format: double
         description: The total realized profit/loss for the Account since it was last reset by the client.
+        type: number
+        format: double
       resettablePLTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time that the Account's resettablePL was last reset.
+        $ref: ../../shared/helpers/DateTime.yaml
       financing:
-        type: number
-        format: double
         description: The total amount of financing paid/collected over the lifetime of the Account.
+        type: number
+        format: double
       commission:
-        type: number
-        format: double
         description: The total amount of commission paid over the lifetime of the Account.
+        type: number
+        format: double
       guaranteedExecutionFees:
-        type: number
-        format: double
         description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders.
-      marginRate:
         type: number
         format: double
+      marginRate:
         description: Client-provided margin rate override for the Account. The effective margin rate of the Account is the lesser of this value and the OANDA margin rate for the Account's division. This value is only provided if a margin rate override exists for the Account.
+        type: number
+        format: double
       marginCallEnterTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time when the Account entered a margin call state. Only provided if the Account is in a margin call.
+        $ref: ../../shared/helpers/DateTime.yaml
       marginCallExtensionCount:
-        type: integer
         description: The number of times that the Account's current margin call was extended.
+        type: integer
       lastMarginCallExtensionTime:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time of the Account's last margin call extension.
+        $ref: ../../shared/helpers/DateTime.yaml
       openTradeCount:
-        type: integer
         description: The number of Trades currently open in the Account.
+        type: integer
       openPositionCount:
-        type: integer
         description: The number of Positions currently open in the Account.
+        type: integer
       pendingOrderCount:
-        type: integer
         description: The number of Orders currently pending in the Account.
-      hedgingEnabled:
-        type: boolean
-        description: Flag indicating that the Account has hedging enabled.
-      lastOrderFillTimestamp:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
-        description: The date/time of the last order that was filled for this account.
-      lastTransactionId:
         type: integer
+      hedgingEnabled:
+        description: Flag indicating that the Account has hedging enabled.
+        type: boolean
+      lastOrderFillTimestamp:
+        $ref: ../../shared/helpers/DateTime.yaml
+      lastTransactionId:
         description: The ID of the last Transaction created for the Account.
+        type: integer
   - $ref: ./AccountState.yaml      

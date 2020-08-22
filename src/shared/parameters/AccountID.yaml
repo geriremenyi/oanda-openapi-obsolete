@@ -1,0 +1,6 @@
+name: accountID
+description: Account identifier
+in: path
+required: true
+schema: 
+  $ref: ../../accounts/types/AccountID.yaml

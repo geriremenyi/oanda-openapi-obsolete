@@ -1,0 +1,12 @@
+description: An OrderCancelTransaction represents the cancellation of an Order in the client's Account.
+type: object
+allOf:
+  - $ref: ../../shared/Transaction.yaml
+  - $ref: ./OrderCancel.yaml
+  - type: object
+    properties:
+      reason:
+        $ref: ./OrderCancelReason.yaml
+      replacedByOrderID:
+        description: The ID of the Order that replaced this Order (only provided if this Order was cancelled for replacement).
+        type: integer

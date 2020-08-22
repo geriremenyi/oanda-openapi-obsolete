@@ -1,0 +1,9 @@
+description: An OrderCancel represents an Order cancellation in the client's Account.
+type: object
+properties:
+  orderID:
+    description: The ID of the Order cancelled
+    type: integer
+  clientOrderID:
+    description: The client ID of the Order cancelled (only provided if the Order has a client Order ID).
+    type: string

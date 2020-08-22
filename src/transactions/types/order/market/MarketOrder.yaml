@@ -1,30 +1,20 @@
-type: object
 description: A MarketOrder represents the creation of a Market Order in the user's account. A Market Order is an Order that is filled immediately at the current market price.
+type: object
 properties:
   instrument:
     $ref: ../../../../instruments/types/InstrumentName.yaml
   units:
-    type: number
-    format: double
     description: The quantity requested to be filled by the Market Order. A posititive number of units results in a long Order, and a negative number of units results in a short Order.
-  timeInForce:
-    type: string
-    description: The time-in-force requested for the Market Order. Restricted to FOK or IOC for a MarketOrder.
-    enum:
-      - FOK
-      - IOC
-  priceBound:
     type: number
     format: double
+  timeInForce:
+    $ref: ./MarketOrderTimeInForce.yaml
+  priceBound:
     description: The worst price that the client is willing to have the Market Order filled at.
+    type: number
+    format: double
   positionFill:
-    type: string
-    description: Specification of how Positions in the Account are modified when the Order is filled.
-    enum:
-      - OPEN_ONLY
-      - REDUCE_FIRST
-      - REDUCE_ONLY
-      - DEFAULT
+    $ref: ./MarketOrderPositionFill.yaml
   tradeClose:
     $ref: ./MarketOrderTradeClose.yaml
   longPositionCloseout:
@@ -36,16 +26,9 @@ properties:
   delayedTradeClose:
     $ref: ./MarketOrderDelayedTradeClose.yaml
   reason:
-    type: string
-    description: The reason that the Market Order was created
-    enum:
-      - CLIENT_ORDER
-      - TRADE_CLOSE
-      - POSITION_CLOSEOUT
-      - MARGIN_CLOSEOUT
-      - DELAYED_TRADE_CLOSE
+    $ref: ./MarketOrderReason.yaml
   clientExtensions:
-    $ref: ../../../../shared/types/ClientExtensions.yaml
+    $ref: ../../../../shared/helpers/ClientExtensions.yaml
   takeProfitOnFill:
     $ref: ../../../../orders/types/TakeProfitDetails.yaml
   stopLossOnFill:
@@ -53,4 +36,4 @@ properties:
   trailingStopLossOnFill:
     $ref: ../../../../orders/types/TrailingStopLossDetails.yaml
   tradeClientExtensions:
-    $ref: ../../../../shared/types/ClientExtensions.yaml
+    $ref: ../../../../shared/helpers/ClientExtensions.yaml

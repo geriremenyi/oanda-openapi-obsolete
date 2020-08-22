@@ -1,0 +1,8 @@
+description: Range Not Satisfiable. The client has specified a range that is invalid or cannot be processed.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml

@@ -4,15 +4,15 @@ get:
   tags:
     - Trade
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - $ref: ../../shared/parameters.yaml#/TradeSpecifier
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/TradeSpecifier.yaml
   responses:
     200:
       description: The details for the requested Trade is provided
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -21,11 +21,11 @@ get:
               trade:
                 $ref: ../types/Trade.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
-       $ref: ../../shared/errors.yaml#/401
+       $ref: ../../shared/errors/401.yaml
     404:
-       $ref: ../../shared/errors.yaml#/404
+       $ref: ../../shared/errors/404.yaml
     405:
-       $ref: ../../shared/errors.yaml#/405
+       $ref: ../../shared/errors/405.yaml

@@ -1,49 +1,45 @@
-type: object
 description: Full specification of an Instrument.
+type: object
 properties:
   name:
-    type:
-      $ref: ./InstrumentName.yaml#/type
-    description: The name of the Instrument
-    enum:
-      $ref: ./InstrumentName.yaml#/enum
+    $ref: ./InstrumentName.yaml
   type:
     $ref: ./InstrumentType.yaml
   displayName:
-    type: string
     description: The display name of the Instrument
+    type: string
   pipLocation:
-    type: integer
     description: The location of the "pip" for this instrument. The decimal position of the pip in this Instrument's price can be found at 10 ^ pipLocation (e.g. -4 pipLocation results in a decimal pip position of 10 ^ -4 = 0.0001).
+    type: integer
   displayPrecision:
-    type: integer
     description: The number of decimal places that should be used to display prices for this instrument. (e.g. a displayPrecision of 5 would result in a price of "1" being displayed as "1.00000")
-  tradeUnitsPrecision:
     type: integer
+  tradeUnitsPrecision:
     description: The amount of decimal places that may be provided when specifying the number of units traded for this instrument.
+    type: integer
   minimumTradeSize:
-    type: number
-    format: double
     description: The smallest number of units allowed to be traded for this instrument.
+    type: number
+    format: double
   maximumTrailingStopDistance:
-    type: number
-    format: double
     description: The maximum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+    type: number
+    format: double
   minimumTrailingStopDistance:
-    type: number
-    format: double
     description: The minimum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+    type: number
+    format: double
   maximumPositionSize:
-    type: number
-    format: double
     description: The maximum position size allowed for this instrument. Specified in units.
+    type: number
+    format: double
   maximumOrderUnits:
-    type: number
-    format: double
     description: The maximum units allowed for an Order placed for this instrument. Specified in units.
-  marginRate:
     type: number
     format: double
+  marginRate:
     description: The margin rate for this instrument.
+    type: number
+    format: double
   commission:
     $ref: ./InstrumentComission.yaml

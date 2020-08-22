@@ -4,29 +4,29 @@ get:
   tags:
     - Position
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters/AccountID.yaml
   responses:
     200:
       description: The Account's Positions are provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
             type: object
             properties:
               positions:
-                type: array
                 description: The list of Account Positions.
+                type: array
                 items:
                   $ref: ../types/Position.yaml
               lastTransactionID:
-                type: integer
                 description: he ID of the most recent Transaction created for the Account
+                type: integer
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

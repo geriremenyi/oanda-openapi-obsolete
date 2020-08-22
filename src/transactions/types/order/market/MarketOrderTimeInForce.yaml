@@ -1,0 +1,5 @@
+description: The time-in-force requested for the Market Order. Restricted to FOK or IOC for a MarketOrder.
+type: string
+enum:
+  - FOK
+  - IOC

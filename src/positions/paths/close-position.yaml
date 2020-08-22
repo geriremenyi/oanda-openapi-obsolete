@@ -4,9 +4,9 @@ put:
   tags:
     - Position
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
-    - $ref: ../../shared/parameters.yaml#/InstrumentName
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/InstrumentName.yaml
   requestBody:
     description: Representation of how to close the position
     required: true
@@ -16,25 +16,21 @@ put:
           type: object
           properties:
             longUnits:
-              type: string # Regex for ALL, NONE or decimal number
-              description: Indication of how much of the long Position to closeout. Either the string "ALL", the string "NONE", or a DecimalNumber representing how many units of the long position to close using a PositionCloseout MarketOrder. The units specified must always be positive.
+              $ref: ../../shared/helpers/NonableUnits.yaml
             longClientExtensions:
-              $ref: ../../shared/types/ClientExtensions.yaml
+              $ref: ../../shared/helpers/ClientExtensions.yaml
             shortUnits:
-              type: string # Regex for ALL, NONE or decimal number
-              description: Indication of how much of the short Position to closeout. Either the string "ALL", the string "NONE", or a DecimalNumber representing how many units of the short position to close using a PositionCloseout MarketOrder. The units specified must always be positive.
+              $ref: ../../shared/helpers/NonableUnits.yaml
             shortClientExtensions:
-              $ref: ../../shared/types/ClientExtensions.yaml
+              $ref: ../../shared/helpers/ClientExtensions.yaml
   responses:
     200:
       description: The Position closeout request has been successfully processed.
       headers:
         Location:
-          description: A link to the Position that was just closed out
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -44,22 +40,21 @@ put:
                   longOrderCreateTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
                   longOrderFillTransaction:
-                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   longOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
                   shortOrderCreateTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
                   shortOrderFillTransaction:
-                    $ref: ../../transactions/types/order/OrderFillTransaction.yaml
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   shortOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/OrderCancelTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
-              
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml          
     400:
       description: The Parameters provided that describe the Position closeout are invalid.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -70,15 +65,15 @@ put:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
                   shortOrderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
                 
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
       description: The Account or one or more of the Positions specified does not exist.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -89,6 +84,6 @@ put:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
                   shortOrderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors.yaml#/4xxTransactionError
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

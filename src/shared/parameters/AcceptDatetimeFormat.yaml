@@ -1,0 +1,6 @@
+name: Accept-Datetime-Format
+description: Format of DateTime fields in the request and response.
+in: header
+required: false
+schema:
+  $ref: ../helpers/DateTimeFormat.yaml

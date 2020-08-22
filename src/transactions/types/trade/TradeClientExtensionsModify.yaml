@@ -8,4 +8,4 @@ properties:
     type: string
     description: The original Client ID of the Trade who's client extensions are to be modified.
   tradeClientExtensionsModify:
-    $ref: ../../../shared/types/ClientExtensions.yaml
+    $ref: ../../../shared/helpers/ClientExtensions.yaml

@@ -1,0 +1,8 @@
+description: Bad Request. The client has provided invalid data to be processed by the server.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml
