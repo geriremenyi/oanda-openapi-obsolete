@@ -1,0 +1,3 @@
+description: Value will be "gzip" regardless of provided Accept-Encoding header
+schema:
+  type: string

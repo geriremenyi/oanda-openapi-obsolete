@@ -20,7 +20,7 @@ get:
       description: Date/Time filter to apply to the response. Only prices and home conversions (if requested) with a time later than this filter (i.e. the price has changed after the since time) will be provided, and are filtered independently.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: includeUnitsAvailable
       description: Flag that enables the inclusion of the unitsAvailable field in the returned Price objects.
       in: query
@@ -43,18 +43,17 @@ get:
             type: object
             properties:
               prices:
-                type: array
                 description: The list of Price objects requested.
+                type: array
                 items:
                   $ref: ../types/ClientPrice.yaml
               homeConversions:
-                type: array
                 description: The list of home currency conversion factors requested. This field will only be present if includeHomeConversions was set to true in the request.
+                type: array
                 items:
                   $ref: ../types/HomeConversions.yaml
               time:
-                type: string # TODO: check for UNIX and RFC3339 datetime pattern
-                description: The DateTime value to use for the "since" parameter in the next poll request.
+                $ref: ../../shared/helpers/DateTime.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

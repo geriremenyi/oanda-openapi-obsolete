@@ -14,12 +14,12 @@ patch:
           type: object
           properties:
             alias:
-              type: string
               description: Client-defined alias (name) for the Account
+              type: string
             marginRate:
+              description: Margin rate.
               type: number
               format: double
-              description: Margin rate.
   responses:
     200:
       description: The Account was configured successfully.
@@ -34,8 +34,8 @@ patch:
               clientConfigureTransaction:
                 $ref: ../../transactions/types/client-configure/ClientConfigureTransaction.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the last Transaction created for the Account.
+                type: integer
     400:
       description: The configuration specification was invalid.
       headers:

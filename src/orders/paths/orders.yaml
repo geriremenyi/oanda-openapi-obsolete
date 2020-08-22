@@ -20,9 +20,7 @@ post:
       description: The Order was created as specified
       headers:
         Location:
-          description: A link to the Order that was just created
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
@@ -118,9 +116,7 @@ get:
       description: The list of Orders requested
       headers:
         Link:
-          description: A link to the next page of results if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
@@ -129,13 +125,13 @@ get:
             type: object
             properties:
               orders:
-                type: array
                 description: The list of Order detail objects
+                type: array
                 items:
                   $ref: '../types/Order.yaml'
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     400:
       $ref: ../../shared/errors/400.yaml
     404:

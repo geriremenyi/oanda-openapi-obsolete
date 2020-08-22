@@ -18,13 +18,13 @@ get:
             type: object
             properties:
               orders:
-                type: array
                 description: The list of pending Order details
+                type: array
                 items:
                   $ref: ../types/Order.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
       $ref: ../../shared/errors/401.yaml
     404:

@@ -25,12 +25,12 @@ get:
       description: The start of the time range to fetch candlesticks for.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: to
       description: The end of the time range to fetch candlesticks for.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: smooth
       description: A flag that controls whether the candlestick is "smoothed" or not.  A smoothed candlestick uses the previous candle's close price as its open price, while an unsmoothed candlestick uses the first price from its time range as its open price.
       in: query
@@ -72,8 +72,8 @@ get:
               granularity:
                 $ref: ../types/CandlestickGranularity.yaml
               candles:
-                type: array
                 description: The list of candlesticks that satisfy the request.
+                type: array
                 items:
                   $ref: '../types/Candlestick.yaml'
     400:

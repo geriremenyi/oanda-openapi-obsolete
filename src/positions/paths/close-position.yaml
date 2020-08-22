@@ -16,13 +16,11 @@ put:
           type: object
           properties:
             longUnits:
-              type: string # Regex for ALL, NONE or decimal number
-              description: Indication of how much of the long Position to closeout. Either the string "ALL", the string "NONE", or a DecimalNumber representing how many units of the long position to close using a PositionCloseout MarketOrder. The units specified must always be positive.
+              $ref: ../../shared/helpers/NonableUnits.yaml
             longClientExtensions:
               $ref: ../../shared/helpers/ClientExtensions.yaml
             shortUnits:
-              type: string # Regex for ALL, NONE or decimal number
-              description: Indication of how much of the short Position to closeout. Either the string "ALL", the string "NONE", or a DecimalNumber representing how many units of the short position to close using a PositionCloseout MarketOrder. The units specified must always be positive.
+              $ref: ../../shared/helpers/NonableUnits.yaml
             shortClientExtensions:
               $ref: ../../shared/helpers/ClientExtensions.yaml
   responses:
@@ -30,9 +28,7 @@ put:
       description: The Position closeout request has been successfully processed.
       headers:
         Location:
-          description: A link to the Position that was just closed out
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
@@ -53,8 +49,7 @@ put:
                     $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
                   shortOrderCancelTransaction:
                     $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
-              
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml          
     400:
       description: The Parameters provided that describe the Position closeout are invalid.
       headers:

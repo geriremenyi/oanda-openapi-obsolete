@@ -20,8 +20,8 @@ get:
               account:
                 $ref: ../types/AccountSummary.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account.
+                type: integer
     400:
       $ref: ../../shared/errors/400.yaml
     401:

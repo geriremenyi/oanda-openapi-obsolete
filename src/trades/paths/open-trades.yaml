@@ -18,13 +18,13 @@ get:
             type: object
             properties:
               trades:
-                type: array
                 description: The Account's list of open Trades
+                type: array
                 items:
                   $ref: ../types/Trade.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
        $ref: ../../shared/errors/401.yaml
     404:

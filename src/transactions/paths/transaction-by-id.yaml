@@ -21,8 +21,8 @@ get:
               transaction:
                 $ref: ../types/shared/Transaction.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
       $ref: ../../shared/errors/401.yaml
     404:

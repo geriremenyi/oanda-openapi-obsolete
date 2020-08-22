@@ -39,13 +39,13 @@ get:
             type: object
             properties:
               transactions:
-                type: array
                 description: The list of Transactions that satisfy the request.
+                type: array
                 items:
                   $ref: ../types/shared/Transaction.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     400:
       $ref: ../../shared/errors/400.yaml
     401:

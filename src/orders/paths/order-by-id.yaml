@@ -12,9 +12,7 @@ get:
       description: The details of the Order requested
       headers:
         Link:
-          description: A link to the next page of results if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/helpers/DateTime.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
@@ -25,8 +23,8 @@ get:
               order:
                 $ref: ../types/Order.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
        $ref: ../../shared/errors/401.yaml
     404:
@@ -58,9 +56,7 @@ put:
       description: The Order was successfully cancelled and replaced
       headers:
         Location:
-          description: A link to the replacing Order
-          schema:
-            type: string
+          $ref: ../../shared/headers/Location.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:

@@ -23,7 +23,7 @@ security:
   - PersonalAccessToken: []
 paths:
   /accounts:
-    $ref: ./accounts/paths/accounts.yaml #
+    $ref: ./accounts/paths/accounts.yaml
   /accounts/{accountID}:
     $ref: ./accounts/paths/account-by-id.yaml
   /accounts/{accountID}/summary:
@@ -270,16 +270,38 @@ components:
     TrailingStopLossOrderTransactionBase:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransactionBase.yaml
     # Shared Helpers
+    ClientExtensions:
+      $ref: ./shared/helpers/ClientExtensions.yaml
+    DateTime:
+      $ref: ./shared/helpers/DateTime.yaml
     DateTimeFormat:
       $ref: ./shared/helpers/DateTimeFormat.yaml
+    IDSpecifier:
+      $ref: ./shared/helpers/IDSpecifier.yaml
+    NonableUnits:
+      $ref: ./shared/helpers/NonableUnits.yaml
+    Units:
+      $ref: ./shared/helpers/Units.yaml
     # Error
     4xxBody:
       $ref: ./shared/errors/helpers/4xxBody.yaml
+    4xxTransactionError:
+      $ref: ./shared/errors/helpers/4xxTransactionError.yaml
   parameters:
-    AccountID:
-      $ref: ./shared/parameters/AccountID.yaml
     AcceptDatetimeFormat:
       $ref: ./shared/parameters/AcceptDatetimeFormat.yaml
+    AccountID:
+      $ref: ./shared/parameters/AccountID.yaml
+    ClientRequestID:
+      $ref: ./shared/parameters/ClientRequestID.yaml
+    InstrumentName:
+      $ref: ./shared/parameters/InstrumentName.yaml
+    OrderSpecifier:
+      $ref: ./shared/parameters/OrderSpecifier.yaml
+    TradeSpecifier:
+      $ref: ./shared/parameters/TradeSpecifier.yaml
+    TransactionID:
+      $ref: ./shared/parameters/TransactionID.yaml
   responses:
     400:
       $ref: ./shared/errors/400.yaml
@@ -294,5 +316,11 @@ components:
     416:
       $ref: ./shared/errors/416.yaml
   headers:
+    ContentEncoding:
+      $ref: ./shared/headers/ContentEncoding.yaml
+    Link:
+      $ref: ./shared/headers/Link.yaml
+    Location:
+      $ref: ./shared/headers/Location.yaml
     RequestID:
       $ref: ./shared/headers/RequestID.yaml

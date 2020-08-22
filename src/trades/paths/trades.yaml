@@ -40,9 +40,7 @@ get:
       description: The list of Trades requested
       headers:
         Link:
-          description: A link to the next page of Trades if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
@@ -51,13 +49,13 @@ get:
             type: object
             properties:
               trades:
-                type: array
                 description: The list of Trade detail objects
+                type: array
                 items:
                   $ref: ../types/Trade.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
        $ref: ../../shared/errors/401.yaml
     404:

@@ -26,13 +26,13 @@ get:
             type: object
             properties:
               instruments:
-                type: array
                 description: The requested list of instruments.
+                type: array
                 items:
                   $ref: ../../instruments/types/Instrument.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account.
+                type: integer
     400:
       $ref: ../../shared/errors/400.yaml
     401:

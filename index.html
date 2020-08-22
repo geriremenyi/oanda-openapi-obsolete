@@ -39,9 +39,10 @@
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "src/openapi.yaml",
+        url: 'src/openapi.yaml',
         dom_id: '#swagger-ui',
         deepLinking: true,
+        docExpansion: 'list',
         presets: [
           SwaggerUIBundle.presets.apis,
           SwaggerUIStandalonePreset
@@ -49,7 +50,7 @@
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout"
+        layout: 'StandaloneLayout'
       })
       // End Swagger UI call region
 

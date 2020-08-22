@@ -10,12 +10,12 @@ get:
       description: The starting time (inclusive) of the time range for the Transactions being queried.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: to
       description: The ending time (inclusive) of the time range for the Transactions being queried.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
     - name: pageSize
       description: The number of Transactions to include in each page of the results.
       in: query
@@ -42,30 +42,28 @@ get:
             type: object
             properties:
               from:
-                type: string # TODO: check for UNIX and RFC3339 datetime pattern
-                description: The starting time provided in the request.
+                $ref: ../../shared/helpers/DateTime.yaml
               to:
-                type: string # TODO: check for UNIX and RFC3339 datetime pattern
-                description: The ending time provided in the request.
+                $ref: ../../shared/helpers/DateTime.yaml
               pageSize:
-                type: integer
                 description: The pageSize provided in the request
+                type: integer
               type:
-                type: array
                 description: The Transaction-type filter provided in the request
+                type: array
                 items:
                   $ref: ../types/shared/TransactionType.yaml
               count:
-                type: integer
                 description: The number of Transactions that are contained in the pages returned
+                type: integer
               pages:
-                type: array
                 description: The list of URLs that represent idrange queries providing the data for each page in the query results
+                type: array
                 items:
                   type: string
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     400:
       $ref: ../../shared/errors/400.yaml
     401:

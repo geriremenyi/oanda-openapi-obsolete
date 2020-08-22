@@ -10,19 +10,15 @@ get:
       description: The time of the snapshot to fetch. If not specified, then the most recent snapshot is fetched.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
   responses:
     200:
       description: The order book has been successfully provided.
       headers:
         Content-Encoding:
-          description: Value will be "gzip" regardless of provided Accept-Encoding header
-          schema:
-            type: string
+          $ref: ../../shared/headers/ContentEncoding.yaml
         Link:
-          description: A link to the next/previous order book snapshot.
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
           $ref: ../../shared/headers/RequestID.yaml
       content:
