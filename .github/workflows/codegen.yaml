@@ -46,7 +46,6 @@ jobs:
           name: oanda-openapi-bundle
           path: out/definition
       - name: Checking path
-        working-directory: oanda-dotnet-client
         run: | 
           ls -all
           ls ../ -all
