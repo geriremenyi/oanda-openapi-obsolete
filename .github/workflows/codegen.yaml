@@ -52,9 +52,11 @@ jobs:
         run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master geriremenyi-bot ${{ secrets.GERIREMENYI_BOT_PAT }}
       - name: Override generated code in oanda-dotnet-client
         run: |
-          rm ./oanda-dotnet-client/README.md
-          rm ./oanda-dotnet-client/Oanda.V20.sln 
-          rm ./oanda-dotnet-client/.gitignore 
+          ls -all
+          ls ./oanda-openapi -all
+          rm -f ./oanda-dotnet-client/README.md
+          rm -f ./oanda-dotnet-client/Oanda.V20.sln
+          rm -f ./oanda-dotnet-client/.gitignore
           rm -rf ./oanda-dotnet-client/src 
           rm -rf ./oanda-dotnet-client/docs
           cp ./oanda-openapi/oanda-openapi/out/code/csharp-netcore/README.md ./oanda-dotnet-client/README.md
