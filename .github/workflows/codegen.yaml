@@ -45,11 +45,17 @@ jobs:
         with:
           name: oanda-openapi-bundle
           path: out/definition
-      - name: Generate .NET core code
-        run: npm run generate:csharp-netcore
-      - name: Clone oanda-dotnet-client
+      - name: Checking path
         working-directory: oanda-dotnet-client
-        run: sudo ../oanda-openapi/oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master geriremenyi-bot ${{ secrets.GERIREMENYI_BOT_PAT }}
-      - name: Publish generated code
-        working-directory: oanda-dotnet-client/oanda-dotnet-client
-        run: sudo ../oanda-openapi/oanda-openapi/scripts/git_push.sh ${{ github.event.commits[0]['message'] }}
+        run: | 
+          ls -all
+          ls ../ -all
+          ls ~ -all
+      #- name: Generate .NET core code
+      #  run: npm run generate:csharp-netcore
+      #- name: Clone oanda-dotnet-client
+      #  working-directory: oanda-dotnet-client
+      #  run: sudo ../oanda-openapi/oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master geriremenyi-bot ${{ secrets.GERIREMENYI_BOT_PAT }}
+      #- name: Publish generated code
+      #  working-directory: oanda-dotnet-client/oanda-dotnet-client
+      #  run: sudo ../oanda-openapi/oanda-openapi/scripts/git_push.sh ${{ github.event.commits[0]['message'] }}
