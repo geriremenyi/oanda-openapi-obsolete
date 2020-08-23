@@ -52,16 +52,16 @@ jobs:
         run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master geriremenyi-bot ${{ secrets.GERIREMENYI_BOT_PAT }}
       - name: Override generated code in oanda-dotnet-client
         run: |
-          rm -f ../oanda-dotnet-client/README.md
-          rm -f ../oanda-dotnet-client/Oanda.V20.sln
-          rm -f ../oanda-dotnet-client/.gitignore
-          rm -rf ../oanda-dotnet-client/src 
-          rm -rf ../oanda-dotnet-client/docs
-          cp ./out/code/csharp-netcore/README.md ../oanda-dotnet-client/README.md
-          cp ./out/code/csharp-netcore/Oanda.V20.sln ../oanda-dotnet-client/Oanda.V20.sln
-          cp ./out/code/csharp-netcore/.gitignore ../oanda-dotnet-client/.gitignore
-          cp -r ./out/code/csharp-netcore/src ../oanda-dotnet-client/src
-          cp -r ./out/code/csharp-netcore/docs ../oanda-dotnet-client/docs
+          sudo rm -f ../oanda-dotnet-client/README.md
+          sudo rm -f ../oanda-dotnet-client/Oanda.V20.sln
+          sudo rm -f ../oanda-dotnet-client/.gitignore
+          sudo rm -rf ../oanda-dotnet-client/src 
+          sudo rm -rf ../oanda-dotnet-client/docs
+          sudo cp ./out/code/csharp-netcore/README.md ../oanda-dotnet-client/README.md
+          sudo cp ./out/code/csharp-netcore/Oanda.V20.sln ../oanda-dotnet-client/Oanda.V20.sln
+          sudo cp ./out/code/csharp-netcore/.gitignore ../oanda-dotnet-client/.gitignore
+          sudo cp -r ./out/code/csharp-netcore/src ../oanda-dotnet-client/src
+          sudo cp -r ./out/code/csharp-netcore/docs ../oanda-dotnet-client/docs
       - name: Publish generated code
         working-directory: ../oanda-dotnet-client
         run: sudo ../oanda-openapi/scripts/git_push.sh ${{ github.event.commits[0]['message'] }}
