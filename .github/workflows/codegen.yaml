@@ -1,0 +1,41 @@
+name: Generate code from openapi definition
+on:
+  push:
+    branches:
+      - master
+jobs:
+  bundle:
+    name: Bundle the openapi definition
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Validate definition
+        run: npm run validate:original
+      - name: Bundle definition
+        run: npm run bundle
+      - name: Validate bundled definition
+        run: npm run validate:bundled
+      - name: Upload bundled definition
+        uses: actions/upload-artifact@v2
+        with:
+          name: oanda-openapi-bundle
+          path: out/definition/openapi.yaml
+  generate-dotnet-core:
+    name: Generate .NET core client
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download budnled definition
+        uses: actions/download-artifact@v2
+        with:
+          name: oanda-openapi-bundle
+      - name: Setup Java 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+      - name: Generate .NET core code
+        run: npm run generate:csharp-netcore
