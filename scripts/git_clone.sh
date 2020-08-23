@@ -43,6 +43,7 @@ fi
 
 # Clone the repository to the current working directory
 git clone https://${git_user_id}:${git_access_token}@${git_host}/${git_repo_owner_id}/${git_repo_id}.git
+cd ${git_repo_id}
 
 # Checkout to the requested branch
 git checkout ${git_branch_name}
