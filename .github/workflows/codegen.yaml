@@ -47,4 +47,4 @@ jobs:
       - name: Publish generated code
         env:
           COMMIT_MESSAGE: github.event.commits[0][message]
-        run: ./scripts/git_push.sh geriremenyi-bot geriremenyi oanda-dotnet-client ${{ secrets.GERIREMENYI_BOT_PAT }} ${{ COMMIT_MESSAGE }}
+        run: ./scripts/git_push.sh geriremenyi-bot geriremenyi oanda-dotnet-client ${{ secrets.GERIREMENYI_BOT_PAT }} ${{ env.COMMIT_MESSAGE }}
