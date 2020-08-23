@@ -1,5 +1,5 @@
-type: object
 description: A StopLossOrderRejectTransaction represents the rejection of the creation of a StopLoss Order.
+type: object
 allOf:
-  - $ref: ../../RejectTransaction.yaml
-  - $ref: ./StopLossOrder.yaml
+  - $ref: ../../shared/RejectTransaction.yaml
+  - $ref: ./StopLossOrderTransactionBase.yaml

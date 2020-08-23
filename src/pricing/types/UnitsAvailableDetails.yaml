@@ -1,11 +1,11 @@
-type: object
 description: Representation of many units of an Instrument are available to be traded for both long and short Orders.
+type: object
 properties:
   long:
-    type: number
-    format: double
     description: The units available for long Orders.
-  short:
     type: number
     format: double
+  short:
     description: The units available for short Orders.
+    type: number
+    format: double

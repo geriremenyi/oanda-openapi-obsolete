@@ -4,8 +4,8 @@ get:
   tags:
     - Trade
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: ids
       description: List of Trade IDs to retrieve.
       in: query
@@ -40,27 +40,25 @@ get:
       description: The list of Trades requested
       headers:
         Link:
-          description: A link to the next page of Trades if the results were paginated
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
             type: object
             properties:
               trades:
-                type: array
                 description: The list of Trade detail objects
+                type: array
                 items:
                   $ref: ../types/Trade.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account
+                type: integer
     401:
-       $ref: ../../shared/errors.yaml#/401
+       $ref: ../../shared/errors/401.yaml
     404:
-       $ref: ../../shared/errors.yaml#/404
+       $ref: ../../shared/errors/404.yaml
     405:
-       $ref: ../../shared/errors.yaml#/405
+       $ref: ../../shared/errors/405.yaml

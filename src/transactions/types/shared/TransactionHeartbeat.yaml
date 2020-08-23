@@ -1,0 +1,13 @@
+description: A TransactionHeartbeat object is injected into the Transaction stream to ensure that the HTTP connection remains active.
+type: object
+properties:
+  type:
+    type: string
+    description: The string "HEARTBEAT"
+    enum:
+      - HEARTBEAT
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account
+    type: integer
+  time:
+    $ref: ../../../shared/helpers/DateTime.yaml

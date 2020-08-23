@@ -1,0 +1,69 @@
+description:  An OrderFillTransaction represents the filling of an Order in the client's Account.
+type: object
+properties:
+  orderID:
+    description: The ID of the Order filled.
+    type: integer
+  clientOrderID:
+    description: The client Order ID of the Order filled (only provided if the client has assigned one).
+    type: string
+  instrument:
+    $ref: ../../../../instruments/types/InstrumentName.yaml
+  units:
+    description: The number of units filled by the OrderFill.
+    type: number
+    format: double
+  gainQuoteHomeConversionFactor:
+    description: This is the conversion factor in effect for the Account at the time of the OrderFill for converting any gains realized in Instrument quote units into units of the Account's home currency.
+    type: number
+    format: double
+  lossQuoteHomeConversionFactor:
+    description: This is the conversion factor in effect for the Account at the time of the OrderFill for converting any losses realized in Instrument quote units into units of the Account's home currency.
+    type: number
+    format: double
+  price:
+    description: This field is now deprecated and should no longer be used. The individual tradesClosed, tradeReduced and tradeOpened fields contain the exact/official price each unit was filled at.
+    type: number
+    format: double
+    deprecated: true  
+  fullVWAP:
+    description: The price that all of the units of the OrderFill should have been filled at, in the absence of guaranteed price execution. This factors in the Account's current ClientPrice, used liquidity and the units of the OrderFill only. If no Trades were closed with their price clamped for guaranteed stop loss enforcement, then this value will match the price fields of each Trade opened, closed, and reduced, and they will all be the exact same.
+    type: number
+    format: double
+  fullPrice:
+    $ref: ../../../../pricing/types/ClientPrice.yaml
+  reason:
+    $ref: ./OrderFillReason.yaml
+  pl:
+    description: The profit or loss incurred when the Order was filled.
+    type: number
+    format: double
+  financing:
+    description: The financing paid or collected when the Order was filled
+    type: number
+    format: double
+  commission:
+    description: The commission charged in the Account's home currency as a result of filling the Order. The commission is always represented as a positive quantity of the Account's home currency, however it reduces the balance in the Account.
+    type: number
+    format: double
+  guaranteedExecutionFee:
+    description: The total guaranteed execution fees charged for all Trades opened, closed or reduced with guaranteed Stop Loss Orders.
+    type: number
+    format: double
+  accountBalance:
+    description: The Account's balance after the Order was filled.
+    type: number
+    format: double
+  tradeOpened:
+    $ref: '../../../../trades/types/TradeOpen.yaml'
+  tradesClosed:
+    description: The Trades that were closed when the Order was filled (only provided if filling the Order resulted in a closing open Trades).
+    type: array
+    items:
+      $ref: '../../../../trades/types/TradeReduce.yaml'
+  tradeReduced:
+    $ref: '../../../../trades/types/TradeReduce.yaml'
+  halfSpreadCost:
+    description: The half spread cost for the OrderFill, which is the sum of the halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced fields. This can be a positive or negative value and is represented in the home currency of the Account.
+    type: number
+    format: double

@@ -1,0 +1,7 @@
+description: Specification of how Positions in the Account are modified when the Order is filled.
+type: string
+enum:
+  - OPEN_ONLY
+  - REDUCE_FIRST
+  - REDUCE_ONLY
+  - DEFAULT

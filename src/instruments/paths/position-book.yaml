@@ -4,27 +4,23 @@ get:
   tags:
     - Instrument
   parameters:
-    - $ref: ../../shared/parameters.yaml#/InstrumentName
-    - $ref: ../../shared/parameters.yaml#/AcceptDatetimeFormat
+    - $ref: ../../shared/parameters/InstrumentName.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
     - name: time
       description: The time of the snapshot to fetch. If not specified, then the most recent snapshot is fetched.
       in: query
       schema:
-        type: string # TODO: check for UNIX and RFC3339 datetime pattern
+        $ref: ../../shared/helpers/DateTime.yaml
   responses:
     '200':
       description: The position book has been successfully provided.
       headers:
         Content-Encoding:
-          description: Value will be "gzip" regardless of provided Accept-Encoding header
-          schema:
-            type: string
+          $ref: ../../shared/headers/ContentEncoding.yaml
         Link:
-          description: A link to the next/previous position book snapshot.
-          schema:
-            type: string
+          $ref: ../../shared/headers/Link.yaml
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
@@ -33,10 +29,10 @@ get:
               positionBook:
                 $ref: ../../positions/types/PositionBook.yaml
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     404:
-      $ref: ../../shared/errors.yaml#/404
+      $ref: ../../shared/errors/404.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

@@ -1,0 +1,12 @@
+description: The home currency of the Account
+type: string
+enum:
+  - AUD
+  - CAD
+  - CHF
+  - EUR
+  - GBP
+  - HKD
+  - JPY
+  - SGD
+  - USD

@@ -1,0 +1,8 @@
+description: Forbidden. The client has provided a token that does not authorize them to perform the action implemented by the API endpoint.
+headers:
+  RequestID:
+    $ref: ../headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./helpers/4xxBody.yaml

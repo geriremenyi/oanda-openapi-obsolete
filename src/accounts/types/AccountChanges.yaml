@@ -45,4 +45,4 @@ properties:
     type: array
     description: The Transactions that have been generated.
     items:
-      $ref: '../../transactions/types/Transaction.yaml'
+      $ref: '../../transactions/types/shared/Transaction.yaml'

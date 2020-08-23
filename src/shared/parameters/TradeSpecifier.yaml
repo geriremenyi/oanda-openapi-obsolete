@@ -1,0 +1,6 @@
+name: tradeSpecifier
+description: Specifier for the Trade
+in: path
+required: true
+schema:
+  $ref: ../helpers/IDSpecifier.yaml

@@ -1,5 +1,5 @@
-type: string
 description: The granularity of the candlesticks.
+type: string
 enum:
   - S5
   - S10

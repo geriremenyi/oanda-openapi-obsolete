@@ -4,7 +4,7 @@ get:
   tags:
     - Account
   parameters:
-    - $ref: ../../shared/parameters.yaml#/AccountID
+    - $ref: ../../shared/parameters/AccountID.yaml
     - name: instruments
       description: List of instruments to query specifically.
       in: query
@@ -19,23 +19,23 @@ get:
       description: The list of tradeable instruments for the Account has been provided.
       headers:
         RequestID:
-          $ref: ../../shared/headers.yaml#/RequestID
+          $ref: ../../shared/headers/RequestID.yaml
       content:
         application/json:
           schema:
             type: object
             properties:
               instruments:
-                type: array
                 description: The requested list of instruments.
+                type: array
                 items:
                   $ref: ../../instruments/types/Instrument.yaml
               lastTransactionID:
-                type: integer
                 description: The ID of the most recent Transaction created for the Account.
+                type: integer
     400:
-      $ref: ../../shared/errors.yaml#/400
+      $ref: ../../shared/errors/400.yaml
     401:
-      $ref: ../../shared/errors.yaml#/401
+      $ref: ../../shared/errors/401.yaml
     405:
-      $ref: ../../shared/errors.yaml#/405
+      $ref: ../../shared/errors/405.yaml

@@ -1,5 +1,5 @@
-type: object
 description: A TakeProfitOrderTransaction represents the creation of a TakeProfit Order in the user's Account.
+type: object
 allOf:
-  - $ref: ../../Transaction.yaml
-  - $ref: ./TakeProfitOrder.yaml
+  - $ref: ../../shared/Transaction.yaml
+  - $ref: ./TakeProfitOrderTransactionBase.yaml
