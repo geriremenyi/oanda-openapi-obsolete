@@ -1,5 +1,5 @@
 name: OANDA openapi CI
-on: [push]
+on: [pull_request]
 jobs:
   validate:
     name: Validate OANDA openapi definition and it's bundled versions
