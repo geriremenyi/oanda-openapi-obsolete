@@ -1,6 +1,0 @@
-type: string
-description: The type of the Instrument
-enum:
-  - CURRENCY
-  - CFD
-  - METAL

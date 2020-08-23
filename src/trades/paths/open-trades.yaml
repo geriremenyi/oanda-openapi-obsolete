@@ -1,0 +1,33 @@
+get:
+  summary: List Open Trades
+  description: Get the list of open Trades for an Account
+  tags:
+    - Trade
+  parameters:
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+  responses:
+    200:
+      description: The Account's list of open Trades is provided
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trades:
+                description: The Account's list of open Trades
+                type: array
+                items:
+                  $ref: ../types/Trade.yaml
+              lastTransactionID:
+                description: The ID of the most recent Transaction created for the Account
+                type: integer
+    401:
+       $ref: ../../shared/errors/401.yaml
+    404:
+       $ref: ../../shared/errors/404.yaml
+    405:
+       $ref: ../../shared/errors/405.yaml

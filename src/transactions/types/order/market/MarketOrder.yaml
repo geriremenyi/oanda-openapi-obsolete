@@ -1,0 +1,39 @@
+description: A MarketOrder represents the creation of a Market Order in the user's account. A Market Order is an Order that is filled immediately at the current market price.
+type: object
+properties:
+  instrument:
+    $ref: ../../../../instruments/types/InstrumentName.yaml
+  units:
+    description: The quantity requested to be filled by the Market Order. A posititive number of units results in a long Order, and a negative number of units results in a short Order.
+    type: number
+    format: double
+  timeInForce:
+    $ref: ./MarketOrderTimeInForce.yaml
+  priceBound:
+    description: The worst price that the client is willing to have the Market Order filled at.
+    type: number
+    format: double
+  positionFill:
+    $ref: ./MarketOrderPositionFill.yaml
+  tradeClose:
+    $ref: ./MarketOrderTradeClose.yaml
+  longPositionCloseout:
+    $ref: ./MarketOrderPositionCloseout.yaml
+  shortPositionCloseout:
+    $ref: ./MarketOrderPositionCloseout.yaml
+  marginCloseout:
+    $ref: ./MarketOrderMarginCloseout.yaml
+  delayedTradeClose:
+    $ref: ./MarketOrderDelayedTradeClose.yaml
+  reason:
+    $ref: ./MarketOrderReason.yaml
+  clientExtensions:
+    $ref: ../../../../shared/helpers/ClientExtensions.yaml
+  takeProfitOnFill:
+    $ref: ../../../../orders/types/TakeProfitDetails.yaml
+  stopLossOnFill:
+    $ref: ../../../../orders/types/StopLossDetails.yaml
+  trailingStopLossOnFill:
+    $ref: ../../../../orders/types/TrailingStopLossDetails.yaml
+  tradeClientExtensions:
+    $ref: ../../../../shared/helpers/ClientExtensions.yaml

@@ -1,27 +1,29 @@
 ---
 name: Bug report
-about: Report a bug
-title: ''
-labels: ''
-assignees: ''
-
+about: Report a bug for this project
+title: '[Bug] '
+labels: 'bug'
+assignees: 'geriremenyi'
 ---
 
-**Describe the bug**
+# Describe the bug
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+# Steps to reproduce
 Steps to reproduce the behavior:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
-4. See error
+4. See final result
 
-**Expected behavior**
+# Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+# Actual behavior
+A clear and concise description of what you experence after the final repro step.
+
+# Screenshots
 If applicable, add screenshots to help explain your problem.
 
-**Additional context**
+# Additional context
 Add any other context about the problem here.

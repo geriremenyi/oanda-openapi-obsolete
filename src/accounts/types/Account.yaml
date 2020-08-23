@@ -1,0 +1,21 @@
+description: The full details of a client's Account. This includes full open Trade, open Position and pending Order representation.
+type: object
+allOf:
+  - $ref: ./AccountSummary.yaml
+  - type: object
+    properties:
+      trades:
+        description: The details of the Trades currently open in the Account.
+        type: array
+        items:
+          $ref: ../../trades/types/TradeSummary.yaml
+      positions:
+        description: The details all Account Positions.
+        type: array
+        items:
+          $ref: ../../positions/types/Position.yaml
+      orders:
+        description: The details of the Orders currently pending in the Account.
+        type: array
+        items:
+          $ref: ../../orders/types/Order.yaml

@@ -1,0 +1,6 @@
+description: The current guaranteed Stop Loss Order mode of the Account.
+type: string
+enum:
+  - DISABLED
+  - ALLOWED
+  - REQUIRED

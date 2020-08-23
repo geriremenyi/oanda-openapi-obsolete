@@ -1,0 +1,21 @@
+description: The dynamic (calculated) state of a Position
+type: object
+properties:
+  instrument:
+    $ref: ../../instruments/types/InstrumentName.yaml
+  netUnrealizedPL:
+    description: The Position's net unrealized profit/loss
+    type: number
+    format: double
+  longUnrealizedPL:
+    description: The unrealized profit/loss of the Position's long open Trades
+    type: number
+    format: double
+  shortUnrealizedPL:
+    description: The unrealized profit/loss of the Position's short open Trades
+    type: number
+    format: double
+  marginUsed:
+    description: Margin currently used by the Position.
+    type: number
+    format: double

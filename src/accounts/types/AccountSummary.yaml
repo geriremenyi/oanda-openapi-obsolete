@@ -1,0 +1,75 @@
+description: A summary representation of a client's Account. The AccountSummary does not provide to full specification of pending Orders, open Trades and Positions.
+type: object
+allOf:
+  - type: object
+    properties:
+      id:
+        $ref: ./AccountID.yaml
+      alias:
+        description: Client-assigned alias for the Account. Only provided if the Account has an alias set
+        type: string
+        nullable: true
+      currency:
+        $ref: ./AccountCurrency.yaml
+      balance:
+        description: The current balance of the Account.
+        type: number
+        format: double
+      createdByUserID:
+        description: ID of the user that created the Account.
+        type: integer
+      createdTime:
+        $ref: ../../shared/helpers/DateTime.yaml
+      guaranteedStopLossOrderMode:
+        $ref: ./AccountGuaranteedStopLossOrderMode.yaml
+      pl:
+        description: The total profit/loss realized over the lifetime of the Account.
+        type: number
+        format: double
+      resettablePL:
+        description: The total realized profit/loss for the Account since it was last reset by the client.
+        type: number
+        format: double
+      resettablePLTime:
+        $ref: ../../shared/helpers/DateTime.yaml
+      financing:
+        description: The total amount of financing paid/collected over the lifetime of the Account.
+        type: number
+        format: double
+      commission:
+        description: The total amount of commission paid over the lifetime of the Account.
+        type: number
+        format: double
+      guaranteedExecutionFees:
+        description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders.
+        type: number
+        format: double
+      marginRate:
+        description: Client-provided margin rate override for the Account. The effective margin rate of the Account is the lesser of this value and the OANDA margin rate for the Account's division. This value is only provided if a margin rate override exists for the Account.
+        type: number
+        format: double
+      marginCallEnterTime:
+        $ref: ../../shared/helpers/DateTime.yaml
+      marginCallExtensionCount:
+        description: The number of times that the Account's current margin call was extended.
+        type: integer
+      lastMarginCallExtensionTime:
+        $ref: ../../shared/helpers/DateTime.yaml
+      openTradeCount:
+        description: The number of Trades currently open in the Account.
+        type: integer
+      openPositionCount:
+        description: The number of Positions currently open in the Account.
+        type: integer
+      pendingOrderCount:
+        description: The number of Orders currently pending in the Account.
+        type: integer
+      hedgingEnabled:
+        description: Flag indicating that the Account has hedging enabled.
+        type: boolean
+      lastOrderFillTimestamp:
+        $ref: ../../shared/helpers/DateTime.yaml
+      lastTransactionId:
+        description: The ID of the last Transaction created for the Account.
+        type: integer
+  - $ref: ./AccountState.yaml      

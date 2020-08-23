@@ -1,0 +1,5 @@
+name: ClientRequestID
+description: Client specified RequestID to be sent with request.
+in: header
+schema:
+  type: string

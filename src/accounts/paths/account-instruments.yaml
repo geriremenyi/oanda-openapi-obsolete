@@ -1,0 +1,41 @@
+get:
+  summary: Account Instruments
+  description: Get the list of tradeable instruments for the given Account. The list of tradeable instruments is dependent on the regulatory division that the Account is located in, thus should be the same for all Accounts owned by a single user.
+  tags:
+    - Account
+  parameters:
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - name: instruments
+      description: List of instruments to query specifically.
+      in: query
+      schema:
+        type: array
+        items:
+          $ref: ../../instruments/types/InstrumentName.yaml
+      style: form
+      explode: false
+  responses:
+    200:
+      description: The list of tradeable instruments for the Account has been provided.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              instruments:
+                description: The requested list of instruments.
+                type: array
+                items:
+                  $ref: ../../instruments/types/Instrument.yaml
+              lastTransactionID:
+                description: The ID of the most recent Transaction created for the Account.
+                type: integer
+    400:
+      $ref: ../../shared/errors/400.yaml
+    401:
+      $ref: ../../shared/errors/401.yaml
+    405:
+      $ref: ../../shared/errors/405.yaml

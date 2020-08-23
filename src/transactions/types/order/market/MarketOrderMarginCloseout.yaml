@@ -1,0 +1,5 @@
+description: Details for the Market Order extensions specific to a Market Order placed that is part of a Market Order Margin Closeout in a client's account
+type: object
+properties:
+  reason:
+    $ref: ./MarketOrderMarginCloseoutReason.yaml

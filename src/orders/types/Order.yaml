@@ -1,0 +1,12 @@
+description: The base Order definition specifies the properties that are common to all Orders.
+type: object
+properties:
+  id:
+    description: The Order's identifier, unique within the Order's Account.
+    type: integer
+  createTime:
+    $ref: ../../shared/helpers/DateTime.yaml
+  state:
+    $ref: ./OrderState.yaml
+  clientExtensions:
+    $ref: ../../shared/helpers/ClientExtensions.yaml

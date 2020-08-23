@@ -1,5 +1,0 @@
-type: object
-description: A TrailingStopLossOrderTransaction represents the creation of a TrailingStopLoss Order in the user's Account.
-allOf:
-  - $ref: ../../Transaction.yaml
-  - $ref: ./TrailingStopLossOrder.yaml

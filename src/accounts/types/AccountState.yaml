@@ -1,0 +1,55 @@
+description: An AccountState Object is used to represent an Account's current price-dependent state. Price-dependent Account state is dependent on OANDA's current Prices, and includes things like unrealized PL, NAV and Trailing Stop Loss Order state.
+type: object
+properties:
+  unrealizedPL:
+    description: The total unrealized profit/loss for all Trades currently open in the Account.
+    type: number
+    format: double
+  NAV:
+    description: The net asset value of the Account. Equal to Account balance unrealizedPL.
+    type: number
+    format: double
+  marginUsed:
+    description: Margin currently used for the Account.
+    type: number
+    format: double
+  marginAvailable:
+    description: Margin available for Account currency.
+    type: number
+    format: double
+  positionValue:
+    description: The value of the Account's open positions represented in the Account's home currency.
+    type: number
+    format: double
+  marginCloseoutUnrealizedPL:
+    description: The Account's margin closeout unrealized PL.
+    type: number
+    format: double
+  marginCloseoutNAV:
+    description: The Account's margin closeout NAV.
+    type: number
+    format: double
+  marginCloseoutMarginUsed:
+    description: The Account's margin closeout margin used.
+    type: number
+    format: double
+  marginCloseoutPercent:
+    description: The Account's margin closeout percentage. When this value is 1.0 or above the Account is in a margin closeout situation.
+    type: number
+    format: double
+  marginCloseoutPositionValue:
+    description: The value of the Account's open positions as used for margin closeout calculations represented in the Account's home currency.
+    type: number
+    format: double
+  withdrawalLimit:
+    description: The current WithdrawalLimit for the account which will be zero or a positive value indicating how much can be withdrawn from the account.
+    type: number
+    format: double
+  marginCallMarginUsed:
+    description: The Account's margin call margin used.
+    type: number
+    format: double
+  marginCallPercent:
+    description: The Account's margin call percentage. When this value is 1.0 or above the Account is in a margin call situation.
+    type: number
+    format: double

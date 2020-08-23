@@ -1,0 +1,89 @@
+put:
+  summary: Close Position
+  description: Closeout the open Position for a specific instrument in an Account.
+  tags:
+    - Position
+  parameters:
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - $ref: ../../shared/parameters/InstrumentName.yaml
+  requestBody:
+    description: Representation of how to close the position
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            longUnits:
+              $ref: ../../shared/helpers/NonableUnits.yaml
+            longClientExtensions:
+              $ref: ../../shared/helpers/ClientExtensions.yaml
+            shortUnits:
+              $ref: ../../shared/helpers/NonableUnits.yaml
+            shortClientExtensions:
+              $ref: ../../shared/helpers/ClientExtensions.yaml
+  responses:
+    200:
+      description: The Position closeout request has been successfully processed.
+      headers:
+        Location:
+          $ref: ../../shared/headers/Location.yaml
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  longOrderCreateTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
+                  longOrderFillTransaction:
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
+                  longOrderCancelTransaction:
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+                  shortOrderCreateTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
+                  shortOrderFillTransaction:
+                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
+                  shortOrderCancelTransaction:
+                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml          
+    400:
+      description: The Parameters provided that describe the Position closeout are invalid.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  longOrderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+                  shortOrderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+                
+    401:
+      $ref: ../../shared/errors/401.yaml
+    404:
+      description: The Account or one or more of the Positions specified does not exist.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            allOf:
+              - type: object
+                properties:
+                  longOrderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+                  shortOrderRejectTransaction:
+                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+    405:
+      $ref: ../../shared/errors/405.yaml

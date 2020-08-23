@@ -1,0 +1,9 @@
+description: Content of the error response bodies
+type: object
+properties:
+  errorCode:
+    type: string
+    description: The code of the error that has occurred. This field may not be returned for some errors.
+  errorMessage:
+    type: string
+    description: The human-readable description of the error that has occurred.

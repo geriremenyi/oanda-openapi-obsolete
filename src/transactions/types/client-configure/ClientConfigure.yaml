@@ -1,0 +1,10 @@
+description: A ClientConfigure represents the configuration of an Account by a client.
+type: object
+properties:
+  alias:
+    description: The client-provided alias for the Account.
+    type: string
+  marginRate:
+    description: The margin rate override for the Account.
+    type: number
+    format: double

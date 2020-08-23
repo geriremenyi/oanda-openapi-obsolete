@@ -1,0 +1,11 @@
+type: object
+description: A TradeClientExtensionsModifyTransaction represents the modification of a Trade's Client Extensions.
+properties:
+  tradeID:
+    type: integer
+    description: The ID of the Trade who's client extensions are to be modified.
+  clientTradeID:
+    type: string
+    description: The original Client ID of the Trade who's client extensions are to be modified.
+  tradeClientExtensionsModify:
+    $ref: ../../../shared/helpers/ClientExtensions.yaml

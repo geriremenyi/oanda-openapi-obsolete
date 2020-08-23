@@ -1,0 +1,5 @@
+description: A StopLossOrderTransaction represents the creation of a StopLoss Order in the user's Account.
+type: object
+allOf:
+  - $ref: ../../shared/Transaction.yaml
+  - $ref: ./StopLossOrderTransactionBase.yaml

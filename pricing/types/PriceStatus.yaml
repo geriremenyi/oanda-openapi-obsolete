@@ -1,6 +1,0 @@
-type: string
-description: Status of the price in terms of tradability
-enum:
-  - tradeable
-  - non-tradeable
-  - invalid

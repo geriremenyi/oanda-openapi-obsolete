@@ -1,0 +1,5 @@
+type: object
+description: A TradeClientExtensionsModifyRejectTransaction represents the rejection of the modification of a Trade's Client Extensions.
+allOf:
+  - $ref: ../shared/RejectTransaction.yaml
+  - $ref: ./TradeClientExtensionsModify.yaml

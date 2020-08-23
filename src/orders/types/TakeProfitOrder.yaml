@@ -1,0 +1,10 @@
+description: A TakeProfitOrder is an order that is linked to an open Trade and created with a price threshold. The Order will be filled (closing the Trade) by the first price that is equal to or better than the threshold. A TakeProfitOrder cannot be used to open a new Position.
+type: object
+allOf:
+  - $ref: ./TradeOrderBase.yaml
+  - type: object
+    properties:
+      price:
+        description: The price threshold specified for the TakeProfit Order. The associated Trade will be closed by a market price that is equal to or better	 than this threshold.
+        type: number
+        format: double

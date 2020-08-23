@@ -1,0 +1,5 @@
+description: A TrailingStopLossOrderRejectTransaction represents the rejection of the creation of a TrailingStopLoss Order.
+type: object
+allOf:
+  - $ref: ../../shared/RejectTransaction.yaml
+  - $ref: ./TrailingStopLossOrderTransactionBase.yaml

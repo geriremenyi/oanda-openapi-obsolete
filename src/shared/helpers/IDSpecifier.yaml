@@ -1,0 +1,3 @@
+description: An ID which is either the system assigned integer or a client defined string starting with a @
+type: string
+pattern: ^(?:(?:\d+)|(?:\@\w+))$

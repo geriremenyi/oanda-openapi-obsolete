@@ -1,0 +1,15 @@
+description: The order book data for a partition of the instrument's prices.
+type: object
+properties:
+  price:
+    description: The lowest price (inclusive) covered by the bucket. The bucket covers the price range from the price to price + the order book's bucketWidth.
+    type: number
+    format: double
+  longCountPercent:
+    description: The percentage of the total number of orders represented by the long orders found in this bucket.
+    type: number
+    format: double
+  shortCountPercent:
+    description: The percentage of the total number of orders represented by the short orders found in this bucket.
+    type: number
+    format: double

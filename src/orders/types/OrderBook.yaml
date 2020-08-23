@@ -1,0 +1,20 @@
+description: The representation of an instrument's order book at a point in time
+type: object
+properties:
+  instrument:
+    $ref: ../../instruments/types/InstrumentName.yaml
+  time:
+    $ref: ../../shared/helpers/DateTime.yaml
+  price:
+    description: The price (midpoint) for the order book's instrument at the time of the order book snapshot
+    type: number
+    format: double
+  bucketWidth:
+    description: The price width for each bucket. Each bucket covers the price range from the bucket's price to the bucket's price + bucketWidth.
+    type: number
+    format: double
+  buckets:
+    description: The partitioned order book, divided into buckets using a default bucket width. These buckets are only provided for price ranges which actually contain order or position data.
+    type: array
+    items:
+      $ref: './OrderBookBucket.yaml'

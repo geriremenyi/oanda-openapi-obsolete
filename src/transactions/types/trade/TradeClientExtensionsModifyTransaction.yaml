@@ -1,0 +1,5 @@
+type: object
+description: A TradeClientExtensionsModifyTransaction represents the modification of a Trade's Client Extensions.
+allOf:
+  - $ref: ../shared/Transaction.yaml
+  - $ref: ./TradeClientExtensionsModify.yaml

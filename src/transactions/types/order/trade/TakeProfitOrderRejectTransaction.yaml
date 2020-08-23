@@ -1,0 +1,5 @@
+description: A TakeProfitOrderRejectTransaction represents the rejection of the creation of a TakeProfit Order.
+type: object
+allOf:
+  - $ref: ../../shared/RejectTransaction.yaml
+  - $ref: ./TakeProfitOrderTransactionBase.yaml

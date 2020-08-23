@@ -1,5 +1,0 @@
-type: object
-description: A ClientConfigureRejectTransaction represents the reject of configuration of an Account by a client.
-allOf:
-  - $ref: ../RejectTransaction.yaml
-  - $ref: ./ClientConfigure.yaml

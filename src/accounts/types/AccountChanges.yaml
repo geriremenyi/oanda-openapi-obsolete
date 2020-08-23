@@ -1,0 +1,48 @@
+type: object
+description: An AccountChanges Object is used to represent the changes to an Account's Orders, Trades and Positions since a specified Account TransactionID in the past.
+properties:
+  ordersCreated:
+    type: array
+    description: The Orders created. These Orders may have been filled, cancelled or triggered in the same period.
+    items:
+      $ref: '../../orders/types/Order.yaml'
+  ordersCancelled:
+    type: array
+    description: The Orders cancelled.
+    items:
+      $ref: '../../orders/types/Order.yaml'
+  ordersFilled:
+    type: array
+    description: The Orders filled.
+    items:
+      $ref: '../../orders/types/Order.yaml'
+  ordersTriggered:
+    type: array
+    description: The Orders triggered.
+    items:
+      $ref: '../../orders/types/Order.yaml'
+  tradesOpened:
+    type: array
+    description: The Trades opened.
+    items:
+      $ref: '../../trades/types/TradeSummary.yaml'
+  tradesReduced:
+    type: array
+    description: The Trades reduced.
+    items:
+      $ref: '../../trades/types/TradeSummary.yaml'
+  tradesClosed:
+    type: array
+    description: The Trades closed.
+    items:
+      $ref: '../../trades/types/TradeSummary.yaml'
+  positions:
+    type: array
+    description: The Positions changed.
+    items:
+      $ref: '../../positions/types/Position.yaml'
+  transactions:
+    type: array
+    description: The Transactions that have been generated.
+    items:
+      $ref: '../../transactions/types/shared/Transaction.yaml'

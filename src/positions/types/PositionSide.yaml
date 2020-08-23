@@ -1,0 +1,37 @@
+description: The representation of a Position for a single direction (long or short).
+type: object
+properties:
+  units:
+    description: Number of units in the position (negative value indicates short position, positive indicates long position).
+    type: number
+    format: double
+  averagePrice:
+    description: Volume-weighted average of the underlying Trade open prices for the Position.
+    type: number
+    format: double
+  tradeIDs:
+    description: List of the open Trade IDs which contribute to the open Position.
+    type: array
+    items:
+      description: The Trade's identifier, unique within the Trade's Account.
+      type: integer
+  pl:
+    description: Profit/loss realized by the PositionSide over the lifetime of the Account.
+    type: number
+    format: double
+  unrealizedPL:
+    description: The unrealized profit/loss of all open Trades that contribute to this PositionSide.
+    type: number
+    format: double
+  resettablePL:
+    description: Profit/loss realized by the PositionSide since the Account's resettablePL was last reset by the client.
+    type: number
+    format: double
+  financing:
+    description: The total amount of financing paid/collected for this PositionSide over the lifetime of the Account.
+    type: number
+    format: double
+  guaranteedExecutionFees:
+    description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders attached to Trades for this PositionSide.
+    type: number
+    format: double

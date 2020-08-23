@@ -1,0 +1,78 @@
+get:
+  summary: List Transactions
+  description: Get a list of Transactions pages that satisfy a time-based Transaction query.
+  tags:
+    - Transaction
+  parameters:
+    - $ref: ../../shared/parameters/AccountID.yaml
+    - $ref: ../../shared/parameters/AcceptDatetimeFormat.yaml
+    - name: from
+      description: The starting time (inclusive) of the time range for the Transactions being queried.
+      in: query
+      schema:
+        $ref: ../../shared/helpers/DateTime.yaml
+    - name: to
+      description: The ending time (inclusive) of the time range for the Transactions being queried.
+      in: query
+      schema:
+        $ref: ../../shared/helpers/DateTime.yaml
+    - name: pageSize
+      description: The number of Transactions to include in each page of the results.
+      in: query
+      schema:
+        type: integer
+    - name: type
+      description: A filter for restricting the types of Transactions to retreive.
+      in: query
+      schema:
+        type: array
+        items:
+          $ref: ../types/shared/TransactionType.yaml
+      style: form
+      explode: false
+  responses:
+    200:
+      description: The requested time range of Transaction pages are provided.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              from:
+                $ref: ../../shared/helpers/DateTime.yaml
+              to:
+                $ref: ../../shared/helpers/DateTime.yaml
+              pageSize:
+                description: The pageSize provided in the request
+                type: integer
+              type:
+                description: The Transaction-type filter provided in the request
+                type: array
+                items:
+                  $ref: ../types/shared/TransactionType.yaml
+              count:
+                description: The number of Transactions that are contained in the pages returned
+                type: integer
+              pages:
+                description: The list of URLs that represent idrange queries providing the data for each page in the query results
+                type: array
+                items:
+                  type: string
+              lastTransactionID:
+                description: The ID of the most recent Transaction created for the Account
+                type: integer
+    400:
+      $ref: ../../shared/errors/400.yaml
+    401:
+      $ref: ../../shared/errors/401.yaml
+    403:
+      $ref: ../../shared/errors/403.yaml
+    404:
+      $ref: ../../shared/errors/404.yaml
+    405:
+      $ref: ../../shared/errors/405.yaml
+    416:
+      $ref: ../../shared/errors/416.yaml

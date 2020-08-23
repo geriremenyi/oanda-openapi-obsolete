@@ -1,0 +1,20 @@
+description:  StopLossDetails specifies the details of a Stop Loss Order to be created on behalf of a client. This may happen when an Order is filled that opens a Trade requiring a Stop Loss, or when a Trade's dependent Stop Loss Order is modified directly through the Trade.
+type: object
+properties:
+  price:
+    description: The price that the Stop Loss Order will be triggered at. Only one of the price and distance fields may be specified.
+    type: number
+    format: double
+  distance:
+    description: Specifies the distance (in price units) from the Trade's open price to use as the Stop Loss Order price. Only one of the distance and price fields may be specified.
+    type: number
+    format: double
+  timeInForce:
+    $ref: ./TradeOrderTimeInForce.yaml
+  gtdTime:
+    $ref: ../../shared/helpers/DateTime.yaml
+  clientExtensions:
+    $ref: ../../shared/helpers/ClientExtensions.yaml
+  guaranteed:
+    description: Flag indicating that the price for the Stop Loss Order is guaranteed. The default value depends on the GuaranteedStopLossOrderMode of the account, if it is REQUIRED, the default will be true, for DISABLED or ENABLED the default is false.
+    type: boolean

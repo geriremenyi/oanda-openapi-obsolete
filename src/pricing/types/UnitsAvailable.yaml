@@ -1,0 +1,11 @@
+description: Representation of how many units of an Instrument are available to be traded by an Order depending on its postionFill option.
+type: object
+properties:
+  default:
+    $ref: './UnitsAvailableDetails.yaml'
+  reduceFirst:
+    $ref: './UnitsAvailableDetails.yaml'
+  reduceOnly:
+    $ref: './UnitsAvailableDetails.yaml'
+  openOnly:
+    $ref: './UnitsAvailableDetails.yaml'

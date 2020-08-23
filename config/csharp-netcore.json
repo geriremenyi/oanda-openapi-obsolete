@@ -1,0 +1,13 @@
+{
+    "packageName": "Oanda.V20",
+    "packageTags": [
+        "OANDA",
+        "REST",
+        "V20",
+        ".NET",
+        ".NET Core",
+        "client"
+    ],
+    "targetFramework": "netcoreapp3.1",
+    "packageVersion": "1.0.0"
+}

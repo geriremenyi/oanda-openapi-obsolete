@@ -1,0 +1,17 @@
+type: object
+description: The Candlestick representation
+properties:
+  time:
+    $ref: ../../shared/helpers/DateTime.yaml
+  bid:
+    $ref: './CandlestickData.yaml'
+  ask:
+    $ref: './CandlestickData.yaml'
+  mid:
+    $ref: './CandlestickData.yaml'
+  volume:
+    description: The number of prices created during the time-range represented by the candlestick.
+    type: integer
+  complete:
+    description: A flag indicating if the candlestick is complete. A complete candlestick is one whose ending time is not in the future.
+    type: boolean

@@ -1,0 +1,3 @@
+description: A link to the next/previous page.
+schema:
+  type: string

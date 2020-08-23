@@ -1,0 +1,7 @@
+description: The current state of the Order.
+type: string
+enum:
+  - PENDING
+  - FILLED
+  - TRIGGERED
+  - CANCELLED

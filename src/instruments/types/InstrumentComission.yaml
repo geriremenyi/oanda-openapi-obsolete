@@ -1,0 +1,15 @@
+description: An InstrumentCommission represents an instrument-specific commission
+type: object
+properties:
+  commission:
+    description: The commission amount (in the Account's home currency) charged per unitsTraded of the instrument
+    type: number
+    format: double
+  unitsTraded:
+    description: The number of units traded that the commission amount is based on.
+    type: number
+    format: double
+  minimumCommission:
+    description: The minimum commission amount (in the Account's home currency) that is charged when an Order is filled for this instrument.
+    type: number
+    format: double

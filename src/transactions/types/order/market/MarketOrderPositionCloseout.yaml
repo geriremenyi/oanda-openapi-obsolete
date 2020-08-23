@@ -1,0 +1,7 @@
+description: A MarketOrderPositionCloseout specifies the extensions to a Market Order when it has been created to closeout a specific Position.
+type: object
+properties:
+  instrument:
+    $ref: ../../../../instruments/types/InstrumentName.yaml
+  units:
+    $ref: ../../../../shared/helpers/Units.yaml

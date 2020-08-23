@@ -1,0 +1,6 @@
+name: transactionID
+description: A Transaction ID
+required: true
+in: path
+schema:
+  type: integer

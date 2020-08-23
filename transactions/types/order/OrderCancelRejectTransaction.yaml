@@ -1,5 +1,0 @@
-type: object
-description: An OrderCancelRejectTransaction represents the rejection of the cancellation of an Order in the client's Account.
-allOf:
-  - $ref: ../RejectTransaction.yaml
-  - $ref: ./OrderCancel.yaml

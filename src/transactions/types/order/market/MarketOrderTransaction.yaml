@@ -1,0 +1,5 @@
+description: A MarketOrderTransaction represents the creation of a Market Order in the user's account. A Market Order is an Order that is filled immediately at the current market price.
+type: object
+allOf:
+  - $ref: ../../shared/Transaction.yaml
+  - $ref: ./MarketOrder.yaml

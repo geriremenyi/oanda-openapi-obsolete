@@ -1,0 +1,6 @@
+description: The time in force for the created Stop Loss Order. This may only be GTC, GTD or GFD.
+type: string
+enum:
+  - GTC
+  - GTD
+  - GFD

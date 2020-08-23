@@ -1,0 +1,19 @@
+type: object
+description: The price data (open, high, low, close) for the Candlestick representation.
+properties:
+  o:
+    description: The first (open) price in the time-range represented by the candlestick.
+    type: number
+    format: double
+  h:
+    description: The highest price in the time-range represented by the candlestick.
+    type: number
+    format: double
+  l:
+    description: The lowest price in the time-range represented by the candlestick.
+    type: number
+    format: double
+  c:
+    description: The last (closing) price in the time-range represented by the candlestick.
+    type: number
+    format: double

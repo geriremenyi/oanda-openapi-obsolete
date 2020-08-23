@@ -1,0 +1,37 @@
+description: The specification of a Position within an Account.
+type: object
+properties:
+  instrument:
+    $ref: ../../instruments/types/InstrumentName.yaml
+  pl:
+    description: Profit/loss realized by the Position over the lifetime of the Account.
+    type: number
+    format: double
+  unrealizedPL:
+    description: The unrealized profit/loss of all open Trades that contribute to this Position.
+    type: number
+    format: double
+  marginUsed:
+    type: number
+    format: double
+    description: Margin currently used by the Position.
+  resettablePL:
+    description: Profit/loss realized by the Position since the Account's resettablePL was last reset by the client.
+    type: number
+    format: double
+  financing:
+    description: The total amount of financing paid/collected for this instrument over the lifetime of the Account.
+    type: number
+    format: double
+  commission:
+    description: The total amount of commission paid for this instrument over the lifetime of the Account.
+    type: number
+    format: double
+  guaranteedExecutionFees:
+    description: The total amount of fees charged over the lifetime of the Account for the execution of guaranteed Stop Loss Orders for this instrument.
+    type: number
+    format: double
+  long:
+    $ref: ./PositionSide.yaml
+  short:
+    $ref: ./PositionSide.yaml

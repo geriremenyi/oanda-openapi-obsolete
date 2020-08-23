@@ -1,0 +1,21 @@
+description: A StopLossOrder is an order that is linked to an open Trade and created with a price threshold. The Order will be filled (closing the Trade) by the first price that is equal to or worse than the threshold. A StopLossOrder cannot be used to open a new Position.
+type: object
+allOf:
+  - $ref: ./TradeOrderBase.yaml
+  - type: object
+    properties:
+      price:
+        description: The price threshold specified for the Stop Loss Order. If the guaranteed flag is false, the associated Trade will be closed by a market price that is equal to or worse than this threshold. If the flag is true the associated Trade will be closed at this price.
+        type: number
+        format: double
+      guaranteedExecutionPremium:
+        description: The premium that will be charged if the Stop Loss Order is guaranteed and the Order is filled at the guaranteed price. It is in price units and is charged for each unit of the Trade.
+        type: number
+        format: double
+      distance:
+        description: Specifies the distance (in price units) from the Account's current price to use as the Stop Loss Order price. If the Trade is short the Instrument's bid price is used, and for long Trades the ask is used.
+        type: number
+        format: double
+      guaranteed:
+        description:  Flag indicating that the Stop Loss Order is guaranteed. The default value depends on the GuaranteedStopLossOrderMode of the account, if it is REQUIRED, the default will be true, for DISABLED or ENABLED the default is false.
+        type: boolean

@@ -1,0 +1,8 @@
+description: The reason that the Market Order was created
+type: string
+enum:
+  - CLIENT_ORDER
+  - TRADE_CLOSE
+  - POSITION_CLOSEOUT
+  - MARGIN_CLOSEOUT
+  - DELAYED_TRADE_CLOSE

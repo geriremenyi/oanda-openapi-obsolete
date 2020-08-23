@@ -1,0 +1,3 @@
+description: Either "ALL", "NONE", or a DecimalNumber reflection a partial unit
+type: string
+pattern: ^(?:(?:ALL)|(?:NONE)|(?:\d+(?:\.\d+)?))$

@@ -1,0 +1,45 @@
+description: Full specification of an Instrument.
+type: object
+properties:
+  name:
+    $ref: ./InstrumentName.yaml
+  type:
+    $ref: ./InstrumentType.yaml
+  displayName:
+    description: The display name of the Instrument
+    type: string
+  pipLocation:
+    description: The location of the "pip" for this instrument. The decimal position of the pip in this Instrument's price can be found at 10 ^ pipLocation (e.g. -4 pipLocation results in a decimal pip position of 10 ^ -4 = 0.0001).
+    type: integer
+  displayPrecision:
+    description: The number of decimal places that should be used to display prices for this instrument. (e.g. a displayPrecision of 5 would result in a price of "1" being displayed as "1.00000")
+    type: integer
+  tradeUnitsPrecision:
+    description: The amount of decimal places that may be provided when specifying the number of units traded for this instrument.
+    type: integer
+  minimumTradeSize:
+    description: The smallest number of units allowed to be traded for this instrument.
+    type: number
+    format: double
+  maximumTrailingStopDistance:
+    description: The maximum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+    type: number
+    format: double
+  minimumTrailingStopDistance:
+    description: The minimum trailing stop distance allowed for a trailing stop loss created for this instrument. Specified in price units.
+    type: number
+    format: double
+  maximumPositionSize:
+    description: The maximum position size allowed for this instrument. Specified in units.
+    type: number
+    format: double
+  maximumOrderUnits:
+    description: The maximum units allowed for an Order placed for this instrument. Specified in units.
+    type: number
+    format: double
+  marginRate:
+    description: The margin rate for this instrument.
+    type: number
+    format: double
+  commission:
+    $ref: ./InstrumentComission.yaml

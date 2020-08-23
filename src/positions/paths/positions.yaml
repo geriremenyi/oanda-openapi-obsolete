@@ -1,0 +1,32 @@
+get:
+  summary: List Positions
+  description: List all Positions for an Account. The Positions returned are for every instrument that has had a position during the lifetime of an the Account.
+  tags:
+    - Position
+  parameters:
+    - $ref: ../../shared/parameters/AccountID.yaml
+  responses:
+    200:
+      description: The Account's Positions are provided.
+      headers:
+        RequestID:
+          $ref: ../../shared/headers/RequestID.yaml
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              positions:
+                description: The list of Account Positions.
+                type: array
+                items:
+                  $ref: ../types/Position.yaml
+              lastTransactionID:
+                description: he ID of the most recent Transaction created for the Account
+                type: integer
+    401:
+      $ref: ../../shared/errors/401.yaml
+    404:
+      $ref: ../../shared/errors/404.yaml
+    405:
+      $ref: ../../shared/errors/405.yaml

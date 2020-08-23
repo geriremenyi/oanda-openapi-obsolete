@@ -1,4 +1,0 @@
-RequestID:
-  description: The unique identifier generated for the request
-  schema:
-    type: string
