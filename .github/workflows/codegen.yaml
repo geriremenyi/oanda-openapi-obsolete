@@ -1,11 +1,11 @@
-name: Generate code from openapi definition
+name: Code Generation
 on:
   push:
     branches:
       - master
 jobs:
   bundle:
-    name: Bundle the openapi definition
+    name: Bundle & validate definition
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,8 +26,10 @@ jobs:
         with:
           name: oanda-openapi-bundle
           path: out/definition/openapi.yaml
+          if-no-files-found: error
   generate-dotnet-core:
     name: Generate .NET core client
+    needs: [bundle]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,9 +37,32 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
-      - name: Download budnled definition
+      - name: Setup Node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Download bundled definition
         uses: actions/download-artifact@v2
         with:
           name: oanda-openapi-bundle
+          path: out/definition
       - name: Generate .NET core code
         run: npm run generate:csharp-netcore
+      - name: Clone oanda-dotnet-client
+        working-directory: ../
+        run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master "${{ secrets.BOT_USER_ID }}" "${{ secrets.BOT_USER_ACCESS_TOKEN }}"
+      - name: Update oanda-dotnet-client
+        run: |
+          sudo rm -f ../oanda-dotnet-client/Oanda.V20.sln
+          sudo rm -f ../oanda-dotnet-client/.gitignore
+          sudo rm -rf ../oanda-dotnet-client/src 
+          sudo rm -rf ../oanda-dotnet-client/docs
+          sudo cp ./out/code/csharp-netcore/Oanda.V20.sln ../oanda-dotnet-client/Oanda.V20.sln
+          sudo cp ./out/code/csharp-netcore/.gitignore ../oanda-dotnet-client/.gitignore
+          sudo cp -r ./out/code/csharp-netcore/src ../oanda-dotnet-client/src
+          sudo cp -r ./out/code/csharp-netcore/docs ../oanda-dotnet-client/docs
+      - name: Publish oanda-dotnet-client
+        working-directory: ../oanda-dotnet-client
+        run: sudo ../oanda-openapi/scripts/git_push.sh "${{ github.event.commits[0]['message'] }}" "${{ secrets.BOT_USER_EMAIL }}" "${{ secrets.BOT_USER_NAME }}"

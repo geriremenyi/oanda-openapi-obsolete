@@ -1,12 +1,12 @@
-name: OANDA openapi CI
-on: [push]
+name: Continuous Integration
+on: [pull_request]
 jobs:
   validate:
-    name: Validate OANDA openapi definition and it's bundled versions
+    name: Bundle & validate definition
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup node
+      - name: Setup node 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
