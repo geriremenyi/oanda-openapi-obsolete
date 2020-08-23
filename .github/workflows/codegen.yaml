@@ -44,7 +44,6 @@ jobs:
           name: oanda-openapi-bundle
       - name: Generate .NET core code
         run: npm run generate:csharp-netcore
-      - name: Get commit message triggered the codegen
       - name: Publish generated code
         env:
           COMMIT_MESSAGE: github.event.commits[0][message]
