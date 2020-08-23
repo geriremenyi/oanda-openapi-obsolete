@@ -23,8 +23,10 @@ jobs:
         with:
           name: oanda-openapi-bundle
           path: out/definition/openapi.yaml
+          if-no-files-found: error
   generate-dotnet-core:
     name: Generate .NET core client
+    needs: [bundle]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +44,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: oanda-openapi-bundle
+          path: out/definition
       - name: Generate .NET core code
         run: npm run generate:csharp-netcore
       - name: Publish generated code
