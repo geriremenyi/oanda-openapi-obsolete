@@ -1,5 +1,8 @@
 name: Code Generation
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   bundle:
     name: Bundle & validate definition
