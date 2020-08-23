@@ -50,6 +50,14 @@ jobs:
       - name: Clone oanda-dotnet-client
         working-directory: ../
         run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master geriremenyi-bot ${{ secrets.GERIREMENYI_BOT_PAT }}
+      - name: Override generated code in oanda-dotnet-client
+        run: |
+          rm -rf ./oanda-dotnet-client/README.md ./oanda-dotnet-client/Oanda.V20.sln ./oanda-dotnet-client/.gitignore ./oanda-dotnet-client/src ./oanda-dotnet-client/docs
+          cp ./oanda-openapi/out/code/csharp-netcore/README.md ./oanda-dotnet-client/README.md
+          cp ./oanda-openapi/out/code/csharp-netcore/Oanda.V20.sln ./oanda-dotnet-client/Oanda.V20.sln
+          cp ./oanda-openapi/out/code/csharp-netcore/.gitignore ./oanda-dotnet-client/.gitignore
+          cp -r ./oanda-openapi/out/code/csharp-netcore/src ./oanda-dotnet-client/src
+          cp -r ./oanda-openapi/out/code/csharp-netcore/docs ./oanda-dotnet-client/docs
       - name: Publish generated code
         working-directory: ../oanda-dotnet-client
         run: sudo ../oanda-openapi/scripts/git_push.sh ${{ github.event.commits[0]['message'] }}

@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 # Parameters to named parameters
 git_host=$1

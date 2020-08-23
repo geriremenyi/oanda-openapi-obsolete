@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 # Parameter to named parameter
 git_commit_message=$1
