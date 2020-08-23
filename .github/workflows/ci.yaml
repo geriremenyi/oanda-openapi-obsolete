@@ -1,0 +1,20 @@
+name: OANDA openapi CI
+on: [push]
+jobs:
+  validate:
+    name: Validate OANDA openapi definition and it's bundled versions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Validate definition
+        run: npm run validate:original
+      - name: Bundle definition
+        run: npm run bundle
+      - name: Validate bundled definition
+        run: npm run validate:bundled
