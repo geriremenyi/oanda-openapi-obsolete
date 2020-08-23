@@ -47,9 +47,9 @@ jobs:
           path: out/definition
       - name: Checking path
         run: | 
-          ls -all
-          ls ../ -all
-          ls ~ -all
+          mkdir ~/work/oanda-dotnet-client
+          ls ~/work -all
+          ls ~/work/oanda-dotnet-client -all
       #- name: Generate .NET core code
       #  run: npm run generate:csharp-netcore
       #- name: Clone oanda-dotnet-client
