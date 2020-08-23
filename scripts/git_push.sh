@@ -2,10 +2,22 @@
 
 # Parameter to named parameter
 git_commit_message=$1
+git_author_email=$2
+git_author_name=$3
 
 # Check that all parameters are given
 if [ "$git_commit_message" = "" ]; then
     echo "[ERROR] No commit message given. Please pass a commit message to the script as the first parameter."
+    exit 1
+fi
+
+if [ "$git_author_email" = "" ]; then
+    echo "[ERROR] No author email given. Please pass an author email address to the script as the second parameter."
+    exit 1
+fi
+
+if [ "$git_author_name" = "" ]; then
+    echo "[ERROR] No author name given. Please pass an author name to the script as the third parameter."
     exit 1
 fi
 
@@ -21,6 +33,10 @@ if [ "$git_remote" = "" ]; then
     echo "[ERROR] No remote repository found for the git repository."
     exit 1
 fi
+
+# Set author
+git config --global user.email "$git_author_email"
+git config --global user.name "$git_author_name"
 
 # Add all changes
 git add .
