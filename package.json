@@ -1,6 +1,6 @@
 {
   "name": "oanda-openapi",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "OANDA REST API V20 openapi definition",
   "repository": "git@github.com:geriremenyi/oanda-openapi.git",
   "author": "Gergely Reményi <geri@geriremenyi.com>",
@@ -12,7 +12,7 @@
     "bundle": "swagger-cli bundle src/openapi.yaml -o out/definition/openapi.yaml -t yaml -r",
     "generate:csharp-netcore": "openapi-generator generate -i out/definition/openapi.yaml -g csharp-netcore -o out/code/csharp-netcore -c config/csharp-netcore.json"
   },
-  "dependencies": {
+  "devDependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
     "@openapitools/openapi-generator-cli": "^1.0.15-4.3.1"
   }
