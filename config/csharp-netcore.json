@@ -1,13 +1,14 @@
 {
-    "packageName": "Oanda.V20",
+    "packageName": "GeriRemenyi.Oanda.V20",
+    "packageVersion": "0.0.1",
     "packageTags": [
         "OANDA",
         "REST",
         "V20",
         ".NET",
         ".NET Core",
-        "client"
+        "client",
+        "geriremenyi"
     ],
-    "targetFramework": "netcoreapp3.1",
-    "packageVersion": "1.0.0"
+    "targetFramework": "netcoreapp3.1"
 }
