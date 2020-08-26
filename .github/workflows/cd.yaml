@@ -54,11 +54,11 @@ jobs:
         run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master "${{ secrets.BOT_USER_ID }}" "${{ secrets.BOT_USER_ACCESS_TOKEN }}"
       - name: Update oanda-dotnet-client
         run: |
-          sudo rm -f ../oanda-dotnet-client/Oanda.V20.sln
+          sudo rm -f ../oanda-dotnet-client/*.sln
           sudo rm -f ../oanda-dotnet-client/.gitignore
           sudo rm -rf ../oanda-dotnet-client/src 
           sudo rm -rf ../oanda-dotnet-client/docs
-          sudo cp ./out/code/csharp-netcore/Oanda.V20.sln ../oanda-dotnet-client/Oanda.V20.sln
+          sudo cp ./out/code/csharp-netcore/*.sln ../oanda-dotnet-client
           sudo cp ./out/code/csharp-netcore/.gitignore ../oanda-dotnet-client/.gitignore
           sudo cp -r ./out/code/csharp-netcore/src ../oanda-dotnet-client/src
           sudo cp -r ./out/code/csharp-netcore/docs ../oanda-dotnet-client/docs
