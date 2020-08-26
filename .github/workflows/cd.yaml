@@ -48,10 +48,7 @@ jobs:
       - name: Generate .NET core code
         run: npm run generate:csharp-netcore
       - name: Workaround for .NET core generation issue
-        run: |
-          sudo ls out -all
-          sudo ls out/code/csharp-netcore -all
-          sudo ./scripts/remove_basevalidate.sh
+        run: sudo ./scripts/remove_basevalidate.sh
       - name: Clone oanda-dotnet-client
         working-directory: ../
         run: sudo ./oanda-openapi/scripts/git_clone.sh github.com geriremenyi oanda-dotnet-client master "${{ secrets.BOT_USER_ID }}" "${{ secrets.BOT_USER_ACCESS_TOKEN }}"
