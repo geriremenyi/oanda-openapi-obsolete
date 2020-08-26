@@ -49,8 +49,8 @@ jobs:
         run: npm run generate:csharp-netcore
       - name: Workaround for .NET core generation issue
         run: |
-          sudo ls -all
-          sudo ls ./scripts -all
+          sudo ls out -all
+          sudo ls out/code/csharp-netcore -all
           sudo ./scripts/remove_basevalidate.sh
       - name: Clone oanda-dotnet-client
         working-directory: ../
