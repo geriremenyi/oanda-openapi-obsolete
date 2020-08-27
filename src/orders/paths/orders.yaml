@@ -1,6 +1,7 @@
 post:
   summary: Create Order
   description: Create an Order for an Account
+  operationId: createOrder
   tags:
     - Order
   parameters:
@@ -39,7 +40,7 @@ post:
                     $ref: ../../transactions/types/shared/Transaction.yaml
                   orderReissueRejectTransaction:
                     $ref: ../../transactions/types/shared/Transaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     400:
       description: The Order specification was invalid
       headers:
@@ -53,7 +54,7 @@ post:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/shared/Transaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     403:
@@ -71,12 +72,13 @@ post:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/shared/Transaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     405:
       $ref: ../../shared/errors/405.yaml
 get:
   summary: List Orders
   description: Get a list of Orders for an Account
+  operationId: getOrders
   tags:
     - Order
   parameters:

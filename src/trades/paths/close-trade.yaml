@@ -1,6 +1,7 @@
 put:
   summary: Close Trade
   description: Close (partially or fully) a specific open Trade in an Account
+  operationId: closeTrade
   tags:
     - Trade
   parameters:
@@ -49,7 +50,7 @@ put:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -65,6 +66,6 @@ put:
                 properties:
                   orderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml  
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml  
     405:
       $ref: ../../shared/errors/405.yaml

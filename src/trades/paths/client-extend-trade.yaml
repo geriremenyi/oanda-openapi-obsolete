@@ -1,6 +1,7 @@
 put:
   summary: Set Trade Client Extensions
   description: Update the Client Extensions for a Trade. Do not add, update, or delete the Client Extensions if your account is associated with MT4.
+  operationId: setTradeExtensions
   tags:
     - Trade
   parameters:
@@ -45,7 +46,7 @@ put:
                 properties:
                   tradeClientExtensionsModifyRejectTransaction:
                     $ref: ../../transactions/types/trade/TradeClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -61,6 +62,6 @@ put:
                 properties:
                   tradeClientExtensionsModifyRejectTransaction:
                     $ref: ../../transactions/types/trade/TradeClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml     
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml     
     405:
       $ref: ../../shared/errors/405.yaml

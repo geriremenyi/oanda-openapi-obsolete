@@ -1,6 +1,7 @@
 put:
   summary: Close Position
   description: Closeout the open Position for a specific instrument in an Account.
+  operationId: closePosition
   tags:
     - Position
   parameters:
@@ -65,7 +66,7 @@ put:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
                   shortOrderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
                 
     401:
       $ref: ../../shared/errors/401.yaml
@@ -84,6 +85,6 @@ put:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
                   shortOrderRejectTransaction:
                     $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     405:
       $ref: ../../shared/errors/405.yaml

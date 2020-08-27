@@ -1,6 +1,7 @@
 put:
   summary: Set Order Extensions
   description: Update the Client Extensions for an Order in an Account. Do notset, modify, or delete clientExtensions if your account is associated with MT4.
+  operationId: setOrderExtensions
   tags:
     - Order
   parameters:
@@ -47,7 +48,7 @@ put:
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
                     $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -63,6 +64,6 @@ put:
                 properties:
                   orderClientExtensionsModifyRejectTransaction:
                     $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     405:
       $ref: ../../shared/errors/405.yaml

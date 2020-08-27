@@ -1,6 +1,7 @@
 get:
   summary: Current Account Prices
   description: Get pricing information for a specified list of Instruments within an Account.
+  operationId: getPricing
   tags:
     - Pricing
   parameters:

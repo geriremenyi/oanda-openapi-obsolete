@@ -1,6 +1,7 @@
 put:
   summary: Set Dependent Orders
   description: Create, replace and cancel a Trade's dependent Orders (Take Profit, Stop Loss and Trailing Stop Loss) through the Trade itself
+  operationId: setTradeOrders
   tags:
     - Trade
   parameters:
@@ -77,7 +78,7 @@ put:
                     $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
                   trailingStopLossOrderRejectTransaction:
                     $ref: ../../transactions/types/order/trade/TrailingStopLossOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

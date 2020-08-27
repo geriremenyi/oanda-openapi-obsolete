@@ -1,6 +1,7 @@
 get:
   summary: Transactions Since ID
   description: Get a range of Transactions for an Account starting at (but not including) a provided Transaction ID.
+  operationId: getTransactionsSince
   tags:
     - Transaction
   parameters:

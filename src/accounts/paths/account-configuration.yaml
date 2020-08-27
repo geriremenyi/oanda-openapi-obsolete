@@ -1,6 +1,7 @@
 patch:
   summary: Configure Account
   description: Set the client-configurable portions of an Account.
+  operationId: configureAccount
   tags:
     - Account
   parameters:
@@ -49,7 +50,7 @@ patch:
                 properties:
                   clientConfigureRejectTransaction:
                     $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     403:
       description: The configuration operation was forbidden on the Account.
       headers:
@@ -63,7 +64,7 @@ patch:
                 properties:
                   clientConfigureRejectTransaction:
                     $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

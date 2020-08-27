@@ -1,6 +1,7 @@
 get:
   summary: List Positions
   description: List all Positions for an Account. The Positions returned are for every instrument that has had a position during the lifetime of an the Account.
+  operationId: getPositions
   tags:
     - Position
   parameters:

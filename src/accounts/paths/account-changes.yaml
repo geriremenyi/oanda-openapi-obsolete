@@ -1,6 +1,7 @@
 get:
   summary: Poll Account Updates
   description: Endpoint used to poll an Account for its current state and changes since a specified TransactionID.
+  operationId: getAccountChanges
   tags:
     - Account
   parameters:

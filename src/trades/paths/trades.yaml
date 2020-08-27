@@ -1,6 +1,7 @@
 get:
   summary: List Trades
   description: Get a list of Trades for an Account
+  operationId: getTrades
   tags:
     - Trade
   parameters:

@@ -105,6 +105,9 @@ components:
       $ref: ./accounts/types/AccountState.yaml
     AccountSummary:
       $ref: ./accounts/types/AccountSummary.yaml
+    # Account response bodies
+    AccountDetailsResponseBody:
+      $ref: ./accounts/responses/AccountDetailsResponseBody.yaml
     # Instruments
     Candlestick:
       $ref: ./instruments/types/Candlestick.yaml
@@ -283,10 +286,10 @@ components:
     Units:
       $ref: ./shared/helpers/Units.yaml
     # Error
-    4xxBody:
-      $ref: ./shared/errors/helpers/4xxBody.yaml
-    4xxTransactionError:
-      $ref: ./shared/errors/helpers/4xxTransactionError.yaml
+    Error4xxBody:
+      $ref: ./shared/errors/helpers/Error4xxBody.yaml
+    Error4xxTransaction:
+      $ref: ./shared/errors/helpers/Error4xxTransaction.yaml
   parameters:
     AcceptDatetimeFormat:
       $ref: ./shared/parameters/AcceptDatetimeFormat.yaml
@@ -303,6 +306,8 @@ components:
     TransactionID:
       $ref: ./shared/parameters/TransactionID.yaml
   responses:
+    AccountDetailsResponse:
+      $ref: ./accounts/responses/AccountDetailsResponse.yaml
     400:
       $ref: ./shared/errors/400.yaml
     401:

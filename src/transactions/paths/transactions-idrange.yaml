@@ -1,6 +1,7 @@
 get:
   summary: Transaction ID Range
   description: Get a range of Transactions for an Account based on the Transaction IDs.
+  operationId: getTransactionIdRange
   tags:
     - Transaction
   parameters:

@@ -1,6 +1,7 @@
 get:
   summary: List Transactions
   description: Get a list of Transactions pages that satisfy a time-based Transaction query.
+  operationId: getTransactions
   tags:
     - Transaction
   parameters:

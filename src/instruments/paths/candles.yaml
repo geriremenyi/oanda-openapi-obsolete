@@ -1,6 +1,7 @@
 get:
   summary: Get Candlesticks
   description: Fetch candlestick data for an instrument.
+  operationId: getInstrumentCandles
   tags:
     - Instrument
   parameters:

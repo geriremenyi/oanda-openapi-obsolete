@@ -1,6 +1,7 @@
 get:
   summary: Transaction Details
   description: Get the details of a single Account Transaction.
+  operationId: getTransaction
   tags:
     - Transaction
   parameters:

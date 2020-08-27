@@ -1,6 +1,7 @@
 get:
   summary: Instrument Position
   description: Get the details of a single Instrument's Position in an Account. The Position may by open or not.
+  operationId: getInstrumentPosition
   tags:
     - Position
   parameters:

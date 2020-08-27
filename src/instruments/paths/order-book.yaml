@@ -1,6 +1,7 @@
 get:
   summary: Get Order Book
   description: Fetch an order book for an instrument.
+  operationId: getInstrumentOrderBook
   tags:
     - Instrument
   parameters:

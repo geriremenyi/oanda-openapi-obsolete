@@ -1,0 +1,8 @@
+description: The full Account details are provided
+headers:
+  RequestID:
+    $ref: ../../shared/headers/RequestID.yaml
+content:
+  application/json:
+    schema:
+      $ref: ./AccountDetailsResponseBody.yaml

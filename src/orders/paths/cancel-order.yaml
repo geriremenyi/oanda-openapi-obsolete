@@ -1,6 +1,7 @@
 put:
   summary: Cancel Order
   description: Cancel a pending Order in an Account
+  operationId: cancelOrder
   tags:
     - Order
   parameters:
@@ -38,6 +39,6 @@ put:
                 properties:
                   orderCancelRejectTransaction:
                     $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
     405:
       $ref: ../../shared/errors/405.yaml
