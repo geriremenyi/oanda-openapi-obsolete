@@ -22,16 +22,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              transactions:
-                description: The list of Transactions that satisfy the request.
-                type: array
-                items:
-                  $ref: ../types/shared/Transaction.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/TransactionSinceIdResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

@@ -17,13 +17,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              transaction:
-                $ref: ../types/shared/Transaction.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/TransactionResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

@@ -371,6 +371,15 @@ components:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
     TrailingStopLossOrderTransactionBase:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransactionBase.yaml
+    # Transaction responses
+    TransactionIdRangeResponse:
+      $ref: ./transactions/responses/TransactionIdRangeResponse.yaml
+    TransactionResponse:
+      $ref: ./transactions/responses/TransactionResponse.yaml
+    TransactionSinceIdResponse:
+      $ref: ./transactions/responses/TransactionSinceIdResponse.yaml
+    TransactionsResponse:
+      $ref: ./transactions/responses/TransactionsResponse.yaml
     # Shared Helpers
     ClientExtensions:
       $ref: ./shared/helpers/ClientExtensions.yaml
