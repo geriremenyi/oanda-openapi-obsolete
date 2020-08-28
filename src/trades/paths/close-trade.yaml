@@ -1,6 +1,7 @@
 put:
   summary: Close Trade
   description: Close (partially or fully) a specific open Trade in an Account
+  operationId: closeTrade
   tags:
     - Trade
   parameters:
@@ -13,10 +14,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            units:
-              $ref: ../../shared/helpers/Units.yaml
+          $ref: ../requests/CloseTradeRequest.yaml
   responses:
     200:
       description: The Trade has been closed as requested
@@ -26,16 +24,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderCreateTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
-                  orderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  orderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
+            $ref: ../responses/CloseTradeResponse.yaml
     400:
       description: The Trade cannot be closed as requested.
       headers:
@@ -44,12 +33,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+            $ref: ../responses/CloseTradeBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -60,11 +44,6 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml  
+            $ref: ../responses/CloseTradeNotFoundResponse.yaml
     405:
       $ref: ../../shared/errors/405.yaml

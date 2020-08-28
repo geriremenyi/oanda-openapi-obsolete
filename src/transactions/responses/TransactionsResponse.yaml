@@ -1,0 +1,25 @@
+type: object
+properties:
+  from:
+    $ref: ../../shared/helpers/DateTime.yaml
+  to:
+    $ref: ../../shared/helpers/DateTime.yaml
+  pageSize:
+    description: The pageSize provided in the request
+    type: integer
+  type:
+    description: The Transaction-type filter provided in the request
+    type: array
+    items:
+      $ref: ../types/shared/TransactionType.yaml
+  count:
+    description: The number of Transactions that are contained in the pages returned
+    type: integer
+  pages:
+    description: The list of URLs that represent idrange queries providing the data for each page in the query results
+    type: array
+    items:
+      type: string
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account
+    type: integer

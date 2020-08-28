@@ -9,7 +9,7 @@
   "scripts": {
     "validate:original": "swagger-cli validate src/openapi.yaml",
     "validate:bundled": "swagger-cli validate out/definition/openapi.yaml",
-    "bundle": "swagger-cli bundle src/openapi.yaml -o out/definition/openapi.yaml -t yaml -r",
+    "bundle": "swagger-cli bundle src/openapi.yaml -o out/definition/openapi.yaml -t yaml",
     "generate:csharp-netcore": "openapi-generator generate -i out/definition/openapi.yaml -g csharp-netcore -o out/code/csharp-netcore -c config/csharp-netcore.json"
   },
   "devDependencies": {

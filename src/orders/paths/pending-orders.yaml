@@ -1,6 +1,7 @@
 get:
   summary: Pending Orders
   description: List all pending Orders in an Account
+  operationId: getPendingOrders
   tags:
     - Order
   parameters:

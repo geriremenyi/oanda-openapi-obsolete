@@ -1,0 +1,4 @@
+description: Client error 403, forbidden
+type: object
+allOf:
+  - $ref: ./Error4xx.yaml

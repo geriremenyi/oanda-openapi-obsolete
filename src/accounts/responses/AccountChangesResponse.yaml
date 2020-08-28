@@ -1,0 +1,9 @@
+type: object
+properties:
+  changes:
+    $ref: '../types/AccountChanges.yaml'
+  state:
+    $ref: '../types/AccountChangesState.yaml'
+  lastTransactionID:
+    description: The ID of the last Transaction created for the Account. This Transaction ID should be used for future poll requests, as the client has already observed all changes up to and including it.
+    type: string

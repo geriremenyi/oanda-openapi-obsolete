@@ -1,0 +1,8 @@
+allOf:
+  - type: object
+    properties:
+      longOrderRejectTransaction:
+        $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+      shortOrderRejectTransaction:
+        $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
+  - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml

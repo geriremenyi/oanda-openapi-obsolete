@@ -1,6 +1,7 @@
 get:
   summary: Current Account Prices
   description: Get pricing information for a specified list of Instruments within an Account.
+  operationId: getPricing
   tags:
     - Pricing
   parameters:
@@ -40,20 +41,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              prices:
-                description: The list of Price objects requested.
-                type: array
-                items:
-                  $ref: ../types/ClientPrice.yaml
-              homeConversions:
-                description: The list of home currency conversion factors requested. This field will only be present if includeHomeConversions was set to true in the request.
-                type: array
-                items:
-                  $ref: ../types/HomeConversions.yaml
-              time:
-                $ref: ../../shared/helpers/DateTime.yaml
+            $ref: ../responses/PricingResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

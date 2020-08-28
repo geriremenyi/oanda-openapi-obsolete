@@ -1,6 +1,7 @@
 get:
   summary: Get Order Book
   description: Fetch an order book for an instrument.
+  operationId: getInstrumentOrderBook
   tags:
     - Instrument
   parameters:
@@ -24,10 +25,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              orderBook:
-                $ref: '../../orders/types/OrderBook.yaml'
+            $ref: ../responses/InstrumentOrderBookResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

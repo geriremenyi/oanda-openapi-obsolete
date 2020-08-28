@@ -1,0 +1,10 @@
+type: object
+properties:
+  trades:
+    description: The list of Trade detail objects
+    type: array
+    items:
+      $ref: ../types/Trade.yaml
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account
+    type: integer

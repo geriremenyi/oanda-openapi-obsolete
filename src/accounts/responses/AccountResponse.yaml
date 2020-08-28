@@ -1,0 +1,8 @@
+description: The response body of the account details request
+type: object
+properties:
+  account:
+    $ref: ../types/Account.yaml
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account.
+    type: integer

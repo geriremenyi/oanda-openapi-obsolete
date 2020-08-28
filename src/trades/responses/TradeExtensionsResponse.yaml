@@ -1,0 +1,6 @@
+allOf:
+  - type: object
+    properties:
+      tradeClientExtensionsModifyTransaction:
+        $ref: ../../transactions/types/trade/TradeClientExtensionsModifyTransaction.yaml
+  - $ref: ../../transactions/types/shared/RelatedTransactions.yaml

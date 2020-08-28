@@ -1,6 +1,7 @@
 get:
   summary: List Accounts
   description: Get a list of all Accounts authorized for the provided token.
+  operationId: getAccounts
   tags:
     - Account
   responses:

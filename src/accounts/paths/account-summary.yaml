@@ -1,6 +1,7 @@
 get:
   summary: Account Summary
   description: Get a summary for a single Account that a client has access to.
+  operationId: getAccountSummary
   tags:
     - Account
   parameters:

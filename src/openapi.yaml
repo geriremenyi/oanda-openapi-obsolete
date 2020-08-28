@@ -105,6 +105,20 @@ components:
       $ref: ./accounts/types/AccountState.yaml
     AccountSummary:
       $ref: ./accounts/types/AccountSummary.yaml
+    # Account requests
+    AccountConfigurationRequest:
+      $ref: ./accounts/requests/AccountConfigurationRequest.yaml
+    # Account responses
+    AccountChangesResponse:
+      $ref: ./accounts/responses/AccountChangesResponse.yaml
+    AccountConfigurationResponse:
+      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
+    AccountConfigurationBadRequestResponse:
+      $ref: ./accounts/responses/AccountConfigurationBadRequestResponse.yaml
+    AccountConfigurationForbiddenResponse:
+      $ref: ./accounts/responses/AccountConfigurationForbiddenResponse.yaml
+    AccountResponse:
+      $ref: ./accounts/responses/AccountResponse.yaml
     # Instruments
     Candlestick:
       $ref: ./instruments/types/Candlestick.yaml
@@ -120,6 +134,13 @@ components:
       $ref: ./instruments/types/InstrumentName.yaml
     InstrumentType:
       $ref: ./instruments/types/InstrumentType.yaml
+    # Instrument responses
+    CandlesResponse:
+      $ref: ./instruments/responses/CandlesResponse.yaml
+    InstrumentOrderBookResponse:
+      $ref: ./instruments/responses/InstrumentOrderBookResponse.yaml
+    InstrumentPositionBookResponse:
+      $ref: ./instruments/responses/InstrumentPositionBookResponse.yaml 
     # Orders
     DynamicOrderState:
       $ref: ./orders/types/DynamicOrderState.yaml
@@ -151,6 +172,38 @@ components:
       $ref: ./orders/types/TrailingStopLossDetails.yaml
     TrailingStopLossOrder:
       $ref: ./orders/types/TrailingStopLossOrder.yaml
+    # Order requests
+    CreateOrderRequest:
+      $ref: ./orders/requests/CreateOrderRequest.yaml
+    OrderExtensionsRequest:
+      $ref: ./orders/requests/OrderExtensionsRequest.yaml
+    ReplaceOrderRequest:
+      $ref: ./orders/requests/ReplaceOrderRequest.yaml
+    # Order responses
+    CancelOrderResponse:
+      $ref: ./orders/responses/CancelOrderResponse.yaml
+    CreateOrderBadRequestResponse:
+      $ref: ./orders/responses/CreateOrderBadRequestResponse.yaml
+    CreateOrderNotFoundResponse:
+      $ref: ./orders/responses/CreateOrderNotFoundResponse.yaml
+    CreateOrderResponse:
+      $ref: ./orders/responses/CreateOrderResponse.yaml
+    OrderExtensionsBadRequestResponse:
+      $ref: ./orders/responses/OrderExtensionsBadRequestResponse.yaml
+    OrderExtensionsNotFoundResponse:
+      $ref: ./orders/responses/OrderExtensionsNotFoundResponse.yaml
+    OrderExtensionsResponse:
+      $ref: ./orders/responses/OrderExtensionsResponse.yaml
+    OrderResponse:
+      $ref: ./orders/responses/OrderResponse.yaml
+    OrdersResponse:
+      $ref: ./orders/responses/OrdersResponse.yaml
+    ReplaceOrderBadRequestResponse:
+      $ref: ./orders/responses/ReplaceOrderBadRequestResponse.yaml
+    ReplaceOrderNotFoundResponse:
+      $ref: ./orders/responses/ReplaceOrderNotFoundResponse.yaml
+    ReplaceOrderResponse:
+      $ref: ./orders/responses/ReplaceOrderResponse.yaml
     # Positions
     CalculatedPositionState:
       $ref: ./positions/types/CalculatedPositionState.yaml
@@ -162,6 +215,22 @@ components:
       $ref: ./positions/types/PositionBookBucket.yaml
     PositionSide:
       $ref: ./positions/types/PositionSide.yaml
+    # Position requests
+    ClosePositionRequest:
+      $ref: ./positions/requests/ClosePositionRequest.yaml
+    # Position responses
+    ClosePositionBadRequestResponse:
+      $ref: ./positions/responses/ClosePositionBadRequestResponse.yaml
+    ClosePositionNotFoundResponse:
+      $ref: ./positions/responses/ClosePositionNotFoundResponse.yaml
+    ClosePositionResponse:
+      $ref: ./positions/responses/ClosePositionResponse.yaml
+    InstrumentPositionResponse:
+      $ref: ./positions/responses/InstrumentPositionResponse.yaml
+    OpenPositionsResponse:
+      $ref: ./positions/responses/OpenPositionsResponse.yaml
+    PositionsResponse:
+      $ref: ./positions/responses/PositionsResponse.yaml
     # Pricing
     ClientPrice:
       $ref: ./pricing/types/ClientPrice.yaml
@@ -177,6 +246,9 @@ components:
       $ref: ./pricing/types/UnitsAvailable.yaml
     UnitsAvailableDetails:
       $ref: ./pricing/types/UnitsAvailableDetails.yaml
+    # Pricing responses
+    PricingResponse:
+      $ref: ./pricing/responses/PricingResponse.yaml
     # Trades
     CalculatedTradeState:
       $ref: ./trades/types/CalculatedTradeState.yaml
@@ -190,6 +262,36 @@ components:
       $ref: ./trades/types/TradeState.yaml
     TradeSummary:
       $ref: ./trades/types/TradeSummary.yaml
+    # Trade requests
+    CloseTradeRequest:
+      $ref: ./trades/requests/CloseTradeRequest.yaml
+    DependentTradeOrdersRequest:
+      $ref: ./trades/requests/DependentTradeOrdersRequest.yaml
+    TradeExtensionsRequest:
+      $ref: ./trades/requests/TradeExtensionsRequest.yaml
+    # Trade responses
+    CloseTradeBadRequestResponse:
+      $ref: ./trades/responses/CloseTradeBadRequestResponse.yaml
+    CloseTradeNotFoundResponse:
+      $ref: ./trades/responses/CloseTradeNotFoundResponse.yaml
+    CloseTradeResponse:
+      $ref: ./trades/responses/CloseTradeResponse.yaml
+    DependentTradeOrdersBadRequestResponse:
+      $ref: ./trades/responses/DependentTradeOrdersBadRequestResponse.yaml
+    DependentTradeOrdersResponse:
+      $ref: ./trades/responses/DependentTradeOrdersResponse.yaml
+    OpenTradeResponse:
+      $ref: ./trades/responses/OpenTradeResponse.yaml
+    TradeExtensionsBadRequestResponse:
+      $ref: ./trades/responses/TradeExtensionsBadRequestResponse.yaml
+    TradeExtensionsNotFoundResponse:
+      $ref: ./trades/responses/TradeExtensionsNotFoundResponse.yaml
+    TradeExtensionsResponse:
+      $ref: ./trades/responses/TradeExtensionsResponse.yaml
+    TradeResponse:
+      $ref: ./trades/responses/TradeResponse.yaml
+    TradesResponse:
+      $ref: ./trades/responses/TradesResponse.yaml
     # Transactions
     ClientConfigure:
       $ref: ./transactions/types/client-configure/ClientConfigure.yaml
@@ -269,6 +371,15 @@ components:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
     TrailingStopLossOrderTransactionBase:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransactionBase.yaml
+    # Transaction responses
+    TransactionIdRangeResponse:
+      $ref: ./transactions/responses/TransactionIdRangeResponse.yaml
+    TransactionResponse:
+      $ref: ./transactions/responses/TransactionResponse.yaml
+    TransactionSinceIdResponse:
+      $ref: ./transactions/responses/TransactionSinceIdResponse.yaml
+    TransactionsResponse:
+      $ref: ./transactions/responses/TransactionsResponse.yaml
     # Shared Helpers
     ClientExtensions:
       $ref: ./shared/helpers/ClientExtensions.yaml
@@ -283,10 +394,22 @@ components:
     Units:
       $ref: ./shared/helpers/Units.yaml
     # Error
-    4xxBody:
-      $ref: ./shared/errors/helpers/4xxBody.yaml
-    4xxTransactionError:
-      $ref: ./shared/errors/helpers/4xxTransactionError.yaml
+    Error4xxBody:
+      $ref: ./shared/errors/helpers/Error4xx.yaml
+    Error4xxTransaction:
+      $ref: ./shared/errors/helpers/Error4xxTransaction.yaml
+    Error400:
+      $ref: ./shared/errors/helpers/Error400.yaml
+    Error401:
+      $ref: ./shared/errors/helpers/Error401.yaml
+    Error403:
+      $ref: ./shared/errors/helpers/Error403.yaml
+    Error404:
+      $ref: ./shared/errors/helpers/Error404.yaml
+    Error405:
+      $ref: ./shared/errors/helpers/Error405.yaml
+    Error416:
+      $ref: ./shared/errors/helpers/Error416.yaml
   parameters:
     AcceptDatetimeFormat:
       $ref: ./shared/parameters/AcceptDatetimeFormat.yaml
@@ -302,19 +425,6 @@ components:
       $ref: ./shared/parameters/TradeSpecifier.yaml
     TransactionID:
       $ref: ./shared/parameters/TransactionID.yaml
-  responses:
-    400:
-      $ref: ./shared/errors/400.yaml
-    401:
-      $ref: ./shared/errors/401.yaml
-    403:
-      $ref: ./shared/errors/403.yaml
-    404:
-      $ref: ./shared/errors/404.yaml
-    405:
-      $ref: ./shared/errors/405.yaml
-    416:
-      $ref: ./shared/errors/416.yaml
   headers:
     ContentEncoding:
       $ref: ./shared/headers/ContentEncoding.yaml

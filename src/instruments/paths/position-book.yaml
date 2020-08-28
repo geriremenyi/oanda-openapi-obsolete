@@ -1,6 +1,7 @@
 get:
   summary: Get Position Book
   description: Fetch a position book for an instrument.
+  operationId: getInstrumentPositionBook
   tags:
     - Instrument
   parameters:
@@ -24,10 +25,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              positionBook:
-                $ref: ../../positions/types/PositionBook.yaml
+            $ref: ../responses/InstrumentPositionBookResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

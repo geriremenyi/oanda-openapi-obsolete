@@ -1,6 +1,7 @@
 get:
   summary: List Trades
   description: Get a list of Trades for an Account
+  operationId: getTrades
   tags:
     - Trade
   parameters:
@@ -46,16 +47,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              trades:
-                description: The list of Trade detail objects
-                type: array
-                items:
-                  $ref: ../types/Trade.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/TradesResponse.yaml
     401:
        $ref: ../../shared/errors/401.yaml
     404:

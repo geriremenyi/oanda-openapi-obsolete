@@ -1,4 +1,4 @@
-description: Content of the error response bodies
+description: Error response body
 type: object
 properties:
   errorCode:

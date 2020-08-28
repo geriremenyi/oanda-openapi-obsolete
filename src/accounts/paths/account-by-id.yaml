@@ -1,6 +1,7 @@
 get:
   summary: Account Details
   description: Get the full details for a single Account that a client has access to. Full pending Order, open Trade and open Position representations are provided.
+  operationId: getAccount
   tags:
     - Account
   parameters:
@@ -15,13 +16,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              account:
-                $ref: ../types/Account.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account.
-                type: integer
+            $ref: ../responses/AccountResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

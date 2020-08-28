@@ -5,4 +5,7 @@ headers:
 content:
   application/json:
     schema:
-      $ref: ./helpers/4xxBody.yaml
+      $ref: ./helpers/Error404.yaml
+    example:
+      errorCode: NO_SUCH_TRADE
+      errorMessage: The trade ID specified does not exist.

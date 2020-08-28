@@ -1,0 +1,4 @@
+type: object
+properties:
+  orderBook:
+    $ref: '../../orders/types/OrderBook.yaml'

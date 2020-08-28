@@ -1,0 +1,10 @@
+type: object
+properties:
+  longUnits:
+    $ref: ../../shared/helpers/NonableUnits.yaml
+  longClientExtensions:
+    $ref: ../../shared/helpers/ClientExtensions.yaml
+  shortUnits:
+    $ref: ../../shared/helpers/NonableUnits.yaml
+  shortClientExtensions:
+    $ref: ../../shared/helpers/ClientExtensions.yaml

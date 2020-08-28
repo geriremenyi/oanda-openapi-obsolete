@@ -1,6 +1,7 @@
 get:
   summary: Instrument Position
   description: Get the details of a single Instrument's Position in an Account. The Position may by open or not.
+  operationId: getInstrumentPosition
   tags:
     - Position
   parameters:
@@ -15,13 +16,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              position:
-                $ref: ../types/Position.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/InstrumentPositionResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

@@ -1,12 +1,12 @@
 {
-    "packageName": "GeriRemenyi.Oanda.V20",
+    "packageName": "GeriRemenyi.Oanda.V20.Client",
     "packageVersion": "0.0.1",
     "targetFramework": "netcoreapp3.1",
     "packageAuthors": "geriremenyi",
     "packageCompany": "geriremenyi.com",
-    "packageTitle": "OANDA REST V20 .NET core client",
-    "packageDescription": "A generated client library for OANDA REST V20 API",
+    "packageTitle": "OANDA REST API V20 client",
+    "packageDescription": "A generated client library for OANDA's REST API (V20)",
     "gitUserId": "geriremenyi",
     "gitRepoId": "oanda-dotnet-client",
-    "packageTags": "OANDA;REST V20;.NET Core client;geriremenyi"
+    "packageTags": "OANDA; OANDA V20; OANDA API; OANDA REST API; OANDA REST V20 API; Oanda"
 }

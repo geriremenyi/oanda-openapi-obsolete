@@ -1,6 +1,7 @@
 put:
   summary: Set Dependent Orders
   description: Create, replace and cancel a Trade's dependent Orders (Take Profit, Stop Loss and Trailing Stop Loss) through the Trade itself
+  operationId: setTradeOrders
   tags:
     - Trade
   parameters:
@@ -13,14 +14,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            takeProfit:
-              $ref: ../../orders/types/TakeProfitDetails.yaml
-            stopLoss:
-              $ref: ../../orders/types/StopLossDetails.yaml
-            trailingStopLoss:
-              $ref: ../../orders/types/TrailingStopLossDetails.yaml
+          $ref: ../requests/DependentTradeOrdersRequest.yaml
   responses:
     200:
       description: The Trade's dependent Orders have been modified as requested.
@@ -30,30 +24,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  takeProfitOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  takeProfitOrderTransaction:
-                    $ref: ../../transactions/types/order/trade/TakeProfitOrderTransaction.yaml
-                  takeProfitOrderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  takeProfitOrderCreatedCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  stopLossOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  stopLossOrderTransaction:
-                    $ref: ../../transactions/types/order/trade/StopLossOrderTransaction.yaml
-                  stopLossOrderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  stopLossOrderCreatedCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  trailingStopLossOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  trailingStopLossOrderTransaction:
-                    $ref: ../../transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
+            $ref: ../responses/DependentTradeOrdersResponse.yaml
     400:
       description: The Trade's dependent Orders cannot be modified as requested.
       headers:
@@ -62,22 +33,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  takeProfitOrderCancelRejectTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
-                  takeProfitOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/trade/TakeProfitOrderRejectTransaction.yaml
-                  stopLossOrderCancelRejectTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
-                  stopLossOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/trade/StopLossOrderRejectTransaction.yaml
-                  trailingStopLossOrderCancelRejectTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelRejectTransaction.yaml
-                  trailingStopLossOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/trade/TrailingStopLossOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+            $ref: ../responses/DependentTradeOrdersBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

@@ -1,0 +1,6 @@
+allOf:
+  - type: object
+    properties:
+      clientConfigureRejectTransaction:
+        $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
+  - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml

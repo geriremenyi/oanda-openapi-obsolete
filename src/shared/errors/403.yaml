@@ -5,4 +5,6 @@ headers:
 content:
   application/json:
     schema:
-      $ref: ./helpers/4xxBody.yaml
+      $ref: ./helpers/Error403.yaml
+    example:
+      errorMessage: Insufficient authorization to perform request.

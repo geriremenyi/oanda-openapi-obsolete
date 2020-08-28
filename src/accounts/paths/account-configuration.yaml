@@ -1,6 +1,7 @@
 patch:
   summary: Configure Account
   description: Set the client-configurable portions of an Account.
+  operationId: configureAccount
   tags:
     - Account
   parameters:
@@ -11,15 +12,7 @@ patch:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            alias:
-              description: Client-defined alias (name) for the Account
-              type: string
-            marginRate:
-              description: Margin rate.
-              type: number
-              format: double
+          $ref: ../requests/AccountConfigurationRequest.yaml
   responses:
     200:
       description: The Account was configured successfully.
@@ -29,13 +22,7 @@ patch:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              clientConfigureTransaction:
-                $ref: ../../transactions/types/client-configure/ClientConfigureTransaction.yaml
-              lastTransactionID:
-                description: The ID of the last Transaction created for the Account.
-                type: integer
+            $ref: ../responses/AccountConfigurationResponse.yaml
     400:
       description: The configuration specification was invalid.
       headers:
@@ -44,12 +31,7 @@ patch:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  clientConfigureRejectTransaction:
-                    $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+            $ref: ../responses/AccountConfigurationBadRequestResponse.yaml
     403:
       description: The configuration operation was forbidden on the Account.
       headers:
@@ -58,12 +40,7 @@ patch:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  clientConfigureRejectTransaction:
-                    $ref: ../../transactions/types/client-configure/ClientConfigureRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/4xxTransactionError.yaml
+            $ref: ../responses/AccountConfigurationForbiddenResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
