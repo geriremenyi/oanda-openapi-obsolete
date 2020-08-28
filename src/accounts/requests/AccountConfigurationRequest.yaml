@@ -1,0 +1,9 @@
+type: object
+properties:
+  alias:
+    description: Client-defined alias (name) for the Account
+    type: string
+  marginRate:
+    description: Margin rate.
+    type: number
+    format: double

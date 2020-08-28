@@ -5,7 +5,7 @@ headers:
 content:
   application/json:
     schema:
-      $ref: ./helpers/Error4xxBody.yaml
+      $ref: ./helpers/Error400.yaml
     example:
       errorCode: STOP_LOSS_ON_FILL_PRICE_PRECISION_EXCEEDED
       errorMessage: Invalid value specified for 'precision'.

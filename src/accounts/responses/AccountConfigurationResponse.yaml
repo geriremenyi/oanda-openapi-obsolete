@@ -1,0 +1,7 @@
+type: object
+properties:
+  clientConfigureTransaction:
+    $ref: ../../transactions/types/client-configure/ClientConfigureTransaction.yaml
+  lastTransactionID:
+    description: The ID of the last Transaction created for the Account.
+    type: integer

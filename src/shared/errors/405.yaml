@@ -5,4 +5,4 @@ headers:
 content:
   application/json:
     schema:
-      $ref: ./helpers/Error4xxBody.yaml
+      $ref: ./helpers/Error405.yaml

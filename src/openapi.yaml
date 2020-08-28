@@ -105,9 +105,20 @@ components:
       $ref: ./accounts/types/AccountState.yaml
     AccountSummary:
       $ref: ./accounts/types/AccountSummary.yaml
-    # Account response bodies
-    AccountDetailsResponseBody:
-      $ref: ./accounts/responses/AccountDetailsResponseBody.yaml
+    # Account requests
+    AccountConfigurationRequest:
+      $ref: ./accounts/requests/AccountConfigurationRequest.yaml
+    # Account responses
+    AccountChangesResponse:
+      $ref: ./accounts/responses/AccountChangesResponse.yaml
+    AccountConfigurationResponse:
+      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
+    AccountConfigurationBadRequestResponse:
+      $ref: ./accounts/responses/AccountConfigurationBadRequestResponse.yaml
+    AccountConfigurationForbiddenResponse:
+      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
+    AccountDetailsResponse:
+      $ref: ./accounts/responses/AccountConfigurationForbiddenResponse.yaml
     # Instruments
     Candlestick:
       $ref: ./instruments/types/Candlestick.yaml
@@ -287,9 +298,21 @@ components:
       $ref: ./shared/helpers/Units.yaml
     # Error
     Error4xxBody:
-      $ref: ./shared/errors/helpers/Error4xxBody.yaml
+      $ref: ./shared/errors/helpers/Error4xx.yaml
     Error4xxTransaction:
       $ref: ./shared/errors/helpers/Error4xxTransaction.yaml
+    Error400:
+      $ref: ./shared/errors/helpers/Error400.yaml
+    Error401:
+      $ref: ./shared/errors/helpers/Error401.yaml
+    Error403:
+      $ref: ./shared/errors/helpers/Error403.yaml
+    Error404:
+      $ref: ./shared/errors/helpers/Error404.yaml
+    Error405:
+      $ref: ./shared/errors/helpers/Error405.yaml
+    Error416:
+      $ref: ./shared/errors/helpers/Error416.yaml
   parameters:
     AcceptDatetimeFormat:
       $ref: ./shared/parameters/AcceptDatetimeFormat.yaml
@@ -305,21 +328,6 @@ components:
       $ref: ./shared/parameters/TradeSpecifier.yaml
     TransactionID:
       $ref: ./shared/parameters/TransactionID.yaml
-  responses:
-    AccountDetailsResponse:
-      $ref: ./accounts/responses/AccountDetailsResponse.yaml
-    400:
-      $ref: ./shared/errors/400.yaml
-    401:
-      $ref: ./shared/errors/401.yaml
-    403:
-      $ref: ./shared/errors/403.yaml
-    404:
-      $ref: ./shared/errors/404.yaml
-    405:
-      $ref: ./shared/errors/405.yaml
-    416:
-      $ref: ./shared/errors/416.yaml
   headers:
     ContentEncoding:
       $ref: ./shared/headers/ContentEncoding.yaml
