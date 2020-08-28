@@ -1,0 +1,6 @@
+allOf:
+  - type: object
+    properties:
+      orderClientExtensionsModifyRejectTransaction:
+        $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
+  - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml

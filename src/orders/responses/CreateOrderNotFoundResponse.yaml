@@ -1,0 +1,6 @@
+allOf:
+  - type: object
+    properties:
+      orderRejectTransaction:
+        $ref: ../../transactions/types/shared/Transaction.yaml
+  - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml

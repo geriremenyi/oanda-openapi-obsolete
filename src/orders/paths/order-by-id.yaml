@@ -19,13 +19,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              order:
-                $ref: ../types/Order.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/OrderResponse.yaml
     401:
        $ref: ../../shared/errors/401.yaml
     404:
@@ -48,10 +42,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            order:
-              $ref: ../types/OrderRequest.yaml
+          $ref: ../requests/ReplaceOrderRequest.yaml
   responses:
     201:
       description: The Order was successfully cancelled and replaced
@@ -63,22 +54,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  orderCreateTransaction:
-                    $ref: ../../transactions/types/shared/Transaction.yaml
-                  orderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  orderReissueTransaction:
-                    $ref: ../../transactions/types/shared/Transaction.yaml
-                  orderReissueRejectTransaction:
-                    $ref: ../../transactions/types/shared/Transaction.yaml
-                  replacingOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/ReplaceOrderResponse.yaml
     400:
       description: The Order specification was invalid
       headers:
@@ -87,12 +63,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/shared/Transaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/ReplaceOrderBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -103,11 +74,6 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/shared/Transaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/ReplaceOrderNotFoundResponse.yaml
     405:
       $ref: ../../shared/errors/405.yaml

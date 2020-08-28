@@ -172,6 +172,38 @@ components:
       $ref: ./orders/types/TrailingStopLossDetails.yaml
     TrailingStopLossOrder:
       $ref: ./orders/types/TrailingStopLossOrder.yaml
+    # Order requests
+    CreateOrderRequest:
+      $ref: ./orders/requests/CreateOrderRequest.yaml
+    OrderExtensionsRequest:
+      $ref: ./orders/requests/OrderExtensionsRequest.yaml
+    ReplaceOrderRequest:
+      $ref: ./orders/requests/ReplaceOrderRequest.yaml
+    # Order responses
+    CancelOrderResponse:
+      $ref: ./orders/responses/CancelOrderResponse.yaml
+    CreateOrderBadRequestResponse:
+      $ref: ./orders/responses/CreateOrderBadRequestResponse.yaml
+    CreateOrderNotFoundResponse:
+      $ref: ./orders/responses/CreateOrderNotFoundResponse.yaml
+    CreateOrderResponse:
+      $ref: ./orders/responses/CreateOrderResponse.yaml
+    OrderExtensionsBadRequestResponse:
+      $ref: ./orders/responses/OrderExtensionsBadRequestResponse.yaml
+    OrderExtensionsNotFoundResponse:
+      $ref: ./orders/responses/OrderExtensionsNotFoundResponse.yaml
+    OrderExtensionsResponse:
+      $ref: ./orders/responses/OrderExtensionsResponse.yaml
+    OrderResponse:
+      $ref: ./orders/responses/OrderResponse.yaml
+    OrdersResponse:
+      $ref: ./orders/responses/OrdersResponse.yaml
+    ReplaceOrderBadRequestResponse:
+      $ref: ./orders/responses/ReplaceOrderBadRequestResponse.yaml
+    ReplaceOrderNotFoundResponse:
+      $ref: ./orders/responses/ReplaceOrderNotFoundResponse.yaml
+    ReplaceOrderResponse:
+      $ref: ./orders/responses/ReplaceOrderResponse.yaml
     # Positions
     CalculatedPositionState:
       $ref: ./positions/types/CalculatedPositionState.yaml

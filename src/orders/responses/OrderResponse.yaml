@@ -1,0 +1,7 @@
+type: object
+properties:
+  order:
+    $ref: ../types/Order.yaml
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account
+    type: integer

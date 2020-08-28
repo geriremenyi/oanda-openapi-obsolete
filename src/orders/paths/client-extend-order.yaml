@@ -14,12 +14,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            clientExtensions:
-              $ref: ../../shared/helpers/ClientExtensions.yaml
-            tradeClientExtensions:
-              $ref: ../../shared/helpers/ClientExtensions.yaml
+          $ref: ../requests/OrderExtensionsRequest.yaml
   responses:
     200:
       description: The Order's Client Extensions were successfully modified
@@ -29,12 +24,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderClientExtensionsModifyTransaction:
-                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
+            $ref: ../responses/OrderExtensionsResponse.yaml
     400:
       description: The Order Client Extensions specification was invalid
       headers:
@@ -43,12 +33,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/OrderExtensionsBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -59,11 +44,6 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  orderClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/order/client-extensions/OrderClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/OrderExtensionsNotFoundResponse.yaml
     405:
       $ref: ../../shared/errors/405.yaml
