@@ -134,6 +134,13 @@ components:
       $ref: ./instruments/types/InstrumentName.yaml
     InstrumentType:
       $ref: ./instruments/types/InstrumentType.yaml
+    # Instrument responses
+    CandlesResponse:
+      $ref: ./instruments/responses/CandlesResponse.yaml
+    InstrumentOrderBookResponse:
+      $ref: ./instruments/responses/InstrumentOrderBookResponse.yaml
+    InstrumentPositionBookResponse:
+      $ref: ./instruments/responses/InstrumentPositionBookResponse.yaml 
     # Orders
     DynamicOrderState:
       $ref: ./orders/types/DynamicOrderState.yaml

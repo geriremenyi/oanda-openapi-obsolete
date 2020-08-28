@@ -1,0 +1,11 @@
+type: object
+properties:
+  instrument:
+    $ref: ../types/InstrumentName.yaml
+  granularity:
+    $ref: ../types/CandlestickGranularity.yaml
+  candles:
+    description: The list of candlesticks that satisfy the request.
+    type: array
+    items:
+      $ref: '../types/Candlestick.yaml'
