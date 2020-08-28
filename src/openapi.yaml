@@ -246,6 +246,9 @@ components:
       $ref: ./pricing/types/UnitsAvailable.yaml
     UnitsAvailableDetails:
       $ref: ./pricing/types/UnitsAvailableDetails.yaml
+    # Pricing responses
+    PricingResponse:
+      $ref: ./pricing/responses/PricingResponse.yaml
     # Trades
     CalculatedTradeState:
       $ref: ./trades/types/CalculatedTradeState.yaml
