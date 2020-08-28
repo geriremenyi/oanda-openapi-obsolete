@@ -262,6 +262,36 @@ components:
       $ref: ./trades/types/TradeState.yaml
     TradeSummary:
       $ref: ./trades/types/TradeSummary.yaml
+    # Trade requests
+    CloseTradeRequest:
+      $ref: ./trades/requests/CloseTradeRequest.yaml
+    DependentTradeOrdersRequest:
+      $ref: ./trades/requests/DependentTradeOrdersRequest.yaml
+    TradeExtensionsRequest:
+      $ref: ./trades/requests/TradeExtensionsRequest.yaml
+    # Trade responses
+    CloseTradeBadRequestResponse:
+      $ref: ./trades/responses/CloseTradeBadRequestResponse.yaml
+    CloseTradeNotFoundResponse:
+      $ref: ./trades/responses/CloseTradeNotFoundResponse.yaml
+    CloseTradeResponse:
+      $ref: ./trades/responses/CloseTradeResponse.yaml
+    DependentTradeOrdersBadRequestResponse:
+      $ref: ./trades/responses/DependentTradeOrdersBadRequestResponse.yaml
+    DependentTradeOrdersResponse:
+      $ref: ./trades/responses/DependentTradeOrdersResponse.yaml
+    OpenTradeResponse:
+      $ref: ./trades/responses/OpenTradeResponse.yaml
+    TradeExtensionsBadRequestResponse:
+      $ref: ./trades/responses/TradeExtensionsBadRequestResponse.yaml
+    TradeExtensionsNotFoundResponse:
+      $ref: ./trades/responses/TradeExtensionsNotFoundResponse.yaml
+    TradeExtensionsResponse:
+      $ref: ./trades/responses/TradeExtensionsResponse.yaml
+    TradeResponse:
+      $ref: ./trades/responses/TradeResponse.yaml
+    TradesResponse:
+      $ref: ./trades/responses/TradesResponse.yaml
     # Transactions
     ClientConfigure:
       $ref: ./transactions/types/client-configure/ClientConfigure.yaml

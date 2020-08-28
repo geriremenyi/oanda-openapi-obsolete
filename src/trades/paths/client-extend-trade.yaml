@@ -14,10 +14,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            clientExtensions:
-              $ref: ../../shared/helpers/ClientExtensions.yaml
+          $ref: ../requests/TradeExtensionsRequest.yaml
   responses:
     200:
       description: The Trade's Client Extensions have been updated as requested.
@@ -27,12 +24,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  tradeClientExtensionsModifyTransaction:
-                    $ref: ../../transactions/types/trade/TradeClientExtensionsModifyTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml
+            $ref: ../responses/TradeExtensionsResponse.yaml
     400:
       description: The Trade's Client Extensions cannot be modified as requested.
       headers:
@@ -41,12 +33,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  tradeClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/trade/TradeClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/TradeExtensionsBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -57,11 +44,6 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  tradeClientExtensionsModifyRejectTransaction:
-                    $ref: ../../transactions/types/trade/TradeClientExtensionsModifyRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml     
+            $ref: ../responses/TradeExtensionsNotFoundResponse.yaml
     405:
       $ref: ../../shared/errors/405.yaml

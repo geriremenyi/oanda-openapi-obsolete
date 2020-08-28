@@ -1,0 +1,10 @@
+allOf:
+  - type: object
+    properties:
+      orderCreateTransaction:
+        $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
+      orderFillTransaction:
+        $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
+      orderCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+  - $ref: ../../transactions/types/shared/RelatedTransactions.yaml

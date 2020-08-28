@@ -1,0 +1,24 @@
+allOf:
+  - type: object
+    properties:
+      takeProfitOrderCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+      takeProfitOrderTransaction:
+        $ref: ../../transactions/types/order/trade/TakeProfitOrderTransaction.yaml
+      takeProfitOrderFillTransaction:
+        $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
+      takeProfitOrderCreatedCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+      stopLossOrderCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+      stopLossOrderTransaction:
+        $ref: ../../transactions/types/order/trade/StopLossOrderTransaction.yaml
+      stopLossOrderFillTransaction:
+        $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
+      stopLossOrderCreatedCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+      trailingStopLossOrderCancelTransaction:
+        $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
+      trailingStopLossOrderTransaction:
+        $ref: ../../transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
+  - $ref: ../../transactions/types/shared/RelatedTransactions.yaml

@@ -1,0 +1,4 @@
+type: object
+properties:
+  units:
+    $ref: ../../shared/helpers/Units.yaml
