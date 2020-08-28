@@ -215,6 +215,22 @@ components:
       $ref: ./positions/types/PositionBookBucket.yaml
     PositionSide:
       $ref: ./positions/types/PositionSide.yaml
+    # Position requests
+    ClosePositionRequest:
+      $ref: ./positions/requests/ClosePositionRequest.yaml
+    # Position responses
+    ClosePositionBadRequestResponse:
+      $ref: ./positions/responses/ClosePositionBadRequestResponse.yaml
+    ClosePositionNotFoundResponse:
+      $ref: ./positions/responses/ClosePositionNotFoundResponse.yaml
+    ClosePositionResponse:
+      $ref: ./positions/responses/ClosePositionResponse.yaml
+    InstrumentPositionResponse:
+      $ref: ./positions/responses/InstrumentPositionResponse.yaml
+    OpenPositionsResponse:
+      $ref: ./positions/responses/OpenPositionsResponse.yaml
+    PositionsResponse:
+      $ref: ./positions/responses/PositionsResponse.yaml
     # Pricing
     ClientPrice:
       $ref: ./pricing/types/ClientPrice.yaml

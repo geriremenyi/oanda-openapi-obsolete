@@ -14,16 +14,7 @@ put:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            longUnits:
-              $ref: ../../shared/helpers/NonableUnits.yaml
-            longClientExtensions:
-              $ref: ../../shared/helpers/ClientExtensions.yaml
-            shortUnits:
-              $ref: ../../shared/helpers/NonableUnits.yaml
-            shortClientExtensions:
-              $ref: ../../shared/helpers/ClientExtensions.yaml
+          $ref: ../requests/ClosePositionRequest.yaml
   responses:
     200:
       description: The Position closeout request has been successfully processed.
@@ -35,22 +26,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  longOrderCreateTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
-                  longOrderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  longOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-                  shortOrderCreateTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderTransaction.yaml
-                  shortOrderFillTransaction:
-                    $ref: ../../transactions/types/order/fill/OrderFillTransaction.yaml
-                  shortOrderCancelTransaction:
-                    $ref: ../../transactions/types/order/cancel/OrderCancelTransaction.yaml
-              - $ref: ../../transactions/types/shared/RelatedTransactions.yaml          
+            $ref: ../responses/ClosePositionResponse.yaml
     400:
       description: The Parameters provided that describe the Position closeout are invalid.
       headers:
@@ -59,15 +35,7 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  longOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-                  shortOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
-                
+            $ref: ../responses/ClosePositionBadRequestResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:
@@ -78,13 +46,6 @@ put:
       content:
         application/json:
           schema:
-            allOf:
-              - type: object
-                properties:
-                  longOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-                  shortOrderRejectTransaction:
-                    $ref: ../../transactions/types/order/market/MarketOrderRejectTransaction.yaml
-              - $ref: ../../shared/errors/helpers/Error4xxTransaction.yaml
+            $ref: ../responses/ClosePositionNotFoundResponse.yaml
     405:
       $ref: ../../shared/errors/405.yaml

@@ -1,0 +1,10 @@
+type: object
+properties:
+  positions:
+    description: The list of Account Positions.
+    type: array
+    items:
+      $ref: ../types/Position.yaml
+  lastTransactionID:
+    description: he ID of the most recent Transaction created for the Account
+    type: integer
