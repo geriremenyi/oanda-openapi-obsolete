@@ -116,9 +116,9 @@ components:
     AccountConfigurationBadRequestResponse:
       $ref: ./accounts/responses/AccountConfigurationBadRequestResponse.yaml
     AccountConfigurationForbiddenResponse:
-      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
-    AccountDetailsResponse:
       $ref: ./accounts/responses/AccountConfigurationForbiddenResponse.yaml
+    AccountResponse:
+      $ref: ./accounts/responses/AccountResponse.yaml
     # Instruments
     Candlestick:
       $ref: ./instruments/types/Candlestick.yaml
