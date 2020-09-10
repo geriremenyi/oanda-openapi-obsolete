@@ -339,18 +339,6 @@ components:
       $ref: ./transactions/types/order/market/MarketOrderTimeInForce.yaml
     MarketOrderTransaction:
       $ref: ./transactions/types/order/market/MarketOrderTransaction.yaml
-    RejectTransaction:
-      $ref: ./transactions/types/shared/RejectTransaction.yaml
-    RelatedTransaction:
-      $ref: ./transactions/types/shared/RelatedTransactions.yaml
-    Transaction:
-      $ref: ./transactions/types/shared/Transaction.yaml
-    TransactionHeartbeat:
-      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
-    TransactionRejectReason:
-      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
-    TransactionType:
-      $ref: ./transactions/types/shared/TransactionType.yaml
     StopLossOrderRejectTransaction:
       $ref: ./transactions/types/order/trade/StopLossOrderRejectTransaction.yaml
     StopLossOrderTransaction:
@@ -371,6 +359,24 @@ components:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransaction.yaml
     TrailingStopLossOrderTransactionBase:
       $ref: ./transactions/types/order/trade/TrailingStopLossOrderTransactionBase.yaml
+    RejectTransaction:
+      $ref: ./transactions/types/shared/RejectTransaction.yaml
+    RelatedTransaction:
+      $ref: ./transactions/types/shared/RelatedTransactions.yaml
+    Transaction:
+      $ref: ./transactions/types/shared/Transaction.yaml
+    TransactionHeartbeat:
+      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
+    TransactionRejectReason:
+      $ref: ./transactions/types/shared/TransactionHeartbeat.yaml
+    TransactionType:
+      $ref: ./transactions/types/shared/TransactionType.yaml
+    TradeClientExtensionsModify:
+      $ref: ./transactions/types/trade/TradeClientExtensionsModify.yaml
+    TradeClientExtensionsModifyRejectTransaction:
+      $ref: ./transactions/types/trade/TradeClientExtensionsModifyRejectTransaction.yaml
+    TradeClientExtensionsModifyTransaction:
+      $ref: ./transactions/types/trade/TradeClientExtensionsModifyTransaction.yaml
     # Transaction responses
     TransactionIdRangeResponse:
       $ref: ./transactions/responses/TransactionIdRangeResponse.yaml
