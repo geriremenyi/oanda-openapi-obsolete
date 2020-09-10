@@ -1,16 +1,16 @@
-# OpenAPI Specification for OANDA's v20 REST API
+# OpenAPI Specification for OANDA's REST API v20
 
-This repository is a more organized version of the [generated OANDA v20 REST API's OpenAPI definition](https://github.com/oanda/v20-openapi). The definition is rewritten to leverage OpenAPI's newest syntax. Also the definitions are separated into different files and redundancy is removed.
+This repository is a more organized version of the [generated OANDA v20 REST API's OpenAPI definition](https://github.com/oanda/v20-openapi). The definition is rewritten to leverage OpenAPI's newest (3.x.x) syntax. Also the definitions are separated into different files and redundancy is removed.
 
 ## Demo
 
-The definition is available in SwaggerUI under this repo's github page. Go ahead and try OANDA's API out:
+The definition is published using SwaggerUI hosted on this repo's github page:
 
 [https://geriremenyi.github.io/oanda-openapi/](https://geriremenyi.github.io/oanda-openapi/)
 
 ## Code generation
 
-The main purpose of this repository to make developers' life easier and provide a redundant-free client generation possibility for OANDA's V20 REST API. Using the [Swagger Codegen](https://swagger.io/tools/swagger-codegen/) tool, a client library can be generated to all supported languages hassle-free.
+The main purpose of this repository to make developers' life easier and provide a redundant-free client generation possibility for OANDA's V20 REST API. Using the [OpenAPI Generator](https://openapi-generator.tech) tool, a client library can be generated to all supported languages hassle-free.
 
 ## Contributing
 
