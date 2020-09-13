@@ -16,16 +16,7 @@ get:
       content:
         application/json:  
           schema:
-            type: object
-            properties:
-              orders:
-                description: The list of pending Order details
-                type: array
-                items:
-                  $ref: ../types/Order.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account
-                type: integer
+            $ref: ../responses/PendingOrdersResponse.yaml
     401:
       $ref: ../../shared/errors/401.yaml
     404:

@@ -1,0 +1,10 @@
+type: object
+properties:
+  instruments:
+    description: The requested list of instruments.
+    type: array
+    items:
+      $ref: ../../instruments/types/Instrument.yaml
+  lastTransactionID:
+    description: The ID of the most recent Transaction created for the Account.
+    type: integer
