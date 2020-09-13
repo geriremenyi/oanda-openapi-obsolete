@@ -4,3 +4,7 @@ enum:
   - OPEN
   - CLOSED
   - CLOSE_WHEN_TRADEABLE
+x-enum-varnames:
+  - OPEN
+  - CLOSED
+  - CLOSE_WHEN_TRADEABLE

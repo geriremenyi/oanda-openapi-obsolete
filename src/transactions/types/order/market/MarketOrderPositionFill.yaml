@@ -5,3 +5,8 @@ enum:
   - REDUCE_FIRST
   - REDUCE_ONLY
   - DEFAULT
+x-enum-varnames:
+  - OPEN_ONLY
+  - REDUCE_FIRST
+  - REDUCE_ONLY
+  - DEFAULT

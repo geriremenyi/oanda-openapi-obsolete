@@ -4,3 +4,7 @@ enum:
   - CLIENT_ORDER
   - REPLACEMENT
   - ON_FILL
+x-enum-varnames:
+  - CLIENT_ORDER
+  - REPLACEMENT
+  - ON_FILL
