@@ -1,6 +1,6 @@
 {
     "packageName": "GeriRemenyi.Oanda.V20.Client",
-    "packageVersion": "0.0.1",
+    "packageVersion": "0.0.2",
     "targetFramework": "netcoreapp3.1",
     "packageAuthors": "geriremenyi",
     "packageCompany": "geriremenyi.com",
