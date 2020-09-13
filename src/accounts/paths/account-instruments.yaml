@@ -24,16 +24,7 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              instruments:
-                description: The requested list of instruments.
-                type: array
-                items:
-                  $ref: ../../instruments/types/Instrument.yaml
-              lastTransactionID:
-                description: The ID of the most recent Transaction created for the Account.
-                type: integer
+            $ref: ../responses/AccountInstrumentsResponse.yaml
     400:
       $ref: ../../shared/errors/400.yaml
     401:

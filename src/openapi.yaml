@@ -111,14 +111,20 @@ components:
     # Account responses
     AccountChangesResponse:
       $ref: ./accounts/responses/AccountChangesResponse.yaml
-    AccountConfigurationResponse:
-      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
     AccountConfigurationBadRequestResponse:
       $ref: ./accounts/responses/AccountConfigurationBadRequestResponse.yaml
     AccountConfigurationForbiddenResponse:
       $ref: ./accounts/responses/AccountConfigurationForbiddenResponse.yaml
+    AccountConfigurationResponse:
+      $ref: ./accounts/responses/AccountConfigurationResponse.yaml
+    AccountInstrumentsResponse:
+      $ref: ./accounts/responses/AccountInstrumentsResponse.yaml
     AccountResponse:
       $ref: ./accounts/responses/AccountResponse.yaml
+    AccountsResponse:
+      $ref: ./accounts/responses/AccountsResponse.yaml
+    AccountSummaryResponse:
+      $ref: ./accounts/responses/AccountSummaryResponse.yaml
     # Instruments
     Candlestick:
       $ref: ./instruments/types/Candlestick.yaml
@@ -198,6 +204,8 @@ components:
       $ref: ./orders/responses/OrderResponse.yaml
     OrdersResponse:
       $ref: ./orders/responses/OrdersResponse.yaml
+    PendingOrdersResponse:
+      $ref: ./orders/responses/PendingOrdersResponse.yaml
     ReplaceOrderBadRequestResponse:
       $ref: ./orders/responses/ReplaceOrderBadRequestResponse.yaml
     ReplaceOrderNotFoundResponse:
