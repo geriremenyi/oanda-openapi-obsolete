@@ -1,6 +1,6 @@
 {
   "name": "oanda-openapi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "OANDA REST API V20 openapi definition",
   "repository": "git@github.com:geriremenyi/oanda-openapi.git",
   "author": "Gergely Reményi <geri@geriremenyi.com>",
