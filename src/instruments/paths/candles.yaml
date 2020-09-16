@@ -16,7 +16,7 @@ get:
       description: The granularity of the candlesticks to fetch
       in: query
       schema:
-        type: string
+        $ref: ../types/CandlestickGranularity.yaml
     - name: count
       description: The number of candlesticks to return in the reponse. Count should not be specified if both the start and end parameters are provided, as the time range combined with the graularity will determine the number of candlesticks to return.
       in: query
