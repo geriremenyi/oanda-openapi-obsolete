@@ -7,7 +7,7 @@
 ## Link 
 [\[Bug\] Annoying Bug](https://link-to-the-issue.com)
 
-# Technical description
+# Problem description
 Briefly describe the technical requirements of the feature implementetion in case the PR is introducing a feature, or describe the root cause and analysis of the issue in case the PR is fixing a bug.
 
 # Solution description
