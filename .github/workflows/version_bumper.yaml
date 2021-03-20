@@ -14,8 +14,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v1
-          with:
-            node-version: 12
+        with:
+          node-version: 12
       - name: Calculate src folder hash
         id: calculate_hash
         run: sudo ./scripts/calculate_hash.sh "src"
@@ -41,8 +41,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v1
-          with:
-            node-version: 12
+        with:
+          node-version: 12
       - name: Get current version
         id: package-version
         run: sudo ./scripts/get_package_variable.sh "version"
@@ -58,8 +58,8 @@ jobs:
           ref: master
       - name: Setup node
         uses: actions/setup-node@v1
-          with:
-            node-version: 12
+        with:
+          node-version: 12
       - name: Get master version
         id: package-version
         run: sudo ./scripts/get_package_variable.sh "version"
