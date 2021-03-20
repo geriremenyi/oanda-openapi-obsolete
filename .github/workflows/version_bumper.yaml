@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Test
+        run: sudo ./scripts/bump_version.sh
       - name: Calculate src folder hash
         id: calculate_hash
         run: sudo ./scripts/calculate_hash.sh "src"
