@@ -81,4 +81,4 @@ jobs:
         - name: Bump patch version
           run: sudo ./scripts/bump_version.sh "patch"
         - name: Push updated version
-          uses: sudo ./scripts/git_push.sh "Auto patch version bump"
+          run: sudo ./scripts/git_push.sh "Auto patch version bump"
