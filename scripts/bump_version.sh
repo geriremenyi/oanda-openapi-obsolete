@@ -10,7 +10,7 @@ then
         echo "[WARNING] Version type was not given. Setting version type to 'patch'"
         version_type="patch"
     else
-        version_type = "$BUMP_VERSION_TYPE"
+        version_type="$BUMP_VERSION_TYPE"
     fi
 fi
 

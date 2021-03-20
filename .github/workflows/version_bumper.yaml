@@ -4,46 +4,67 @@ on:
     branches:
       - master
 jobs:
-  current_version:
-    name: Checkout latest commit and get version
+  check_src_changes:
+    name: Check changes in src folder
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.package-version.outputs.current-version }}
+      is_src_changed: {{ steps.is_src_changed.outputs.changed }}
     steps:
       - name: Checkout current
-        uses: actions/checkout@v2   
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+          with:
+            node-version: 12
+      - name: Calculate src folder hash
+        id: calculate_hash
+        run: sudo ./scripts/calculate_hash.sh "src"
+      - name: Get stored hash
+        id: get_stored_hash
+        run: sudo ./scripts/get_package_variable.sh "hash"
+      - name: Calculate if update needed
+        id: is_src_changed
+        run: |
+          is_changed=$([ ${{ steps.calculate_hash.outputs.hash }} = ${{ steps.get_stored_hash.outputs.hash }} ] && echo true || echo false)
+          [ "$is_changed" = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
+          echo "::set-output name=changed::is_changed"
+  current_version:
+    name: Collect current version
+    runs-on: ubuntu-latest
+    needs:
+      - check_src_changes
+    outputs:
+      version: ${{ steps.package-version.outputs.version }}
+    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
+    steps:
+      - name: Checkout current
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+          with:
+            node-version: 12
       - name: Get current version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@master    
+        run: sudo ./scripts/get_package_variable.sh "version"
   master_version:
-    name: Checkout master branch and get version
+    name: Collect master version
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.package-version.outputs.current-version }}
+      version: ${{ steps.package-version.outputs.version }}
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
         with:
           ref: master
+      - name: Setup node
+        uses: actions/setup-node@v1
+          with:
+            node-version: 12
       - name: Get master version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-  check_version:
-      name: Check version if needed
-      runs-on: ubuntu-latest
-      needs:
-        - current_version
-        - master_version
-      if: needs.current_version.outputs.version != needs.master_version.outputs.version
-      steps:
-        - name: Checkout current
-          uses: actions/checkout@v2
-        - name: Check version
-          run: |
-            echo "Current master version is ${{ needs.master_version.outputs.version }} while the current PR version is ${{ needs.current_version.outputs.version }}"
-            [ ${{ needs.master_version.outputs.version }} < ${{ needs.current_version.outputs.version }} ] && exit 1 || exit 0
+        run: sudo ./scripts/get_package_variable.sh "version"
   bump_version:
-      name: Bump version if needed
+      name: Auto bump version if needed
       runs-on: ubuntu-latest
       env:
         GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
@@ -56,9 +77,6 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
         - name: Bump patch version
-          run: ./scripts/bump_version.sh "patch"
+          run: sudo ./scripts/bump_version.sh "patch"
         - name: Push updated version
-          uses: ./scripts/git_push.sh "Auto patch version bump"
-        
-
-
+          uses: sudo ./scripts/git_push.sh "Auto patch version bump"

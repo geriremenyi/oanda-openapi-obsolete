@@ -15,5 +15,6 @@
   "devDependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
     "@openapitools/openapi-generator-cli": "^1.0.15-4.3.1"
-  }
+  },
+  "hash": "ThisIsGonnaBeAHash"
 }

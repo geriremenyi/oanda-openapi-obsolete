@@ -11,7 +11,7 @@ if [ "$git_commit_message" = "" ]; then
         echo "[ERROR] No commit message given. Please pass a commit message to the script as the first parameter."
         exit 1
     else
-        git_commit_message = "$GIT_PUSH_COMMIT_MESSAGE"
+        git_commit_message="$GIT_PUSH_COMMIT_MESSAGE"
     fi
 fi
 
@@ -20,7 +20,7 @@ if [ "$git_author_email" = "" ]; then
         echo "[ERROR] No author email given. Please pass an author email address to the script as the second parameter."
         exit 1
     else
-        git_author_email = "$GIT_PUSH_AUTHOR_EMAIL"
+        git_author_email="$GIT_PUSH_AUTHOR_EMAIL"
     fi
 fi
 
@@ -29,7 +29,7 @@ if [ "$git_author_name" = "" ]; then
         echo "[ERROR] No author name given. Please pass an author name to the script as the third parameter."
         exit 1
     else
-        git_author_name = "$GIT_PUSH_AUTHOR_NAME"
+        git_author_name="$GIT_PUSH_AUTHOR_NAME"
     fi
 fi
 
