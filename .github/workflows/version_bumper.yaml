@@ -8,7 +8,7 @@ jobs:
     name: Check changes in src folder
     runs-on: ubuntu-latest
     outputs:
-      is_src_changed: {{ steps.is_src_changed.outputs.changed }}
+      is_src_changed: ${{ steps.is_src_changed.outputs.changed }}
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
@@ -49,6 +49,8 @@ jobs:
   master_version:
     name: Collect master version
     runs-on: ubuntu-latest
+    needs:
+      - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
     steps:
