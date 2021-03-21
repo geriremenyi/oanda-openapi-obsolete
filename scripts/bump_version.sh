@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Parameters to named parameters
-type=`[ ! -z $1 ] && echo "$1" || [ ! -z "$BUMP_VERSION_TYPE" ] && echo "$BUMP_VERSION_TYPE" || echo "patch"`
+type=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$BUMP_VERSION_TYPE" ] && echo "$BUMP_VERSION_TYPE" || echo "patch"`
 # Validate version type
 if [ "$type" != "patch" ] && [ "$type" != "minor" ] && [ "$type" != "major" ]; then
     echo "::error file=bump_version.sh::The version type should be either 'patch', 'minor' or 'major'."

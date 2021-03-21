@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Parameter to named parameter
-folder_or_file=`[ ! -z $1 ] && echo "$1" || [ ! -z "$CALCULATE_HASH_FOLDER_OR_FILE" ] && echo "$CALCULATE_HASH_FOLDER_OR_FILE" || echo ""`
+folder_or_file=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$CALCULATE_HASH_FOLDER_OR_FILE" ] && echo "$CALCULATE_HASH_FOLDER_OR_FILE" || echo ""`
 # Check that all parameters are given
 if [ -z "$folder_or_file" ]; then
     echo "::error file=calculate_hash.sh::\

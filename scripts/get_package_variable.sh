@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Parameter to named parameter
-name=`[ ! -z $1 ] && echo "$1" || [ ! -z "$GET_PACKAGE_VARIABLE_NAME" ] && echo "$GET_PACKAGE_VARIABLE_NAME" || echo ""`
+name=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GET_PACKAGE_VARIABLE_NAME" ] && echo "$GET_PACKAGE_VARIABLE_NAME" || echo ""`
 # Check that all parameters are given
 if [ -z $name ]; then
     echo "::error file=get_package_variable.sh::\
