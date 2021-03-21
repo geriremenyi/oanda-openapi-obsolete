@@ -46,6 +46,8 @@ echo "Commiting the change with the commit message: '$git_commit_message'."
 git commit -m "$git_commit_message"
 
 # Push all changes
-git_branch=`git branch --show-current`
+git_current_branch=`git branch --show-current`
+git_current_head=`git rev-parse --abbrev-ref HEAD`
+git_branch=`[ ! -z "$git_current_branch" ] && echo "$git_current_branch" || [ ! -z "$GITHUB_BASE_REF" ] && echo "$GITHUB_BASE_REF" || echo "$git_current_head"`
 echo "Pushing all changes to the '$git_branch' branch."
 git push origin "$git_branch"
