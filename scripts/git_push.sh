@@ -33,9 +33,9 @@ fi
 
 # Set author
 echo "Setting the git author email to '***'."
-#git config --global user.email "$git_author_email"
+git config --global user.email "$git_author_email"
 echo "Setting the git author name to '***'."
-#git config --global user.name "$git_author_name"
+git config --global user.name "$git_author_name"
 
 # Add all changes
 echo "Adding all changes from the root."
