@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/sh
 
 # This is needed because of the bug 
 # https://github.com/OpenAPITools/openapi-generator/issues/5416 in the openapi-generator

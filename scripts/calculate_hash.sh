@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/sh
 
 # Parameter to named parameter
 folder_or_file=`[ ! -z $1 ] && echo "$1" || [ ! -z "$CALCULATE_HASH_FOLDER_OR_FILE" ] && echo "$CALCULATE_HASH_FOLDER_OR_FILE" || echo ""`

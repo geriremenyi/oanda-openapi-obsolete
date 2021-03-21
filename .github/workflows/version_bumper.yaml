@@ -16,14 +16,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Test
-        run: sudo ./scripts/bump_version.sh
       - name: Calculate src folder hash
         id: calculate_hash
-        run: sudo ./scripts/calculate_hash.sh "src"
+        run: sudo sh ./scripts/calculate_hash.sh "src"
       - name: Get stored hash
         id: get_stored_hash
-        run: sudo ./scripts/get_package_variable.sh "hash"
+        run: sudo sh ./scripts/get_package_variable.sh "hash"
       - name: Calculate if update needed
         id: is_src_changed
         run: |
@@ -47,7 +45,7 @@ jobs:
           node-version: 12
       - name: Get current version
         id: package-version
-        run: sudo ./scripts/get_package_variable.sh "version"
+        run: sudo sh ./scripts/get_package_variable.sh "version"
   master_version:
     name: Collect master version
     runs-on: ubuntu-latest
@@ -66,7 +64,7 @@ jobs:
           node-version: 12
       - name: Get master version
         id: package-version
-        run: sudo ./scripts/get_package_variable.sh "version"
+        run: sudo sh ./scripts/get_package_variable.sh "version"
   bump_version:
       name: Auto bump version if needed
       runs-on: ubuntu-latest
@@ -81,6 +79,6 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
         - name: Bump patch version
-          run: sudo ./scripts/bump_version.sh "patch"
+          run: sudo sh ./scripts/bump_version.sh "patch"
         - name: Push updated version
-          run: sudo ./scripts/git_push.sh "Auto patch version bump"
+          run: sudo sh ./scripts/git_push.sh "Auto patch version bump"

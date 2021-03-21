@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/sh
 
 # Parameters to named parameters
 type=`[ ! -z $1 ] && echo "$1" || [ ! -z "$BUMP_VERSION_TYPE" ] && echo "$BUMP_VERSION_TYPE" || echo "patch"`
