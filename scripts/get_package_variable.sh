@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash 
 
 # Parameter to named parameter
 name=`[ ! -z $1 ] && echo "$1" || [ ! -z "$GET_PACKAGE_VARIABLE_NAME" ] && echo "$GET_PACKAGE_VARIABLE_NAME" || echo ""`

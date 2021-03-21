@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash 
 
 # Parameter to named parameter
 git_commit_message=`[ ! -z $1 ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
