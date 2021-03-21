@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Parameter to named parameter
-git_commit_message=`[ ! -z $1 ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
-git_author_email=`[ ! -z $2 ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_EMAIL" ] && echo "$GIT_PUSH_AUTHOR_EMAIL" || echo ""`
-git_author_name=`[ ! -z $2 ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_NAME" ] && echo "$GIT_PUSH_AUTHOR_NAME" || echo ""`
+git_commit_message=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
+git_author_email=`[ ! -z "$2" ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_EMAIL" ] && echo "$GIT_PUSH_AUTHOR_EMAIL" || echo ""`
+git_author_name=`[ ! -z "$3" ] && echo "$3" || [ ! -z "$GIT_PUSH_AUTHOR_NAME" ] && echo "$GIT_PUSH_AUTHOR_NAME" || echo ""`
 # Check that all parameters are given
 if [ -z "$git_commit_message" ]; then
     echo "::error file=git_push.sh::The commit message is not given. Either pass the commit message as the first parameter to the script or set the GIT_PUSH_COMMIT_MESSAGE environment variable."
