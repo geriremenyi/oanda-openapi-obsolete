@@ -80,6 +80,6 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
         - name: Bump patch version
-          run: sudo ./scripts/bump_version.sh "patch"
+          run: ./scripts/bump_version.sh "patch"
         - name: Push updated version
           run: sudo ./scripts/git_push.sh "Auto patch version bump"
