@@ -1,8 +1,5 @@
 #!/bin/sh
 
-echo "$GIT_PUSH_TEST"
-echo "$GITHUB_REPOSITORY"
-
 # Parameter to named parameter
 git_commit_message=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
 git_author_email=`[ ! -z "$2" ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_EMAIL" ] && echo "$GIT_PUSH_AUTHOR_EMAIL" || echo ""`
@@ -49,6 +46,6 @@ echo "Commiting the change with the commit message: '$git_commit_message'."
 git commit -m "$git_commit_message"
 
 # Push all changes
-git_branch=$(git rev-parse --abbrev-ref HEAD)
+git_branch=`git branch --show-current`
 echo "Pushing all changes to the '$git_branch' branch."
 git push origin "$git_branch"
