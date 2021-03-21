@@ -71,6 +71,7 @@ jobs:
       env:
         GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
         GIT_PUSH_AUTHOR_NAME: ${{ secrets.BOT_USER_NAME }}
+        GIT_PUSH_TEST: "This is a test message"
       needs:
         - current_version
         - master_version

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "$GIT_PUSH_TEST"
+
 # Parameter to named parameter
 git_commit_message=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
 git_author_email=`[ ! -z "$2" ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_EMAIL" ] && echo "$GIT_PUSH_AUTHOR_EMAIL" || echo ""`
