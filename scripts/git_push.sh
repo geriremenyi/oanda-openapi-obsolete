@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "$GIT_PUSH_TEST"
+echo "$GITHUB_REPOSITORY"
 
 # Parameter to named parameter
 git_commit_message=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
