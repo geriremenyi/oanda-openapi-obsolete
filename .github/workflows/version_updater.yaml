@@ -37,6 +37,8 @@ jobs:
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
+      - name: Debug
+        run: echo "This is the value of the is changed - ${{ needs.check_src_changes.outputs.is_src_changed }}"
       - name: Get current version
         id: package-version
         run: ./.github/scripts/get_package_variable.sh "version"
