@@ -75,7 +75,7 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
           with:
-            ref: ${GITHUB_HEAD_REF}
+            ref: ${{ github.event.pull_request.head.sha }}
         - name: Update hash
           run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.new_hash }}
         - name: Bump patch version if needed
