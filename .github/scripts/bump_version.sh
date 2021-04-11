@@ -8,6 +8,9 @@ if [ "$type" != "patch" ] && [ "$type" != "minor" ] && [ "$type" != "major" ]; t
     exit 1
 fi
 
+# Log parameters
+echo "Will update node '$type' version..."
+
 # Bump version in package.json
 new_version=$(npm version "$type" --no-git-tag-version | sed "s/[^0-9\.]*//g")
 echo "Node package version was updated to '$new_version'"
