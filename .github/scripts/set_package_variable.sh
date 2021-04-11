@@ -21,7 +21,7 @@ echo "Setting '$name' variable to '$value' in the '$directory/package.json'..."
 if [ ! -d "$directory" ]; then
     echo "::error file=set_package_variable.sh::The given '$directory' directory doesn't exist."
     exit 1
-elif [ ! -f "$directory/package.json"]
+elif [ ! -f "$directory/package.json"]; then
     echo "::error file=set_package_variable.sh::The given '$directory' directory doesn't contain a package.json file at it's root."
     exit 1
 fi
