@@ -25,7 +25,7 @@ jobs:
         run: |
           is_changed=`[ "${{ steps.get_stored_hash.outputs.srcHash }}" = "${{ steps.calculate_hash.outputs.hash }}" ] && echo false || echo true`
           [ "$is_changed" = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
-          echo "::set-output name=changed::is_changed"
+          echo "::set-output name=changed::$is_changed"
   get_current_version:
     name: Get current version
     runs-on: ubuntu-latest
