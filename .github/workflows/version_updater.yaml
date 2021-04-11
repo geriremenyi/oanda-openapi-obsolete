@@ -77,7 +77,7 @@ jobs:
           with:
             ref: ${{ github.event.pull_request.head.sha }}
         - name: Update hash
-          run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.new_hash }}
+          run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.outputs.new_hash }}
         - name: Bump patch version if needed
           if: ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }}
           run: ./.github/scripts/bump_version.sh "patch"

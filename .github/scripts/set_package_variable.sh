@@ -2,7 +2,7 @@
 
 # Parameter to named parameter
 name=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$SET_PACKAGE_VARIABLE_NAME" ] && echo "$SET_PACKAGE_VARIABLE_NAME" || echo ""`
-value=`[ ! -z "$1" ] && echo "$2" || [ ! -z "$SET_PACKAGE_VARIABLE_VALUE" ] && echo "$SET_PACKAGE_VARIABLE_VALUE" || echo ""`
+value=`[ ! -z "$2" ] && echo "$2" || [ ! -z "$SET_PACKAGE_VARIABLE_VALUE" ] && echo "$SET_PACKAGE_VARIABLE_VALUE" || echo ""`
 directory=`[ ! -z "$3" ] && echo "$3" || [ ! -z "$SET_PACKAGE_VARIABLE_DIRECTORY" ] && echo "$SET_PACKAGE_VARIABLE_DIRECTORY" || echo $(pwd)`
 # Check that all parameters are given
 if [ -z $name ]; then
@@ -10,7 +10,7 @@ if [ -z $name ]; then
     exit 1
 fi
 if [ -z $value ]; then
-    echo "::error file=set_package_variable.sh::The variable value to set is not given. Either pass the variable value as the first parameter to the script or set the SET_PACKAGE_VARIABLE_NAME environment variable."
+    echo "::error file=set_package_variable.sh::The variable value to set is not given. Either pass the variable value as the first parameter to the script or set the SET_PACKAGE_VARIABLE_VALUE environment variable."
     exit 1
 fi
 
