@@ -75,7 +75,7 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
         - name: Prepare for push
-          run: git checkout "${GITHUB_REF:11}" # PRs are in detached head mode so switch to the PR branch
+          run: git checkout "${GITHUB_HEAD_REF:11}" # PRs are in detached head mode so switch to the PR branch
         - name: Update hash
           run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.new_hash }}
         - name: Bump patch version if needed
