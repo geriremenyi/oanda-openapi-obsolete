@@ -23,8 +23,8 @@ jobs:
       - name: Check src changes
         id: is_src_changed
         run: |
-          is_changed=`[ "${{ steps.get_stored_hash.outputs.srcHash }}" = "${{ steps.calculate_hash.outputs.hash }}" ] && echo 0 || echo 1`
-          [ "$is_changed" = 1 ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
+          is_changed=`[ "${{ steps.get_stored_hash.outputs.srcHash }}" = "${{ steps.calculate_hash.outputs.hash }}" ] && echo false || echo true`
+          [ "$is_changed" = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
           echo "::set-output name=changed::is_changed"
   get_current_version:
     name: Get current version
@@ -33,7 +33,7 @@ jobs:
       - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
-    if: ${{ needs.check_src_changes.outputs.is_src_changed == 1 }}
+    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
       - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
-    if: ${{ needs.check_src_changes.outputs.is_src_changed == 1 }}
+    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
@@ -66,7 +66,7 @@ jobs:
         - check_src_changes
         - get_current_version
         - get_master_version
-      if: ${{ always() && needs.check_src_changes.outputs.is_src_changed == 1 }}
+      if: ${{ always() && needs.check_src_changes.outputs.is_src_changed }}
       steps:
         - name: Setup node 12
           uses: actions/setup-node@v1
@@ -82,4 +82,4 @@ jobs:
           if: ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }}
           run: ./.github/scripts/bump_version.sh "patch"
         - name: Push updated package.json
-          run: ./.github/scripts/git_push.sh '`[ ${{ needs.get_current_version.outputs.version }} != ${{ needs.get_master_version.outputs.version }} ] && echo "Updating hash and version" || echo "Updating hash"`'
+          run: ./.github/scripts/git_push.sh '`[ ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }} ] && echo "Updating hash and version" || echo "Updating hash"`'
