@@ -59,7 +59,7 @@ jobs:
         - check_src_changes
         - get_current_version
         - get_master_version
-      if: ${{ always() && ${{ needs.check_src_changes.outputs.old_hash != needs.check_src_changes.outputs.new_hash }} }}
+      if: ${{ always() && needs.check_src_changes.outputs.old_hash != needs.check_src_changes.outputs.new_hash }}
       steps:
         - name: Setup node 12
           uses: actions/setup-node@v1
