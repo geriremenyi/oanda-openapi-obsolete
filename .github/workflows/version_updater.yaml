@@ -76,12 +76,13 @@ jobs:
           uses: actions/checkout@v2
           with:
             ref: ${{ github.head_ref }}
+            token: ${{ secrets.BOT_USER_ACCESS_TOKEN }}
         - name: Update hash
-          run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.outputs.new_hash }}
+          run: ./.github/scripts/set_package_variable.sh "srcHash" "${{ needs.check_src_changes.outputs.new_hash }}"
         - name: Bump patch version if needed
           if: ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }}
           run: ./.github/scripts/bump_version.sh "patch"
         - name: Push updated package.json
           run: |
-            commit_message=`[ ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }} ] && echo "Updating hash and version" || echo "Updating hash"`
+            commit_message=`[ "${{ needs.get_current_version.outputs.version }}" != "${{ needs.get_master_version.outputs.version }}" ] && echo "Updating hash and version" || echo "Updating hash"`
             ./.github/scripts/git_push.sh "$commit_message"
