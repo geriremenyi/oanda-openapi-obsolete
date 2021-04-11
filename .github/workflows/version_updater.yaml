@@ -10,7 +10,6 @@ jobs:
     outputs:
       old_hash: ${{ steps.get_stored_hash.outputs.srcHash }}
       new_hash: ${{ steps.calculate_hash.outputs.hash }}
-      is_src_changed: ${{ steps.is_src_changed.outputs.changed }}
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
@@ -20,12 +19,6 @@ jobs:
       - name: Calculate src folder hash
         id: calculate_hash
         run: ./.github/scripts/calculate_hash.sh "src"
-      - name: Check src changes
-        id: is_src_changed
-        run: |
-          is_changed=`[ "${{ steps.get_stored_hash.outputs.srcHash }}" = "${{ steps.calculate_hash.outputs.hash }}" ] && echo false || echo true`
-          [ "$is_changed" = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
-          echo "::set-output name=changed::$is_changed"
   get_current_version:
     name: Get current version
     runs-on: ubuntu-latest
@@ -33,12 +26,10 @@ jobs:
       - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
-    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
+    if: ${{ needs.check_src_changes.outputs.old_hash != needs.check_src_changes.outputs.new_hash }}
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
-      - name: Debug
-        run: echo "This is the value of the is changed - ${{ needs.check_src_changes.outputs.is_src_changed }}"
       - name: Get current version
         id: package-version
         run: ./.github/scripts/get_package_variable.sh "version"
@@ -49,7 +40,7 @@ jobs:
       - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
-    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
+    if: ${{ needs.check_src_changes.outputs.old_hash != needs.check_src_changes.outputs.new_hash }}
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
@@ -68,7 +59,7 @@ jobs:
         - check_src_changes
         - get_current_version
         - get_master_version
-      if: ${{ always() && needs.check_src_changes.outputs.is_src_changed }}
+      if: ${{ always() && ${{ needs.check_src_changes.outputs.old_hash != needs.check_src_changes.outputs.new_hash }} }}
       steps:
         - name: Setup node 12
           uses: actions/setup-node@v1
