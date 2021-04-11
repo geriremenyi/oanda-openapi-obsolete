@@ -4,6 +4,7 @@
 git_commit_message=`[ ! -z "$1" ] && echo "$1" || [ ! -z "$GIT_PUSH_COMMIT_MESSAGE" ] && echo "$GIT_PUSH_COMMIT_MESSAGE" || echo ""`
 git_author_email=`[ ! -z "$2" ] && echo "$2" || [ ! -z "$GIT_PUSH_AUTHOR_EMAIL" ] && echo "$GIT_PUSH_AUTHOR_EMAIL" || echo ""`
 git_author_name=`[ ! -z "$3" ] && echo "$3" || [ ! -z "$GIT_PUSH_AUTHOR_NAME" ] && echo "$GIT_PUSH_AUTHOR_NAME" || echo ""`
+git_repo=`[ ! -z "$4" ] && echo "$4" || [ ! -z "$GIT_REPO" ] && echo "$GIT_REPO" || echo ""`
 # Check that all parameters are given
 if [ -z "$git_commit_message" ]; then
     echo "::error file=git_push.sh::The commit message is not given. Either pass the commit message as the first parameter to the script or set the GIT_PUSH_COMMIT_MESSAGE environment variable."
@@ -15,6 +16,10 @@ if [ -z "$git_author_email" ]; then
 fi
 if [ -z "$git_author_name" ]; then
     echo "::error file=git_push.sh::The author name is not given. Either pass the author name as the third parameter to the script or set the GIT_PUSH_AUTHOR_NAME environment variable."
+    exit 1
+fi
+if [ -z "$git_repo" ]; then
+    echo "::error file=git_push.sh::The repo name to push to is not given. Either pass the repo name name as the foirth parameter to the script or set the GIT_REPO environment variable."
     exit 1
 fi
 

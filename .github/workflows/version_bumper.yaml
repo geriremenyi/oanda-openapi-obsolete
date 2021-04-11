@@ -8,28 +8,26 @@ jobs:
     name: Check changes in src folder
     runs-on: ubuntu-latest
     outputs:
+      old_hash: ${{ steps.get_stored_hash.outputs.srcHash }}
+      new_hash: ${{ steps.calculate_hash.outputs.hash }}
       is_src_changed: ${{ steps.is_src_changed.outputs.changed }}
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Calculate src folder hash
-        id: calculate_hash
-        run: ./scripts/calculate_hash.sh "src"
       - name: Get stored hash
         id: get_stored_hash
-        run: ./scripts/get_package_variable.sh "hash"
-      - name: Calculate if update needed
+        run: ./.github/scripts/get_package_variable.sh "srcHash"
+      - name: Calculate src folder hash
+        id: calculate_hash
+        run: ./.github/scripts/calculate_hash.sh "src"
+      - name: Check src changes
         id: is_src_changed
         run: |
-          is_changed=$([ ${{ steps.calculate_hash.outputs.hash }} = ${{ steps.get_stored_hash.outputs.hash }} ] && echo true || echo false)
-          [ "$is_changed" = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
+          is_changed=`[ "${{ steps.get_stored_hash.outputs.srcHash }}" = "${{ steps.calculate_hash.outputs.hash }}" ] && echo false || echo true`
+          [ $is_changed = true ] && echo "Version update check and bump is required." || echo "Version updated check and bump is not required."
           echo "::set-output name=changed::is_changed"
-  current_version:
-    name: Collect current version
+  get_current_version:
+    name: Get current version
     runs-on: ubuntu-latest
     needs:
       - check_src_changes
@@ -39,46 +37,42 @@ jobs:
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Get current version
         id: package-version
-        run: ./scripts/get_package_variable.sh "version"
-  master_version:
-    name: Collect master version
+        run: ./.github/scripts/get_package_variable.sh "version"
+  get_master_version:
+    name: Get master version
     runs-on: ubuntu-latest
     needs:
       - check_src_changes
     outputs:
       version: ${{ steps.package-version.outputs.version }}
+    if: ${{ needs.check_src_changes.outputs.is_src_changed }}
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
         #with:
           #ref: master
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
       - name: Get master version
         id: package-version
-        run: ./scripts/get_package_variable.sh "version"
-  bump_version:
-      name: Auto bump version if needed
-      runs-on: ubuntu-latest
-      env:
-        GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
-        GIT_PUSH_AUTHOR_NAME: ${{ secrets.BOT_USER_NAME }}
-      needs:
-        - current_version
-        - master_version
-      if: needs.current_version.outputs.version == needs.master_version.outputs.version
-      steps:
-        - name: Checkout current
-          uses: actions/checkout@v2
-        - name: Bump patch version
-          run: ./scripts/bump_version.sh "patch"
-        - name: Push updated version
-          run: ./scripts/git_push.sh "Auto patch version bump"
+        run: ./.github/scripts/get_package_variable.sh "version"
+  # bump_version_and_hash:
+  #     name: Auto bump version and hash if needed
+  #     runs-on: ubuntu-latest
+  #     env:
+  #       GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
+  #       GIT_PUSH_AUTHOR_NAME: ${{ secrets.BOT_USER_NAME }}
+  #     needs:
+  #       - check_src_changes
+  #       - get_current_version
+  #       - get_master_version
+  #     if: ${{ always() }} && ${{ needs.check_src_changes.outputs.is_src_changed }}
+  #     steps:
+  #       - name: Checkout current
+  #         uses: actions/checkout@v2
+  #       - name: Update hash
+  #         run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.new_hash }}
+  #       - name: Bump patch version
+  #         run: ./.github/scripts/bump_version.sh "patch"
+  #       - name: Push updated version
+  #         run: ./.github/scripts/git_push.sh "Auto patch version bump"
