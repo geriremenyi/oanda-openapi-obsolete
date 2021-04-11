@@ -75,11 +75,13 @@ jobs:
         - name: Checkout current
           uses: actions/checkout@v2
           with:
-            ref: ${{ github.event.pull_request.head.sha }}
+            ref: ${{ github.head_ref }}
         - name: Update hash
           run: ./.github/scripts/set_package_variable.sh "srcHash" ${{ needs.check_src_changes.outputs.new_hash }}
         - name: Bump patch version if needed
           if: ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }}
           run: ./.github/scripts/bump_version.sh "patch"
         - name: Push updated package.json
-          run: ./.github/scripts/git_push.sh '`[ ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }} ] && echo "Updating hash and version" || echo "Updating hash"`'
+          run: |
+            commit_message=`[ ${{ needs.get_current_version.outputs.version != needs.get_master_version.outputs.version }} ] && echo "Updating hash and version" || echo "Updating hash"`
+            ./.github/scripts/git_push.sh "$commit_message"
