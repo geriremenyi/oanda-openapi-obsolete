@@ -4,7 +4,6 @@ on:
     branches:
       - master
 jobs:
----
   check_src_changes:
     name: Check changes in src folder
     runs-on: ubuntu-latest
@@ -29,7 +28,7 @@ jobs:
       - name: Calculate src folder hash
         id: calculate_hash
         run: ./.github/scripts/calculate_hash.sh "src"
----
+
   get_current_version:
     name: Get current version
     runs-on: ubuntu-latest
@@ -45,7 +44,7 @@ jobs:
       - name: Get current version
         id: package-version
         run: ./.github/scripts/get_package_variable.sh "version"
----
+
   get_master_version:
     name: Get master version
     runs-on: ubuntu-latest
@@ -63,7 +62,7 @@ jobs:
       - name: Get master version
         id: package-version
         run: ./.github/scripts/get_package_variable.sh "version"
----
+
   bump_hash_and_version:
       name: Bump hash and version if needed 
       runs-on: ubuntu-latest
@@ -104,4 +103,3 @@ jobs:
           run: |
             commit_message=`[ "${{ needs.get_current_version.outputs.version }}" == "${{ needs.get_master_version.outputs.version }}" ] && echo "Updating hash and version" || echo "Updating hash"`
             ./.github/scripts/git_push.sh "$commit_message"
----
