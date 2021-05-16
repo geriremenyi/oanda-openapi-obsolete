@@ -1,20 +1,33 @@
-name: Continuous Integration
-on: [pull_request]
+name: Validate OpenAPI definition
+on:
+  pull_request
 jobs:
   validate:
     name: Bundle & validate definition
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Setup node 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
       - name: Validate definition
         run: npm run validate:original
+
       - name: Bundle definition
         run: npm run bundle
+
       - name: Validate bundled definition
         run: npm run validate:bundled
+
+      - name: Upload bundle
+        uses: actions/upload-artifact@v2
+        with:
+          name: openapi-definition-bundle
+          path: out/definition/openapi.yaml

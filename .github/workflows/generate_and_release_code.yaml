@@ -1,0 +1,77 @@
+name: Generate code
+on:
+  push:
+    tags
+jobs:
+  generate_dotnet_core:
+    name: Generate .NET core client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Java 8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 8
+
+      - name: Setup Node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Generate .NET core client
+        run: npm run generate:csharp-netcore
+
+      - name: Workaround for .NET core generation issue
+        run: .github/scripts/remove_basevalidate.sh
+      
+      - name: Upload generated .NET client
+        uses: actions/upload-artifact@v2
+        with:
+          name: dotnet-core-client
+          path: out/code/csharp-netcore
+
+  push_dotnet_core:
+    name: Push .NET core client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scripts repo
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/github-actions-scripts
+          path: scripts
+
+      - name: Checkout oanda-dotnet-client repo
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/oanda-dotnet-client
+          ref: master
+          path: remote
+      
+      - name: Download generated .NET core client
+        uses: actions/download-artifact@v2
+        with:
+          name: dotnet-core-client
+          path: local
+
+      - name: Remove old files from remote
+        run: |
+          rm -f remote/oanda-dotnet-client/*.sln
+          rm -f remote/oanda-dotnet-client/.gitignore
+          rm -rf remote/oanda-dotnet-client/src 
+          rm -rf remote/oanda-dotnet-client/docs
+
+      - name: Add local files to remote
+        run: |
+          cp local/*.sln remote
+          cp local/.gitignore remote/.gitignore
+          cp -r local/src remote/src
+          cp -r local/docs remote/docs
+
+      - name: Publish oanda-dotnet-client to remote repo
+        working-directory: ../oanda-dotnet-client
+        run: sudo scripts/src/git/git_push.sh "${{ github.event.commits[0]['message'] }}" "${{ secrets.BOT_USER_EMAIL }}" "${{ secrets.BOT_USER_NAME }}"
