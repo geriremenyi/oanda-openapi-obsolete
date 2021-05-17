@@ -1,7 +1,7 @@
 name: Generate code
 on:
-  push:
-    tags
+  create:
+    - tags
 jobs:
   generate_dotnet_core:
     name: Generate .NET core client
