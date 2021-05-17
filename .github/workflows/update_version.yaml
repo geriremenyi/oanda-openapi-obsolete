@@ -30,7 +30,8 @@ jobs:
 
       - name: Debug
         run: |
-          ls / -a
+          ls ../../ -a
+          ls ../../../ -a
 
       - name: Get stored hash
         id: get_stored_hash
