@@ -1,4 +1,4 @@
-name: Version Updater
+name: Update version
 on:
   pull_request:
     branches:
@@ -20,14 +20,23 @@ jobs:
 
       - name: Checkout current
         uses: actions/checkout@v2
+        with:
+          path: code
+
+      - name: Checkout scripts repo
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/github-actions-scripts
+          ref: main
+          path: scripts
 
       - name: Get stored hash
         id: get_stored_hash
-        run: ./.github/scripts/get_package_variable.sh "srcHash"
+        run: scripts/src/npm/get_package_variable.sh "srcHash" "code"
 
       - name: Calculate src folder hash
         id: calculate_hash
-        run: ./.github/scripts/calculate_hash.sh "src"
+        run: scripts/src/files/calculate_hash.sh "code/src"
 
   get_current_version:
     name: Get current version
@@ -40,10 +49,18 @@ jobs:
     steps:
       - name: Checkout current
         uses: actions/checkout@v2
+        with:
+          path: code
+
+      - name: Checkout scripts repo
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/github-actions-scripts
+          path: scripts
 
       - name: Get current version
         id: package-version
-        run: ./.github/scripts/get_package_variable.sh "version"
+        run: scripts/src/npm/get_package_variable.sh "version" "code"
 
   get_master_version:
     name: Get master version
@@ -56,19 +73,23 @@ jobs:
     steps:
       - name: Checkout master
         uses: actions/checkout@v2
-        #with:
-          #ref: master
+        with:
+          ref: master
+          path: code
+
+      - name: Checkout scripts repo
+        uses: actions/checkout@v2
+        with:
+          repository: geriremenyi/github-actions-scripts
+          path: scripts
 
       - name: Get master version
         id: package-version
-        run: ./.github/scripts/get_package_variable.sh "version"
+        run: scripts/src/npm/get_package_variable.sh "version" "code"
 
   bump_hash_and_version:
       name: Bump hash and version if needed 
       runs-on: ubuntu-latest
-      env:
-        GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
-        GIT_PUSH_AUTHOR_NAME: ${{ secrets.BOT_USER_NAME }}
       needs:
         - check_src_changes
         - get_current_version
@@ -85,9 +106,16 @@ jobs:
           with:
             ref: ${{ github.head_ref }}
             token: ${{ secrets.BOT_USER_ACCESS_TOKEN }}
+            path: code
+
+        - name: Checkout scripts repo
+          uses: actions/checkout@v2
+          with:
+            repository: geriremenyi/github-actions-scripts
+            path: scripts
 
         - name: Update hash
-          run: ./.github/scripts/set_package_variable.sh "srcHash" "${{ needs.check_src_changes.outputs.new_hash }}"
+          run: scripts/src/npm/set_package_variable.sh "srcHash" "${{ needs.check_src_changes.outputs.new_hash }}" "code"
 
         - name: Fail workflow if version is invalid
           if: ${{ needs.get_current_version.outputs.version < needs.get_master_version.outputs.version }}
@@ -97,9 +125,12 @@ jobs:
 
         - name: Bump patch version if needed
           if: ${{ needs.get_current_version.outputs.version == needs.get_master_version.outputs.version }}
-          run: ./.github/scripts/bump_version.sh "patch"
+          run: scripts/src/npm/bump_version.sh "patch"
 
         - name: Push updated package.json
+          env:
+            GIT_PUSH_AUTHOR_EMAIL: ${{ secrets.BOT_USER_EMAIL }}
+            GIT_PUSH_AUTHOR_NAME: ${{ secrets.BOT_USER_NAME }}
           run: |
             commit_message=`[ "${{ needs.get_current_version.outputs.version }}" == "${{ needs.get_master_version.outputs.version }}" ] && echo "Updating hash and version" || echo "Updating hash"`
-            ./.github/scripts/git_push.sh "$commit_message"
+            scripts/src/git/git_push.sh "$commit_message"
